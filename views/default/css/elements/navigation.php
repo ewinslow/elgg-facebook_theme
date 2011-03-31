@@ -503,6 +503,10 @@ li:hover > .elgg-menu-site-more {
 	font-size: 90%;
 }
 
+.elgg-menu-river > li:after {
+	content: " \00B7 ";
+}
+
 /* ***************************************
 	SIDEBAR EXTRAS (rss, bookmark, etc)
 *************************************** */

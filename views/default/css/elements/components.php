@@ -179,17 +179,13 @@
 	line-height: 1.2em;
 }
 .elgg-river-content {
-	border-left: 1px solid #CCC;
-	font-size: 85%;
-	line-height: 1.5em;
+	border-left: 2px solid #CCC;
 	margin: 8px 0 5px 0;
 	padding-left: 5px;
+	color: #777;
 }
 
 <?php //@todo location-dependent styles ?>
-.elgg-river-content .elgg-avatar {
-	float: left;
-}
 .elgg-river-layout .elgg-input-dropdown {
 	float: right;
 	margin: 10px 0;
@@ -210,7 +206,6 @@
 	border-radius: 5px 5px 0 0;
 }
 
-<?php //@todo components.php ?>
 .elgg-river-comments {
 	margin: 0;
 	border-top: none;
@@ -284,4 +279,18 @@
 }
 .elgg-tagcloud {
 	text-align: justify;
+}
+
+/* MISCELLANEOUS */
+.elgg-photo {
+	border: 1px solid #ccc;
+	padding: 3px;
+	background-color: white;
+}
+
+.elgg-comments {
+	margin-top: 25px;
+}
+.elgg-comments > form {
+	margin-top: 15px;
 }
