@@ -9,8 +9,8 @@ function facebook_theme_river_menu_handler($hook, $type, $items, $params) {
 	$item = $params['item'];
 
 	$menu_item = array(
-		'name' => 'timestamp',
-		'text' => elgg_get_friendly_time($item->getPostedTime()),
+		'name' => 'source',
+		'text' => elgg_view_friendly_time($item->getPostedTime()),
 		'priority' => 1,
 	);
 

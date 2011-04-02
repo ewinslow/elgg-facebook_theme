@@ -499,12 +499,14 @@ li:hover > .elgg-menu-site-more {
 /* ***************************************
 	RIVER
 *************************************** */
-.elgg-menu-river {
-	font-size: 90%;
-}
-
 .elgg-menu-river > li:after {
 	content: " \00B7 ";
+	margin: 0 4px;
+}
+
+.elgg-menu-river > li:first-child,
+.elgg-menu-river > li:first-child > a {
+	color: #888;
 }
 
 /* ***************************************

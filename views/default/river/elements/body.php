@@ -11,6 +11,7 @@ $subject = $item->getSubjectEntity();
 $header = elgg_view('output/url', array(
 	'href' => $subject->getURL(),
 	'text' => $subject->name,
+	'class' => 'elgg-actor-name',
 ));
 
 $body = elgg_view($item->getView(), array('item' => $item));

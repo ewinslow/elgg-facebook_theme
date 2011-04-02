@@ -185,6 +185,10 @@
 	color: #777;
 }
 
+.elgg-actor-name {
+	font-weight: bold;
+}
+
 <?php //@todo location-dependent styles ?>
 .elgg-river-layout .elgg-input-dropdown {
 	float: right;
@@ -192,43 +196,40 @@
 }
 
 .elgg-river-comments-tab {
-	display: block;
-	background-color: #EEE;
-	color: #4690D6;
-	margin-top: 5px;
-	width: auto;
-	float: right;
-	font-size: 85%;
-	padding: 1px 7px;
-
-	-webkit-border-radius: 5px 5px 0 0;
-	-moz-border-radius: 5px 5px 0 0;
-	border-radius: 5px 5px 0 0;
+	display: none;
 }
 
 .elgg-river-comments {
 	margin: 0;
 	border-top: none;
 }
-.elgg-river-comments li:first-child {
-	-webkit-border-radius: 5px 0 0;
-	-moz-border-radius: 5px 0 0;
-	border-radius: 5px 0 0;
+
+/* Image-less triangle.  Woot. */
+.elgg-river-comments:before {
+	width: 0px;
+	height: 0px;
+	border-left: 5px solid transparent;
+	border-right: 5px solid transparent;
+	border-bottom: 5px solid #EDEFF4;
+	font-size: 0px;
+	line-height: 0px;
+	display: block;
+	clear: both;
+	content: " ";
+	margin-left: 15px;
 }
-.elgg-river-comments li:last-child {
-	-webkit-border-radius: 0 0 5px 5px;
-	-moz-border-radius-bottomleft: 0 0 5px 5px;
-	border-radius-bottomleft: 0 0 5px 5px;
-}
-.elgg-river-comments li {
-	background-color: #EEE;
-	border-bottom: none;
-	padding: 4px;
+
+.elgg-river-comments > li {
+	background-color: #EDEFF4;
+	border-bottom: 1px solid #E5EAF1;
 	margin-bottom: 2px;
+	padding: 4px;
 }
-.elgg-river-comments .elgg-media {
+
+.elgg-river-comments .elgg-image-block {
 	padding: 0;
 }
+
 .elgg-river-more {
 	background-color: #EEE;
 
