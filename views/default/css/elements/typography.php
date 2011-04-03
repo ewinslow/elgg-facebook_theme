@@ -93,9 +93,7 @@ blockquote {
 	font-size: 2em;
 	line-height: 1.4em;
 	color: white;
-	font-style: italic;
-	font-family: Georgia, times, serif;
-	text-shadow: 1px 2px 4px #333333;
+	text-shadow: 0 0 1px #627AAD;
 	text-decoration: none;
 }
 .elgg-heading-main {

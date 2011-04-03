@@ -435,17 +435,20 @@ li:hover > .elgg-menu-site-more {
 *************************************** */
 .elgg-menu-footer > li,
 .elgg-menu-footer > li > a {
-	display: inline-block;
 	color:#999;
 }
 
 .elgg-menu-footer > li:after {
-	content: "\007C";
+	content: " \00B7 ";
 	padding: 0 4px;
 }
 
+.elgg-menu-footer-default {
+	float:right;
+}
+
 .elgg-menu-footer-alt {
-	float: right;
+	float: left;
 }
 
 /* ***************************************

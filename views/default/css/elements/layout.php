@@ -28,7 +28,16 @@
 	margin: 0 auto;
 }
 .elgg-page-default .elgg-page-footer > .elgg-inner {
-	padding-left: 200px;
+	margin-left: 200px;
+	padding: 8px;
+}
+
+.elgg-page-footer > .elgg-inner:after {
+	display:block;
+	content: '.';
+	clear:both;
+	visibility:hidden;
+	height:0;
 }
 
 /***** TOPBAR ******/
@@ -80,7 +89,7 @@
 /***** PAGE HEADER ******/
 .elgg-page-header {
 	position: relative;
-	background: #4690D6 url(<?php echo elgg_get_site_url(); ?>_graphics/header_shadow.png) repeat-x bottom left;
+	background: #3B5998;
 }
 .elgg-page-header > .elgg-inner {
 	position: relative;

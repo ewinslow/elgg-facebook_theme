@@ -30,24 +30,30 @@
 /* Popup */
 .elgg-module-popup {
 	background-color: white;
-	border: 1px solid #ccc;
 
 	z-index: 9999;
 	margin-bottom: 0;
-	padding: 5px;
-	-webkit-border-radius: 6px;
-	-moz-border-radius: 6px;
-	border-radius: 6px;
 
-	-webkit-box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5);
-	-moz-box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5);
-	box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5);
+	box-shadow: 0 0 0 10px rgba(82, 82, 82, 0.7);
+	border-radius: 8px;
 }
+
 .elgg-module-popup > .elgg-head {
-	margin-bottom: 5px;
+	background: #6D84B4;
+	border: 1px solid #3B5998;
+	border-bottom: none;
+	color: white;
+	font-size: 14px;
+	font-weight: bold;
+	margin: 0;
+	padding: 5px 10px;
 }
-.elgg-module-popup > .elgg-head * {
-	color: #0054A7;
+
+.elgg-module-popup > .elgg-body {
+	background: white;
+	border: 1px solid #555;
+	border-top: 0;
+	padding: 10px;
 }
 
 /* Dropdown */
