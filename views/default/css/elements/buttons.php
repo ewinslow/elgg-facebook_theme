@@ -10,6 +10,10 @@
 	BUTTONS
 ************************** */
 
+.elgg-button + .elgg-button {
+	margin-left: 4px;
+}
+
 /* Base */
 .elgg-button:hover {
 	text-decoration:none
@@ -147,4 +151,8 @@
 	background: #ccc;
 	color: #333;
 	border:1px solid #ccc;
+}
+
+.elgg-button-large {
+	font-size: 13px;
 }

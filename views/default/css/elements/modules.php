@@ -6,25 +6,27 @@
 }
 
 /* Aside */
-.elgg-module-aside .elgg-head {
-	border-bottom: 1px solid #CCC;
+.elgg-module-aside > .elgg-head {
+	border-top: 1px solid #EEE;
+	margin: 8px 0 0 6px;
+	padding: 7px 6px 3px 5px;
+}
 
-	margin-bottom: 5px;
-	padding-bottom: 5px;
+.elgg-module-aside > .elgg-head > h3 {
+	color: gray;
 }
 
 /* Info */
 .elgg-module-info > .elgg-head {
-	background: #e4e4e4;
-	padding: 5px;
-	margin-bottom: 10px;
-
-	-webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
-	border-radius: 3px;
+	background-color: #F2F2F2;
+	border-bottom: none;
+	border-top: solid 1px #E2E2E2;
+	padding: 4px 5px 5px;
+	margin-bottom: 5px;
 }
-.elgg-module-info > .elgg-head * {
-	color: #333;
+
+.elgg-module-info > .elgg-body {
+	padding: 0 5px;
 }
 
 /* Popup */
@@ -42,11 +44,14 @@
 	background: #6D84B4;
 	border: 1px solid #3B5998;
 	border-bottom: none;
-	color: white;
 	font-size: 14px;
 	font-weight: bold;
 	margin: 0;
 	padding: 5px 10px;
+}
+
+.elgg-module-popup > .elgg-head > h3 {
+	color: white;
 }
 
 .elgg-module-popup > .elgg-body {
@@ -56,29 +61,36 @@
 	padding: 10px;
 }
 
+.elgg-module-popup > .elgg-foot {
+	margin-top: -1px;
+	border: 1px solid #3B5998;
+	border-top-color: #CCC;
+	background: #F2F2F2;
+	padding: 8px 10px;
+	text-align:right;
+}
+
 /* Dropdown */
 .elgg-module-dropdown {
-	background-color:white;
-	border:5px solid #CCC;
+	background-color: white;
+	border: 1px solid #333;
+	border-bottom: 2px solid #293E6A;
 
-	-webkit-border-radius: 5px 0 5px 5px;
-	-moz-border-radius: 5px 0 5px 5px;
-	border-radius: 5px 0 5px 5px;
-
-	display:none;
-
-	width: 210px;
-	padding: 12px;
-	margin-right: 0px;
 	z-index:100;
+}
 
-	-webkit-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.45);
-	-moz-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.45);
-	box-shadow: 0 3px 3px rgba(0, 0, 0, 0.45);
+.elgg-module-dropdown > .elgg-body {
+	padding: 8px;
+}
 
-	position:absolute;
-	right: 0px;
-	top: 100%;
+.elgg-module-dropdown > .elgg-head {
+	margin: 7px 8px 0;
+	border-bottom: 1px solid #AAA;
+	padding-bottom: .5em;
+}
+
+.elgg-module-dropdown > .elgg-foot {
+	text-align: center;
 }
 
 /* Featured */
