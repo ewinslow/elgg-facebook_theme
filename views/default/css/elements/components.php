@@ -40,9 +40,6 @@
 /* ***************************************
 	Image Block
 *************************************** */
-.elgg-image-block {
-	padding: 3px 0;
-}
 .elgg-image-block .elgg-image {
 	float: left;
 	margin-right: 10px;

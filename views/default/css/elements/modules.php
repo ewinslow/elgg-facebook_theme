@@ -5,7 +5,7 @@
 	margin-bottom: 20px;
 }
 
-/* Aside */
+/* Aside *
 .elgg-module-aside > .elgg-head {
 	border-top: 1px solid #EEE;
 	margin: 8px 0 0 6px;
@@ -15,9 +15,17 @@
 .elgg-module-aside > .elgg-head > h3 {
 	color: gray;
 }
+/* */
+
+.elgg-module-info > .elgg-head {
+	background: #ECEFF5;
+	border-top: 1px solid #94A3C4;
+	margin-bottom: 14px;
+	padding: 5px 8px;
+}
 
 /* Info */
-.elgg-module-info > .elgg-head {
+.elgg-module-aside > .elgg-head {
 	background-color: #F2F2F2;
 	border-bottom: none;
 	border-top: solid 1px #E2E2E2;
@@ -25,7 +33,7 @@
 	margin-bottom: 5px;
 }
 
-.elgg-module-info > .elgg-body {
+.elgg-module-aside > .elgg-body {
 	padding: 0 5px;
 }
 
@@ -95,21 +103,13 @@
 
 /* Featured */
 .elgg-module-featured {
-	border: 1px solid #4690D6;
-
-	-webkit-border-radius: 6px;
-	-moz-border-radius: 6px;
-	border-radius: 6px;
-}
-.elgg-module-featured > .elgg-head {
-	padding: 5px;
-	background-color: #4690D6;
-}
-.elgg-module-featured > .elgg-head * {
-	color: white;
-}
-.elgg-module-featured > .elgg-body {
+	background-color: #F2F2F2;
+	border: 1px solid #CCC;
 	padding: 10px;
+}
+
+.elgg-module-featured > .elgg-head {
+	margin-bottom: 10px;
 }
 
 /* ***************************************
