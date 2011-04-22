@@ -45,40 +45,49 @@
 	TABS
 *************************************** */
 .elgg-tabs {
-	border-bottom: 1px solid #898989;
-	display: block;	
-	padding-left:10px;
-}
-.elgg-tabs:after {
-	content: '.';
-	display:block;
-	clear:both;
-	visibility:hidden;
-	height:0;
-	line-height:0;
-}
-.elgg-tabs > li {
-	border: 1px solid #898989;
-	float: left;
-	background: #F1F1F1;
-	margin: 0 -1px -1px 0;
-}
-.elgg-tabs > li > a {
+	border-bottom: 1px solid #D8DFEA;
 	display: block;
+	width: 100%;
+	padding-left:15px;
+}
+
+.elgg-tabs > li {
+	margin: 2px 2px -1px 0;
+	display: inline-block;
+	background: #D8DFEA;
+	border: 1px solid #D8DFEA;
+	border-bottom: 0;
+}
+
+.elgg-tabs > :hover {
+	background: #627AAD;
+	border: 1px solid #627AAD;
+	border-bottom: 0;
+}
+
+.elgg-tabs > li > a {
+	font-size: 13px;
+	font-weight: bold;
 	text-align: center;
-	color: #333;
-	padding: 0 8px 3px 9px;
-	font-weight:bold;
-	border-top: 2px solid #f4f4f4;
+	padding: 3px 11px 4px;
+	display:block;
+}
+.elgg-tabs > :hover > a {
+	color: white;
+	text-decoration:none;
 }
 
 .elgg-tabs > .elgg-state-selected {
-	background: #627AAD;
+	border: 1px solid #D8DFEA;
+	border-bottom: 0;
+	margin-top: 0;
 }
-.elgg-tabs .elgg-state-selected a {
-	border-top: 2px solid #627AAD;
-	color: white;
-	text-decoration:none;
+
+.elgg-tabs > .elgg-state-selected > a,
+.elgg-tabs > .elgg-state-selected:hover > a {
+	background: white;
+	color: #333;
+	padding: 5px 10px 4px
 }
 
 /* ***************************************
@@ -191,57 +200,42 @@
 /* ***************************************
 	FILTER MENU
 *************************************** */
-.elgg-menu-filter {
-	border-bottom: 1px solid #D8DFEA;
-	display: block;
-	width: 100%;
-	padding-left:15px;
-}
 
+.elgg-menu-filter {
+	border-bottom: 1px solid #898989;
+	display: block;	
+	padding-left:10px;
+}
 .elgg-menu-filter:after {
 	content: '.';
-	display: block;
+	display:block;
 	clear:both;
-	visibility:none;
+	visibility:hidden;
 	height:0;
 	line-height:0;
 }
 .elgg-menu-filter > li {
-	margin: 2px 2px -1px 0;
+	border: 1px solid #898989;
 	float: left;
-	background: #D8DFEA;
-	border: 1px solid #D8DFEA;
-	border-bottom: 0;
+	background: #F1F1F1;
+	margin: 0 -1px -1px 0;
 }
-
-.elgg-menu-filter > :hover {
-	background: #627AAD;
-	border: 1px solid #627AAD;
-	border-bottom: 0;
-}
-
 .elgg-menu-filter > li > a {
-	font-size: 13px;
-	font-weight: bold;
+	display: block;
 	text-align: center;
-	padding: 3px 11px 4px;
-}
-.elgg-menu-filter > :hover > a {
-	color: white;
-	text-decoration:none;
+	color: #333;
+	padding: 0 8px 3px 9px;
+	font-weight:bold;
+	border-top: 2px solid #f4f4f4;
 }
 
 .elgg-menu-filter > .elgg-state-selected {
-	border: 1px solid #D8DFEA;
-	border-bottom: 0;
-	margin-top: 0;
+	background: #627AAD;
 }
-
-.elgg-menu-filter > .elgg-state-selected > a,
-.elgg-menu-filter > .elgg-state-selected:hover > a {
-	background: white;
-	color: #333;
-	padding: 5px 10px 4px
+.elgg-menu-filter .elgg-state-selected a {
+	border-top: 2px solid #627AAD;
+	color: white;
+	text-decoration:none;
 }
 
 /* ***************************************
