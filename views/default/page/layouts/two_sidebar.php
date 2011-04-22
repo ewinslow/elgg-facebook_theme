@@ -22,6 +22,12 @@ if (isset($vars['class'])) {
 		<?php echo elgg_view('page/elements/sidebar', $vars); ?>
 	</div>
 	<div class="elgg-main elgg-body">
+		<div class="elgg-head">
+			<?php echo elgg_view('page/elements/title', $vars); ?>
+		</div>
+		<?php 
+			// allow page handlers to override the default header
+		?>
 		<div class="elgg-sidebar-alt">
 			<?php echo elgg_view('page/elements/sidebar_alt', $vars); ?>
 		</div>

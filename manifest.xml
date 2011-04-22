@@ -14,12 +14,17 @@
 	<license>GNU Public License version 2</license>
 	<requires>
 		<type>elgg_version</type>
-		<version>2010030101</version>
+		<version>2011030100</version>
 	</requires>
-	<requires>
+	<suggests>
 		<type>plugin</type>
-		<name>quickstart</name>
+		<name>profile</name>
 		<version>1.8</version>
+	</suggests>
+	<requires>
+		<type>priority</type>
+		<comparison>after</comparison>
+		<name>profile</name>
 	</requires>
 	<admin_interface>simple</admin_interface>
 </plugin_manifest>

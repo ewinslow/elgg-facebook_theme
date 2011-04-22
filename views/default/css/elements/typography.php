@@ -117,9 +117,6 @@ blockquote {
 /* ***************************************
 	USER INPUT DISPLAY RESET
 *************************************** */
-.elgg-output {
-	margin-top: 10px;
-}
 .elgg-output ul, ol {
 	margin: 0 1.5em 1.5em 0;
 	padding-left: 1.5em;
