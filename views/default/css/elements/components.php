@@ -53,13 +53,12 @@
 	List
 *************************************** */
 .elgg-list {
-	margin: 5px 0;
 	clear: both;
 }
 
 .elgg-list > li {
-	padding: 10px 35px 10px 0;
 	border-bottom: 1px solid #E9E9E9;
+	padding: 5px 0;
 }
 .elgg-list > li:last-child {
 	border-bottom: 0;
@@ -166,6 +165,7 @@
 }
 .elgg-river > li {
 	border-bottom: 1px solid #CCC;
+	padding: 10px 35px 10px 0;
 }
 .elgg-river-item {
 	padding: 7px 0;

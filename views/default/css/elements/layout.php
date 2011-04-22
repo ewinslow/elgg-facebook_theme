@@ -114,7 +114,7 @@
 .elgg-sidebar-alt {
 	position: relative;
 	float: right;
-	width: 160px;
+	width: 240px;
 	margin-left: 20px;
 	min-height: 360px;
 }

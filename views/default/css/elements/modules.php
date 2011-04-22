@@ -5,18 +5,7 @@
 	margin-bottom: 20px;
 }
 
-/* Aside *
-.elgg-module-aside > .elgg-head {
-	border-top: 1px solid #EEE;
-	margin: 8px 0 0 6px;
-	padding: 7px 6px 3px 5px;
-}
-
-.elgg-module-aside > .elgg-head > h3 {
-	color: gray;
-}
-/* */
-
+/* Info */
 .elgg-module-info > .elgg-head {
 	background: #ECEFF5;
 	border-top: 1px solid #94A3C4;
@@ -24,13 +13,16 @@
 	padding: 5px 8px;
 }
 
-/* Info */
+/* Aside */
 .elgg-module-aside > .elgg-head {
 	background-color: #F2F2F2;
 	border-bottom: none;
 	border-top: solid 1px #E2E2E2;
 	padding: 4px 5px 5px;
-	margin-bottom: 5px;
+}
+
+.elgg-module-aside > .elgg-head > h3 {
+	font-size: 1em;
 }
 
 .elgg-module-aside > .elgg-body {
