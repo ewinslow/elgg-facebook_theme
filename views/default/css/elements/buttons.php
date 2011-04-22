@@ -39,6 +39,12 @@
 	padding: 2px 6px;
 }
 
+.elgg-button:active {
+	box-shadow: none;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+}
+
 .elgg-button.elgg-state-disabled {
 	cursor: default;
 	box-shadow: none;
