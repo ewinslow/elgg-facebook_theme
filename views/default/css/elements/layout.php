@@ -120,7 +120,7 @@
 .elgg-main {
 	position: relative;
 	min-height: 360px;
-	padding: 10px;
+	padding: 15px 20px;
 	border: 1px solid #B3B3B3;
 	border-top: 0;
 }
