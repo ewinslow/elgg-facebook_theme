@@ -109,13 +109,14 @@
 	padding: 20px 0;
 	float: left;
 	width: 200px;
+	min-height: 360px;
 }
 .elgg-sidebar-alt {
 	position: relative;
-	padding: 20px;
 	float: right;
 	width: 160px;
-	margin: 0 0 0 10px;
+	margin-left: 20px;
+	min-height: 360px;
 }
 .elgg-main {
 	position: relative;
