@@ -11,120 +11,74 @@
 	PAGINATION
 *************************************** */
 .elgg-pagination {
-	margin: 10px 0;
 	display: block;
+	border: 1px solid #CCC;
+	border-width: 1px 0;
+	background: #F7F7F7;
 	text-align: center;
 }
-.elgg-pagination li {
-	display: inline;
-	margin: 0 6px 0 0;
-	text-align: center;
-}
-.elgg-pagination a, .elgg-pagination span {
-	-webkit-border-radius: 4px;
-	-moz-border-radius: 4px;
-	border-radius: 4px;
 
-	padding: 2px 6px;
-	color: #4690d6;
-	border: 1px solid #4690d6;
-	font-size: 12px;
+.elgg-pagination > li {
+	display:inline-block;
 }
-.elgg-pagination a:hover {
-	background: #4690d6;
+
+.elgg-pagination > li > a, 
+.elgg-pagination > li > span {
+	font-size: 13px;
+	font-weight: bold;
+	margin: 3px 11px 0 0;
+	padding: 3px 4px 4px;
+	text-align: center;
+	display:block;
+}
+.elgg-pagination > li > a:hover {
+	background: #3B5998;
 	color: white;
 	text-decoration: none;
 }
-.elgg-pagination .elgg-state-disabled span {
-	color: #CCCCCC;
-	border-color: #CCCCCC;
-}
-.elgg-pagination .elgg-state-selected span {
-	color: #555555;
-	border-color: #555555;
+
+.elgg-pagination > .elgg-state-selected > span {
+	border-bottom: 2px solid #3B5998
 }
 
 /* ***************************************
 	TABS
 *************************************** */
 .elgg-tabs {
-	margin-bottom: 5px;
-	border-bottom: 2px solid #cccccc;
-	display: table;
-	width: 100%;
+	border-bottom: 1px solid #898989;
+	display: block;	
+	padding-left:10px;
 }
-.elgg-tabs li {
+.elgg-tabs:after {
+	content: '.';
+	display:block;
+	clear:both;
+	visibility:hidden;
+	height:0;
+	line-height:0;
+}
+.elgg-tabs > li {
+	border: 1px solid #898989;
 	float: left;
-	border: 2px solid #ccc;
-	border-bottom: 0;
-	background: #eee;
-	margin: 0 0 0 10px;
-
-	-webkit-border-radius: 5px 5px 0 0;
-	-moz-border-radius: 5px 5px 0 0;
-	border-radius: 5px 5px 0 0;
+	background: #F1F1F1;
+	margin: 0 -1px -1px 0;
 }
-.elgg-tabs a {
-	text-decoration: none;
+.elgg-tabs > li > a {
 	display: block;
-	padding: 3px 10px 0 10px;
 	text-align: center;
-	height: 21px;
-	color: #999;
+	color: #333;
+	padding: 0 8px 3px 9px;
+	font-weight:bold;
+	border-top: 2px solid #f4f4f4;
 }
-.elgg-tabs a:hover {
-	background: #dedede;
-	color:#4690D6;
-}
-.elgg-tabs .elgg-state-selected {
-	border-color: #ccc;
-	background: white;
+
+.elgg-tabs > .elgg-state-selected {
+	background: #627AAD;
 }
 .elgg-tabs .elgg-state-selected a {
-	position: relative;
-	top: 2px;
-	background: white;
-}
-
-/* ***************************************
- * MENUS
- *
- * To add separators to a menu:
- * .elgg-menu-$menu > li:after {content: '|'; background: ...;}
- *************************************** */
-/* For dropdown/flyout menus */
-.elgg-menu > li {
-	position:relative;
-}
-
-/* For separators */
-.elgg-menu > li:last-child:after {
-	display:none
-}
-
-/* Maximize click target */
-.elgg-menu > li > a {
-	display:block
-}
-
-/* Image placement correction */
-.elgg-menu img,
-.elgg-menu .elgg-icon {
-	vertical-align: middle;
-	margin-top: -2px;
-}
-
-/* Horizontal menus w/ separator support */
-.elgg-menu-hz > li,
-.elgg-menu-hz > li:after,
-.elgg-menu-hz > li > a {
-	display:inline-block;
-	vertical-align:middle;
-}
-
-/* Allow inline image blocks in horizontal menus */
-.elgg-menu-hz .elgg-body:after {
-	content: '.';
+	border-top: 2px solid #627AAD;
+	color: white;
+	text-decoration:none;
 }
 
 /* ***************************************
@@ -199,100 +153,27 @@
 /* ***************************************
 	SITE MENU
 *************************************** */
+.elgg-menu-site:after {
+	content: '.';
+	clear:both;
+	display:block;
+	height:0;
+	line-height:0;
+}
 .elgg-menu-site {
-	z-index: 7000;
+	background: #ECEFF5;
+}
+.elgg-menu-site > li {
+	float: left;
 }
 
 .elgg-menu-site > li > a {
-	font-weight: bold;
-	padding: 3px 13px 0px 13px;
-	height: 20px;
+	padding: 8px 10px;
 }
 
 .elgg-menu-site > li > a:hover {
 	text-decoration: none;
-}
-
-
-.elgg-menu-site-default {
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	height: 23px;
-}
-
-.elgg-menu-site-default > li {
-	float: left;
-	margin-right: 1px;
-}
-
-.elgg-menu-site-default > li > a {color: white}
-
-
-.elgg-menu-site-default > .elgg-state-selected > a,
-.elgg-menu-site-default > li:hover > a {
 	background: white;
-	color: #555;
-
-	-webkit-box-shadow: 2px -1px 1px rgba(0, 0, 0, 0.25);
-	-moz-box-shadow: 2px -1px 1px rgba(0, 0, 0, 0.25);
-	box-shadow: 2px -1px 1px rgba(0, 0, 0, 0.25);
-
-	-webkit-border-radius: 4px 4px 0 0;
-	-moz-border-radius: 4px 4px 0 0;
-	border-radius: 4px 4px 0 0;
-}
-
-.elgg-menu-site-more {
-	display:none;
-	position:relative;
-	left: -1px;
-	width: 100%;
-	z-index: 7000;
-	min-width: 150px;
-	border: 1px solid #999;
-	border-top: 0;
-
-	-webkit-border-radius: 0 0 4px 4px;
-	-moz-border-radius: 0 0 4px 4px;
-	border-radius: 0 0 4px 4px;
-
-	-webkit-box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.25);
-	-moz-box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.25);
-	box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.25);
-}
-
-li:hover > .elgg-menu-site-more {
-	display:block;
-}
-
-.elgg-menu-site-more > li > a {
-	background: white;
-	color: #555;
-
-	-webkit-border-radius: 0;
-	-moz-border-radius: 0;
-	border-radius: 0;
-
-	-webkit-box-shadow: none;
-	-moz-box-shadow: none;
-	box-shadow: none;
-}
-.elgg-menu-site-more > li > a:hover {
-	background: #4690D6;
-	color: white;
-}
-.elgg-menu-site-more > li:last-child > a,
-.elgg-menu-site-more > li:last-child > a:hover {
-	-webkit-border-radius: 0 0 4px 4px;
-	-moz-border-radius: 0 0 4px 4px;
-	border-radius: 0 0 4px 4px;
-}
-
-.elgg-more > a:before {
-	content: "\25BC";
-	font-size:smaller;
-	margin-right: 4px;
 }
 
 /* ***************************************
@@ -376,7 +257,7 @@ li:hover > .elgg-menu-site-more {
 	display: block;
 	color: #333;
 	margin-bottom: 1px;
-	padding: 3px 8px 4px 28px;
+	padding: 3px 8px 4px;
 }
 .elgg-menu-page a:hover {
 	background-color: #EFF2F7;
@@ -484,25 +365,20 @@ li:hover > .elgg-menu-site-more {
 /* ***************************************
 	OWNER BLOCK
 *************************************** */
-.elgg-menu-owner-block li a {
-	display: block;
 
-	-webkit-border-radius: 8px;
-	-moz-border-radius: 8px;
-	border-radius: 8px;
 
-	background-color: white;
-	margin: 3px 0 5px 0;
-	padding: 2px 4px 2px 8px;
+.elgg-menu-owner-block > li > a {
+	border-bottom: 1px solid #D8DFEA;
+	padding: 3px 8px;
+	text-decoration: none;
 }
-.elgg-menu-owner-block li a:hover {
-	background-color: #0054A7;
+.elgg-menu-owner-block > li > a:hover {
+	background-color: #3B5998;
 	color: white;
 	text-decoration: none;
 }
-.elgg-menu-owner-block li.elgg-state-selected > a {
-	background-color: #4690D6;
-	color: white;
+.elgg-menu-owner-block > .elgg-state-selected > a {
+	background-color: #D8DFEA;
 }
 
 /* ***************************************
@@ -528,6 +404,6 @@ li:hover > .elgg-menu-site-more {
 /* ***************************************
 	SIDEBAR EXTRAS (rss, bookmark, etc)
 *************************************** */
-.elgg-menu-extras {
-	margin-bottom: 15px;
+.elgg-menu-extras > li > a {
+	padding: 3px 0 3px 9px;
 }

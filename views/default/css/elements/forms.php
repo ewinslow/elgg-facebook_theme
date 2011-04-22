@@ -63,6 +63,82 @@ input[type="radio"] {
 	padding-right: 10px;
 }
 
+.ui-datepicker {
+	background:white;
+	border-bottom: 2px solid #293E6C;
+}	
+
+.ui-datepicker-header {
+	text-align: center;
+	background: #6D84B7;
+	color: white;
+	font-weight: bold;
+	padding: 3px 3px 4px;
+	vertical-align:center;
+	border: 1px solid #3A589B;
+	border-width: 0 1px;
+}
+
+.ui-datepicker-next,
+.ui-datepicker-prev {
+	text-decoration: none;
+	color:white;
+	width: 14.2857%;
+}
+
+.ui-datepicker-next {
+	padding-right: 3px;
+	float:right;
+}
+
+.ui-datepicker-prev {
+	padding-left: 3px;
+	float:left;
+}
+
+.ui-datepicker-calendar {
+	width: 100%;
+	border-collapse: separate;
+	border: 1px solid #777;
+	border-width: 0 1px;
+}
+
+.ui-datepicker-calendar th {
+	background: #F2F2F2;
+	border-bottom: 1px solid #BBB;
+	font-size: 9px;
+	font-weight: bold;
+	padding: 3px 2px;
+	text-align: center;
+}
+
+.ui-datepicker-calendar td {
+	padding: 0;
+}
+
+.ui-datepicker-calendar a {
+	display:block;
+	margin: 1px;
+	padding: 5px;
+	border: 1px solid white;
+	color: #666;
+	cursor: pointer;
+	text-align:center;
+	text-decoration: none;
+}
+
+.ui-datepicker-calendar .ui-datepicker-current-day > a {
+	font-weight: bold;
+	background: #DDD;
+}
+
+.ui-datepicker-calendar .ui-state-hover {
+	color: #3B5998;
+	border-color: #BEC8DD;
+	background-color: #DFE4EE;
+}
+
+
 /* ***************************************
 	FRIENDS PICKER
 *************************************** */
