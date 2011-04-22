@@ -33,3 +33,7 @@ dl, dt, dd {margin:0;padding:0}
 	padding-left: 0;
 	margin-left: 20%;
 }
+
+#groups-tools > .elgg-module {
+	width: 269px;
+}
