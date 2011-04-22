@@ -117,9 +117,9 @@ input[type="radio"] {
 }
 
 .ui-datepicker-calendar a {
-	display:block;
+	display: block;
 	margin: 1px;
-	padding: 5px;
+	padding: 4px;
 	border: 1px solid white;
 	color: #666;
 	cursor: pointer;
