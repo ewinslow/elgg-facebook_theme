@@ -17,4 +17,4 @@ if (isset($vars['class'])) {
 }
 
 echo elgg_view_menu('title', array('sort_by' => 'priority'));
-echo "<h2{$class}>{$vars['title']}</h2>";
+echo "<h1{$class}>{$vars['title']}</h1>";

@@ -42,8 +42,7 @@ $footer = elgg_view('page/layouts/content/footer', $params);
 $params = array(
 	'header' => $header,
 	'content' => $filter . $content . $footer,
-	'sidebar' => elgg_extract('sidebar', $vars, ''),
-	'sidebar_alt' => elgg_extract('sidebar_alt', $vars, ''),
+	'sidebar_alt' => elgg_extract('sidebar', $vars, '') . elgg_extract('sidebar_alt', $vars, ''),
 );
 if (isset($vars['class'])) {
 	$params['class'] = $vars['class'];
