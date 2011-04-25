@@ -35,5 +35,5 @@ dl, dt, dd {margin:0;padding:0}
 }
 
 #groups-tools > .elgg-module {
-	width: 269px;
+	width: 229px;
 }
