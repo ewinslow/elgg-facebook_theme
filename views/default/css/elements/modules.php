@@ -94,6 +94,7 @@
 	background-color: #F2F2F2;
 	border: 1px solid #CCC;
 	padding: 10px;
+	margin-bottom: 20px;
 }
 
 .elgg-module-featured > .elgg-head {
