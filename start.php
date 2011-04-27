@@ -7,6 +7,8 @@ function facebook_theme_init() {
 	elgg_register_plugin_hook_handler('register', 'menu:river', 'facebook_theme_river_menu_handler');
 	elgg_register_plugin_hook_handler('register', 'menu:owner_block', 'facebook_theme_owner_block_menu_handler');
 	
+	elgg_register_plugin_hook_handler('profile:fields', 'group', 'facebook_theme_group_profile_fields', 1);
+	
 	elgg_extend_view('css/elgg', 'facebook_theme/css');
 	
 	elgg_extend_view('page/elements/topbar', 'search/search_box');
@@ -20,6 +22,14 @@ function facebook_theme_init() {
 		'text' => "<h1 id=\"facebook-topbar-logo\">$site->name</h1>",
 		'priority' => 1,
 	));
+}
+
+function facebook_theme_group_profile_fields($hook, $type, $fields, $params) {
+	return array(
+		'briefdescription' => 'text',
+		'description' => 'longtext',
+		'interests' => 'tags',
+	);
 }
 
 function facebook_theme_owner_block_menu_handler($hook, $type, $items, $params) {
