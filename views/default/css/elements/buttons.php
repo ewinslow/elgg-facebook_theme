@@ -22,12 +22,12 @@
 	font-weight: bold;
 	text-decoration: none;
 
-	position:relative;
-	width: auto;
+	font-size: 11px;
+	line-height: 16px;
+	
 	padding: 2px 4px;
 	cursor: pointer;
 	outline: none;
-	display:inline-block;
 	text-align: center;
 	white-space: nowrap;
 
@@ -161,4 +161,5 @@
 
 .elgg-button-large {
 	font-size: 13px;
+	line-height: 19px;
 }
