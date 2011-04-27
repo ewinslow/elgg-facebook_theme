@@ -28,18 +28,18 @@ if ($comments) {
 	// these comments with the latest at the bottom.
 	$comments = array_reverse($comments);
 
-	echo elgg_view_annotation_list($comments, array('list_class' => 'elgg-river-comments', 'item_class' => 'elgg-river-participation'));
-
 	if ($comment_count > count($comments)) {
 		$num_more_comments = $comment_count - count($comments);
-		$url = $object->getURL();
-		$params = array(
-			'href' => $url,
+		$link = elgg_view('output/url', array(
+			'href' => $object->getURL(),
 			'text' => elgg_echo('river:comments:more', array($num_more_comments)),
-		);
-		$link = elgg_view('output/url', $params);
-		echo "<div class=\"elgg-river-more\">$link</div>";
+		));
+		
+		echo elgg_view_image_block(elgg_view_icon('speech-bubble-alt'), $link, array('class' => 'elgg-river-participation'));
 	}
+	
+	echo elgg_view_annotation_list($comments, array('list_class' => 'elgg-river-comments', 'item_class' => 'elgg-river-participation'));
+
 }
 
 if ($object->canComment()) {
