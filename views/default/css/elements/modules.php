@@ -1,10 +1,6 @@
 /* ***************************************
 	Modules
 *************************************** */
-.elgg-module {
-	margin-bottom: 20px;
-}
-
 /* Info */
 .elgg-module-info > .elgg-head {
 	background: #ECEFF5;
