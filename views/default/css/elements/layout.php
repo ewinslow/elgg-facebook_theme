@@ -118,13 +118,18 @@
 	margin-left: 20px;
 	min-height: 360px;
 }
+
 .elgg-main {
 	position: relative;
 	min-height: 360px;
-	padding: 15px 20px;
+}
+
+.elgg-layout-two-sidebar .elgg-main {
 	border: 1px solid #B3B3B3;
 	border-top: 0;
+	padding: 15px 20px;
 }
+
 .elgg-main > .elgg-head {
 	padding-bottom: 3px;
 	margin-bottom: 10px;
