@@ -10,6 +10,7 @@ function facebook_theme_init() {
 	elgg_unregister_plugin_hook_handler('register', 'menu:river', 'likes_river_menu_setup');
 	
 	elgg_register_plugin_hook_handler('profile:fields', 'group', 'facebook_theme_group_profile_fields', 1);
+	elgg_register_plugin_hook_handler('view', 'all', 'developers_view_handler');
 	
 	elgg_extend_view('css/elgg', 'facebook_theme/css');
 	
@@ -26,6 +27,21 @@ function facebook_theme_init() {
 		'text' => "<h1 id=\"facebook-topbar-logo\">$site->name</h1>",
 		'priority' => 1,
 	));
+}
+
+function developers_view_handler($hook, $type, $result, $params) {
+	$viewtype = $params['viewtype'];
+	
+	if ($viewtype == 'default') {
+		$view = $params['view'];
+		
+		if (strpos($view, 'js/') !== 0 && strpos($view, 'css') !== 0) {
+			$location = elgg_get_view_location($view, $viewtype);
+			$result = "<!-- START $view ($location) -->$result<!-- END $view -->";
+		}
+	}
+	
+	return $result;
 }
 
 function facebook_theme_group_profile_fields($hook, $type, $fields, $params) {
