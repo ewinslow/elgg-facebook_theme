@@ -13,6 +13,8 @@ function facebook_theme_init() {
 	
 	elgg_extend_view('css/elgg', 'facebook_theme/css');
 	
+	elgg_extend_view('river/elements/footer', 'likes/river_footer', 1);
+	
 	elgg_extend_view('page/elements/topbar', 'search/search_box');
 	
 	elgg_unregister_menu_item('topbar', 'elgg_logo');
