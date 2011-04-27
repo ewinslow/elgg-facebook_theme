@@ -33,6 +33,8 @@ dl, dt, dd {margin:0;padding:0}
 	margin-left: 120px;
 }
 
+img {max-width:100%}
+
 #groups-tools > .elgg-module {
 	width: 229px;
 }
