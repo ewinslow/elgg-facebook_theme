@@ -25,15 +25,15 @@ function facebook_theme_init() {
 function facebook_theme_owner_block_menu_handler($hook, $type, $items, $params) {
 	$owner = elgg_get_page_owner_entity();
 	
-	if ($owner instanceof ElggUser) {
+	if ($owner instanceof ElggEntity) {
 		$items[] = ElggMenuItem::factory(array(
-			'name' => 'profile', 
-			'text' => elgg_echo('profile'), 
-			'href' => "profile/$owner->username",
+			'name' => 'info', 
+			'text' => elgg_echo('Info'), 
+			'href' => $owner->getURL(),
 			'priority' => 1,
 		));
 	}
-	
+		
 	return $items;
 	
 }
