@@ -21,7 +21,8 @@
 .elgg-button {
 	font-weight: bold;
 	text-decoration: none;
-
+	width: auto;
+	margin: 0;
 	font-size: 11px;
 	line-height: 16px;
 	
