@@ -9,7 +9,7 @@
 .elgg-module-info > .elgg-head {
 	background: #ECEFF5;
 	border-top: 1px solid #94A3C4;
-	margin-bottom: 14px;
+	margin-bottom: 5px;
 	padding: 5px 8px;
 }
 
