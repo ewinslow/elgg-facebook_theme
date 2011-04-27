@@ -93,3 +93,16 @@ li.elgg-river-participation {
 .elgg-form-small textarea {
 	font-size: 11px;
 }
+
+.elgg-river-summary {
+	font-weight: normal;
+	font-size: 11px;
+	color: gray;
+}
+
+.elgg-river-attachments {
+	border-left: 2px solid #CCC;
+	margin: 8px 0 5px 0;
+	padding-left: 5px;
+	color: #777;
+}

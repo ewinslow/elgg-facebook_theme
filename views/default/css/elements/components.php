@@ -143,9 +143,6 @@
 /* ***************************************
 	River
 *************************************** */
-.elgg-river {
-	border-top: 1px solid #CCC;
-}
 .elgg-river > li {
 	border-bottom: 1px solid #CCC;
 	padding: 10px 35px 10px 0;
@@ -161,10 +158,8 @@
 	line-height: 1.2em;
 }
 .elgg-river-content {
-	border-left: 2px solid #CCC;
-	margin: 8px 0 5px 0;
-	padding-left: 5px;
-	color: #777;
+	display:block;
+	color: #333;
 }
 
 <?php //@todo location-dependent styles ?>
