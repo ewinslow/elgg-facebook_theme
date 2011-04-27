@@ -5,7 +5,7 @@
  * @uses $vars['entity']
  */
 
-if (!$vars['item'] instanceof ElggRiverItem) {
+if (!$vars['item'] instanceof ElggRiverItem || $vars['item']->annotation_id) {
 	return true;
 }
 

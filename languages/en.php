@@ -11,4 +11,6 @@ add_translation('en', array(
 
 	'likes:likethis' => 'Like',
 	'likes:remove' => 'Unlike',
+
+	'river:comments:all' => 'View all %d comments',
 ));

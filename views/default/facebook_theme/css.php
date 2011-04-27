@@ -110,3 +110,7 @@ li.elgg-river-participation {
 .elgg-image-block-small > .elgg-image {
 	margin-right: 5px;
 }
+
+.elgg-river-subject {
+	font-weight: bold;
+}

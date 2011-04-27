@@ -2,7 +2,9 @@
 /**
  * Body of river item
  *
- * @uses $vars['item']
+ * @uses $vars['summary']
+ * @uses $vars['content']
+ * @uses $vars['attachments']
  */
 
 $summary = '';
