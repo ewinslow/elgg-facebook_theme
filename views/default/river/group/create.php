@@ -19,8 +19,7 @@ $group_link = elgg_view('output/url', array(
 	'encode_text' => true,
 ));
 
-echo "<h3 class=\"elgg-river-summary\">$subject_link " . elgg_echo('groups:river:create') . " $group_link</h3>";
-
-echo '<div class="elgg-river-attachments">';
-echo elgg_view('group/default/river', array('entity' => $object));
-echo '</div>';
+echo elgg_view('river/elements/body', array(
+	'summary' => "$subject_link " . elgg_echo('groups:river:create') . " $group_link",
+	'attachments' => elgg_view('group/default/river', array('entity' => $object)),
+));

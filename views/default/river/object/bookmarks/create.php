@@ -31,8 +31,8 @@ if ($target instanceof ElggGroup) {
 	$group_string = elgg_echo('river:ingroup', array($group_link));
 }
 
-echo "<h3 class=\"elgg-river-summary\">$subject_link</h3>";
-echo elgg_view('output/longtext', array('value' => $object->description, 'class' => 'elgg-river-content'));
-echo '<div class="elgg-river-attachments">';
-echo elgg_view('object/bookmarks/river', array('entity' => $object));
-echo '</div>';
+echo elgg_view('river/elements/body', array(
+	'summary' => $subject_link,
+	'content' => elgg_view('output/longtext', array('value' => $object->description)),
+	'attachments' => elgg_view('object/bookmarks/river', array('entity' => $object)),
+));

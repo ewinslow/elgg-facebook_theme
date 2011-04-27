@@ -7,7 +7,7 @@
 
 $item = $vars['item'];
 
-$body = elgg_view('river/elements/body', $vars);
+$body = elgg_view($item->getView(), $vars);
 $controls = elgg_view('river/elements/controls', $vars);
 $conversation = elgg_view('river/elements/footer', $vars);
 

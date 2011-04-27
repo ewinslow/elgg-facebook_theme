@@ -5,7 +5,18 @@
  * @uses $vars['item']
  */
 
-$item = $vars['item'];
-$subject = $item->getSubjectEntity();
+$summary = '';
+$content = false;
+$attachments = false;
 
-echo elgg_view($item->getView(), array('item' => $item));
+extract($vars, EXTR_IF_EXISTS);
+
+echo "<h3 class=\"elgg-river-summary\">$summary</h3>";
+
+if ($content) {
+	echo "<div class=\"elgg-river-content\">$content</div>";
+}
+
+if ($attachments) {
+	echo "<div class=\"elgg-river-attachments\">$attachments</div>";
+}

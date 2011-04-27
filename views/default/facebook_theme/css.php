@@ -106,3 +106,7 @@ li.elgg-river-participation {
 	padding-left: 5px;
 	color: #777;
 }
+
+.elgg-image-block-small > .elgg-image {
+	margin-right: 5px;
+}
