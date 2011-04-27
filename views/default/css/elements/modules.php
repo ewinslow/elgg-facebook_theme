@@ -10,11 +10,16 @@
 }
 
 /* Aside */
+.elgg-module-aside {
+	margin-bottom: 15px;
+}
+
 .elgg-module-aside > .elgg-head {
 	background-color: #F2F2F2;
 	border-bottom: none;
 	border-top: solid 1px #E2E2E2;
 	padding: 4px 5px 5px;
+	margin-bottom: 5px;
 }
 
 .elgg-module-aside > .elgg-head > h3 {
