@@ -190,25 +190,6 @@
 	margin-bottom: 2px;
 }
 
-<?php //@todo location-dependent styles ?>
-.elgg-river-item form {
-	background-color: #EEE;
-	padding: 4px;
-
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
-	border-radius: 5px;
-
-	display: none;
-	height: 30px;
-}
-.elgg-river-item input[type=text] {
-	width: 80%;
-}
-.elgg-river-item input[type=submit] {
-	margin: 0 0 0 10px;
-}
-
 /* ***************************************
 	Tags
 *************************************** */

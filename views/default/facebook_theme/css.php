@@ -88,3 +88,8 @@ li.elgg-river-participation {
 .elgg-actor-name {
 	font-weight: bold;
 }
+
+.elgg-form-small input,
+.elgg-form-small textarea {
+	font-size: 11px;
+}

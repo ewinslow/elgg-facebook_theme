@@ -46,6 +46,6 @@ if ($object->canComment()) {
 	// inline comment form
 	echo elgg_view_form('comments/add', array(
 		'id' => "comments-add-{$object->getGUID()}",
-		'class' => 'elgg-river-participation',
+		'class' => 'elgg-river-participation elgg-form-small',
 	), array('entity' => $object, 'inline' => true));
 }
