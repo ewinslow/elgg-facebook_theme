@@ -7,10 +7,12 @@
 
 $item = $vars['item'];
 
-$vars = array(
-	'image' => elgg_view('river/elements/image', array('item' => $item)),
-	'body' => elgg_view('river/elements/body', array('item' => $item)),
-	'class' => 'elgg-river-item',
-);
+$body = elgg_view('river/elements/body', $vars);
+$controls = elgg_view('river/elements/controls', $vars);
+$conversation = elgg_view('river/elements/footer', $vars);
 
-echo elgg_view('page/components/image_block', $vars);
+echo elgg_view('page/components/image_block', array(
+	'image' => elgg_view('river/elements/image', $vars),
+	'body' => $body . $controls . $conversation,
+	'class' => 'elgg-river-item',
+));

@@ -6,10 +6,8 @@
 $item = $vars['item'];
 $object = $item->getObjectEntity();
 
-echo elgg_view('river/elements/controls', array('item' => $item));
-
 // annotations do not have comments
-if ($item->annotation_id != 0 || !$object) {
+if (!$object) {
 	return true;
 }
 
@@ -30,11 +28,6 @@ if ($comments) {
 	// these comments with the latest at the bottom.
 	$comments = array_reverse($comments);
 
-?>
-	<span class="elgg-river-comments-tab"><?php echo elgg_echo('comments'); ?></span>
-
-<?php
-
 	echo elgg_view_annotation_list($comments, array('list_class' => 'elgg-river-comments'));
 
 	if ($comment_count > count($comments)) {
@@ -49,7 +42,9 @@ if ($comments) {
 	}
 }
 
-// inline comment form
-echo elgg_view_form('comments/add', array(
-	'id' => "comments-add-{$object->getGUID()}",
-), array('entity' => $object, 'inline' => true));
+if ($object->canComment()) {
+	// inline comment form
+	echo elgg_view_form('comments/add', array(
+		'id' => "comments-add-{$object->getGUID()}",
+	), array('entity' => $object, 'inline' => true));
+}

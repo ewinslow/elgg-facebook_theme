@@ -7,6 +7,8 @@ function facebook_theme_init() {
 	elgg_register_plugin_hook_handler('register', 'menu:river', 'facebook_theme_river_menu_handler');
 	elgg_register_plugin_hook_handler('register', 'menu:owner_block', 'facebook_theme_owner_block_menu_handler');
 	
+	elgg_unregister_plugin_hook_handler('register', 'menu:river', 'likes_river_menu_setup');
+	
 	elgg_register_plugin_hook_handler('profile:fields', 'group', 'facebook_theme_group_profile_fields', 1);
 	
 	elgg_extend_view('css/elgg', 'facebook_theme/css');
@@ -40,6 +42,15 @@ function facebook_theme_owner_block_menu_handler($hook, $type, $items, $params) 
 			'name' => 'info', 
 			'text' => elgg_echo('Info'), 
 			'href' => $owner->getURL(),
+			'priority' => 2,
+		));
+	}
+	
+	if ($owner instanceof ElggUser) {
+		$items[] = ElggMenuItem::factory(array(
+			'name' => 'activity',
+			'text' => elgg_echo('profile:activity'),
+			'href' => "/profile/$owner->username/activity",
 			'priority' => 1,
 		));
 	}
@@ -55,6 +66,7 @@ function facebook_theme_river_menu_handler($hook, $type, $items, $params) {
 		'name' => 'source',
 		'text' => elgg_view_friendly_time($item->getPostedTime()),
 		'priority' => 1,
+		'href' => false,
 	);
 
 	if ($item->action_type == 'create' && $item->object_guid) {
@@ -62,6 +74,41 @@ function facebook_theme_river_menu_handler($hook, $type, $items, $params) {
 	}
 
 	$items[] = ElggMenuItem::factory($menu_item);
+
+	if (elgg_is_logged_in()) {
+		$object = $item->getObjectEntity();
+		if (!elgg_in_context('widgets') && $object instanceof ElggEntity) {
+			if ($object->canAnnotate(0, 'likes')) {
+				if (!elgg_annotation_exists($object->getGUID(), 'likes')) {
+					// user has not liked this yet
+					$options = array(
+						'name' => 'like',
+						'href' => "action/likes/add?guid={$object->getGUID()}",
+						'text' => elgg_echo('likes:likethis'),
+						'is_action' => true,
+						'priority' => 100,
+					);
+				} else {
+					// user has liked this
+					$likes = elgg_get_annotations(array(
+						'guid' => $object->getGUID(),
+						'annotation_name' => 'likes',
+						'annotation_owner_guid' => elgg_get_logged_in_user_guid()
+					));
+					$options = array(
+						'name' => 'like',
+						'href' => "action/likes/delete?annotation_id={$likes[0]->id}",
+						'text' => elgg_echo('likes:remove'),
+						'is_action' => true,
+						'priority' => 100,
+					);
+				}
+				
+				$items[] = ElggMenuItem::factory($options);
+			}
+		}
+	}
+
 	return $items;
 }
 
@@ -97,6 +144,10 @@ function facebook_theme_profile_page_handler($page) {
 			require $CONFIG->path . 'pages/profile/edit.php';
 			return;
 			break;
+			
+		case 'activity':
+			require dirname(__FILE__) . '/pages/profile/activity.php';
+			return;
 
 		default:
 			$body = elgg_view_layout('two_sidebar', array(
