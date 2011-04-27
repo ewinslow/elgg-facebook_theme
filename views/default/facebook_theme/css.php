@@ -14,15 +14,14 @@ dl, dt, dd {margin:0;padding:0}
 
 .elgg-profile > dt {
 	float: left;
-	width: 20%;
+	width: 120px;
 	font-weight:bold;
 	color: #999;
 	padding: 10px 0;
 }
 	
 .elgg-profile > dd {
-	padding: 10px 0 10px 20%;
-	width: 80%;
+	padding: 10px 0 10px 120px;
 }
 
 .elgg-profile > dd ~ dd {
@@ -31,7 +30,7 @@ dl, dt, dd {margin:0;padding:0}
 
 .elgg-profile > dd + dd {
 	padding-left: 0;
-	margin-left: 20%;
+	margin-left: 120px;
 }
 
 #groups-tools > .elgg-module {
