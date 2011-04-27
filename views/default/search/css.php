@@ -16,7 +16,7 @@ Search plugin
 }
 
 .elgg-page-topbar .elgg-search {
-	margin: 5px 0 5px 205px;
+	margin: 4px 0 4px 205px;
 	position: relative;
 }
 
@@ -28,7 +28,7 @@ Search plugin
 	padding: 0 23px 0 0;
 }
 .elgg-search .search-input {
-	padding: 1px 0;
+	padding: 1px 0 1px 3px;
 	margin: 2px 0 2px 2px;
 	outline: none;
 	font-size: 11px;
