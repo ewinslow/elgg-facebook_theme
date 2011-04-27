@@ -28,7 +28,7 @@ if ($comments) {
 	// these comments with the latest at the bottom.
 	$comments = array_reverse($comments);
 
-	echo elgg_view_annotation_list($comments, array('list_class' => 'elgg-river-comments'));
+	echo elgg_view_annotation_list($comments, array('list_class' => 'elgg-river-comments', 'item_class' => 'elgg-river-participation'));
 
 	if ($comment_count > count($comments)) {
 		$num_more_comments = $comment_count - count($comments);
@@ -46,5 +46,6 @@ if ($object->canComment()) {
 	// inline comment form
 	echo elgg_view_form('comments/add', array(
 		'id' => "comments-add-{$object->getGUID()}",
+		'class' => 'elgg-river-participation',
 	), array('entity' => $object, 'inline' => true));
 }
