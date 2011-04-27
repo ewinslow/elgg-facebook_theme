@@ -16,19 +16,24 @@ Search plugin
 }
 
 .elgg-page-topbar .elgg-search {
-	margin-left: 205px;
+	margin: 5px 0 5px 205px;
 	position: relative;
-	margin-top: 4px;
 }
 
-.elgg-search .search-input {
-	width: 350px;
-	padding-left: 20px;
+.elgg-search {
+	width: 330px;
+	background: white url(<?php echo elgg_get_site_url(); ?>_graphics/elgg_sprites.png) no-repeat 335px -700px;
 	border: 1px solid #3B5998;
-	background: white url(<?php echo elgg_get_site_url(); ?>_graphics/elgg_sprites.png) no-repeat 2px -718px;
+	height: 20px;
+	padding: 0 23px 0 0;
+}
+.elgg-search .search-input {
+	padding: 1px 0;
+	margin: 2px 0 2px 2px;
 	outline: none;
 	font-size: 11px;
-	height: 22px;
+	border: 0;
+	border-right: 1px solid #e9e9e9;
 }
 
 .elgg-search input[type=submit] {
