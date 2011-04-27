@@ -8,6 +8,8 @@ function facebook_theme_init() {
 	elgg_register_plugin_hook_handler('register', 'menu:owner_block', 'facebook_theme_owner_block_menu_handler');
 	
 	elgg_extend_view('css/elgg', 'facebook_theme/css');
+	
+	elgg_extend_view('page/elements/topbar', 'search/search_box');
 }
 
 function facebook_theme_owner_block_menu_handler($hook, $type, $items, $params) {
