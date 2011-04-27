@@ -8,8 +8,6 @@ $user = elgg_get_page_owner_entity();
 
 $profile_fields = elgg_get_config('profile_fields');
 
-echo elgg_view("profile/status", array("entity" => $user));
-
 echo "<dl class=\"elgg-profile\">";
 if (is_array($profile_fields) && sizeof($profile_fields) > 0) {
 	foreach ($profile_fields as $shortname => $valtype) {
