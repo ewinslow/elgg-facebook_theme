@@ -123,8 +123,8 @@
 	min-height: 360px;
 }
 
-.elgg-layout-two-sidebar .elgg-main,
-.elgg-layout-one-sidebar .elgg-main {
+.elgg-layout-two-sidebar > .elgg-body,
+.elgg-layout-one-sidebar .elgg-body {
 	border: 1px solid #B3B3B3;
 	border-top: 0;
 	padding: 15px 20px;

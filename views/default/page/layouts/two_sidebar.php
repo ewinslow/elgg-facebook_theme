@@ -21,7 +21,7 @@ if (isset($vars['class'])) {
 	<div class="elgg-sidebar">
 		<?php echo elgg_view('page/elements/sidebar', $vars); ?>
 	</div>
-	<div class="elgg-main elgg-body">
+	<div class="elgg-body">
 		<div class="elgg-head">
 			<?php echo elgg_view('page/elements/title', $vars); ?>
 		</div>
@@ -31,7 +31,7 @@ if (isset($vars['class'])) {
 		<div class="elgg-sidebar-alt">
 			<?php echo elgg_view('page/elements/sidebar_alt', $vars); ?>
 		</div>
-		<div class="elgg-body">
+		<div class="elgg-body elgg-main">
 			<?php
 				// @todo deprecated so remove in Elgg 2.0
 				if (isset($vars['area1'])) {
