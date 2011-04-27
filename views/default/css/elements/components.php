@@ -21,23 +21,6 @@
 ?>
 
 /* ***************************************
-	Body
-*************************************** */
-.elgg-body {
-	width: auto;
-	word-wrap: break-word;
-	overflow: hidden;
-}
-.elgg-body:after {
-	display: block;
-	visibility: hidden;
-	height: 0 !important;
-	line-height: 0;
-	font-size: xx-large;
-	content: " x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x ";
-}
-
-/* ***************************************
 	Image Block
 *************************************** */
 .elgg-image-block .elgg-image {
@@ -170,9 +153,7 @@
 .elgg-river-item {
 	padding: 7px 0;
 }
-.elgg-river-item .elgg-pict {
-	margin-right: 20px;
-}
+
 .elgg-river-timestamp {
 	color: #666;
 	font-size: 85%;
@@ -186,49 +167,15 @@
 	color: #777;
 }
 
-.elgg-actor-name {
-	font-weight: bold;
-}
-
 <?php //@todo location-dependent styles ?>
 .elgg-river-layout .elgg-input-dropdown {
 	float: right;
 	margin: 10px 0;
 }
 
-.elgg-river-comments-tab {
-	display: none;
-}
-
 .elgg-river-comments {
 	margin: 0;
 	border-top: none;
-}
-
-/* Image-less triangle.  Woot. */
-.elgg-river-comments:before {
-	width: 0px;
-	height: 0px;
-	border-left: 5px solid transparent;
-	border-right: 5px solid transparent;
-	border-bottom: 5px solid #EDEFF4;
-	font-size: 0px;
-	line-height: 0px;
-	display: block;
-	clear: both;
-	content: " ";
-	margin-left: 15px;
-}
-
-.elgg-river-comments > li {
-	background-color: #EDEFF4;
-	border-bottom: 1px solid #E5EAF1;
-	margin-bottom: 2px;
-	padding: 4px;
-}
-
-.elgg-river-comments .elgg-image-block {
-	padding: 0;
 }
 
 .elgg-river-more {

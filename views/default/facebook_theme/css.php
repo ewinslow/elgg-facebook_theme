@@ -47,3 +47,44 @@ img {max-width:100%}
 	width: 100px;
 	text-align:center;
 }
+
+/* Image-less triangle.  Woot. */
+.elgg-nub {position:relative}
+
+.elgg-nub:before {
+	width: 0px;
+	height: 0px;
+	font-size: 0px;
+	line-height: 0px;
+	display: block;
+	clear: both;
+	content: " ";
+	position: absolute;
+}
+
+.elgg-nub-tl {
+	padding-top: 5px;
+}
+
+.elgg-nub-tl:before {
+	border-left: 5px solid transparent;
+	border-right: 5px solid transparent;
+	border-bottom: 5px solid #EDEFF4;
+	top: 0px;
+}
+
+.elgg-nub-tl:before {
+	left: 15px;
+}
+
+.elgg-river-participation,
+li.elgg-river-participation {
+	background-color: #EDEFF4;
+	border-bottom: 1px solid #E5EAF1;
+	margin-bottom: 2px;
+	padding: 4px;
+}
+
+.elgg-actor-name {
+	font-weight: bold;
+}
