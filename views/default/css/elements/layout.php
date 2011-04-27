@@ -46,7 +46,6 @@
 	min-width: 998px;
 	position: relative;
 	height: 41px;
-	z-index: 9000;
 }
 
 .elgg-page-topbar > .elgg-inner {
