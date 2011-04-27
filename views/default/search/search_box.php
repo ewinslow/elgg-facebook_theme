@@ -7,12 +7,11 @@
  * @todo Move javascript into something that extends elgg.js
  */
 
+$value = '';
 if (array_key_exists('value', $vars)) {
 	$value = $vars['value'];
 } elseif ($value = get_input('q', get_input('tag', NULL))) {
 	$value = $value;
-} else {
-	$value = elgg_echo('search');
 }
 
 // @todo - why the strip slashes?
@@ -28,7 +27,7 @@ $display_query = htmlspecialchars($display_query, ENT_QUOTES, 'UTF-8', false);
 
 <form class="elgg-search" action="<?php echo elgg_get_site_url(); ?>search" method="get">
 	<fieldset>
-		<input type="text" size="21" name="q" placeholder="<?php echo elgg_echo('search'); ?>" class="search-input" />
+		<input type="text" size="21" name="q" placeholder="<?php echo elgg_echo('search'); ?>" class="search-input" value="<?php echo $value; ?>"/>
 		<input type="submit" value="<?php echo elgg_echo('search:go'); ?>" class="search-submit-button" />
 	</fieldset>
 </form>
