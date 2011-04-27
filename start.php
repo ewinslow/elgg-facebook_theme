@@ -10,6 +10,16 @@ function facebook_theme_init() {
 	elgg_extend_view('css/elgg', 'facebook_theme/css');
 	
 	elgg_extend_view('page/elements/topbar', 'search/search_box');
+	
+	elgg_unregister_menu_item('topbar', 'elgg_logo');
+
+	$site = elgg_get_site_entity();
+	elgg_register_menu_item('topbar', array(
+		'name' => 'logo',
+		'href' => '/',
+		'text' => "<h1 id=\"facebook-topbar-logo\">$site->name</h1>",
+		'priority' => 1,
+	));
 }
 
 function facebook_theme_owner_block_menu_handler($hook, $type, $items, $params) {

@@ -10,6 +10,11 @@
 /* ***************************************
 	PAGINATION
 *************************************** */
+.elgg-menu > li > a:hover,
+.elgg-menu > li > a {
+	text-decoration:none;
+}
+
 .elgg-pagination {
 	display: block;
 	border: 1px solid #CCC;
@@ -132,25 +137,26 @@
 	display: block;
 	font-weight: bold;
 	height: 22px;
-	text-decoration: none;
 }
 
-.elgg-menu-topbar-alt > li > a {
-	padding: 8px 10px 0;
-}
 .elgg-menu-topbar-default > li > a {
 	padding: 8px 4px 0;
 	margin: 0 1px;
 }
 
-.elgg-menu-topbar > li > a:hover {
-	background: #6D86B7;
-	text-decoration: none;
+.elgg-menu-topbar-default > li > a:hover {
+	background: #4B67A1;
 }
 
 .elgg-menu-topbar-alt {
 	float:right;
 	margin-right:1px;
+}
+.elgg-menu-topbar-alt > li > a {
+	padding: 8px 10px 0;
+}
+.elgg-menu-topbar-alt > li > a:hover {
+	background: #6D86B7;
 }
 
 /* ***************************************
@@ -175,7 +181,6 @@
 }
 
 .elgg-menu-site > li > a:hover {
-	text-decoration: none;
 	background: white;
 }
 
@@ -229,7 +234,6 @@
 .elgg-menu-filter .elgg-state-selected a {
 	border-top: 2px solid #627AAD;
 	color: white;
-	text-decoration:none;
 }
 
 /* ***************************************
@@ -249,7 +253,6 @@
 }
 .elgg-menu-page a:hover {
 	background-color: #EFF2F7;
-	text-decoration: none;
 }
 .elgg-menu-page li.elgg-state-selected > a {
 	background-color: #D8DFEA;
@@ -302,7 +305,6 @@
 }
 .elgg-menu-hover a:hover {
 	background: #ccc;
-	text-decoration: none;
 }
 .elgg-menu-hover-admin a {
 	color: red;
@@ -358,12 +360,10 @@
 .elgg-menu-owner-block > li > a {
 	border-bottom: 1px solid #D8DFEA;
 	padding: 3px 8px;
-	text-decoration: none;
 }
 .elgg-menu-owner-block > li > a:hover {
 	background-color: #3B5998;
 	color: white;
-	text-decoration: none;
 }
 .elgg-menu-owner-block > .elgg-state-selected > a {
 	background-color: #D8DFEA;

@@ -26,5 +26,10 @@
 		<comparison>after</comparison>
 		<name>profile</name>
 	</requires>
+	<requires>
+		<type>priority</type>
+		<comparison>after</comparison>
+		<name>search</name>
+	</requires>
 	<admin_interface>simple</admin_interface>
 </plugin_manifest>

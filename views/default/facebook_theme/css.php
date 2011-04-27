@@ -37,3 +37,12 @@ dl, dt, dd {margin:0;padding:0}
 #groups-tools > .elgg-module {
 	width: 229px;
 }
+
+#facebook-topbar-logo {
+	margin-top: -4px;
+	font-size: 20px;
+	color: white;
+	text-shadow: 0px 0px 1px lightBlue;
+	width: 100px;
+	text-align:center;
+}
