@@ -109,9 +109,6 @@ blockquote {
 
 .elgg-subtext {
 	color: #666666;
-	font-size: 85%;
-	line-height: 1.2em;
-	font-style: italic;
 }
 
 /* ***************************************
