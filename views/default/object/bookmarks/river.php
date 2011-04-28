@@ -2,12 +2,18 @@
 
 $link = $vars['entity'];
 
-echo "<h4>";
-echo elgg_view('output/url', array(
+$title = elgg_view('output/url', array(
 	'text' => $link->title,
 	'href' => $link->getURL(),
 	'encode_text' => true,
 ));
-echo "</h4>";
 
-echo filter_tags(elgg_view('output/url', array('href' => $link->address, 'rel' => 'nofollow', 'class' => 'elgg-subtext')));
+$subtitle = elgg_view('output/url', array('value' => $link->address));
+
+$description = elgg_get_excerpt($link->description, 350);
+
+echo elgg_view('river/elements/attachment', array(
+	'title' => $title,
+	'subtitle' => $subtitle,
+	'description' => $description,
+));

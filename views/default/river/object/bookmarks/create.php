@@ -12,14 +12,10 @@ $subject_link = elgg_view('output/url', array(
 	'href' => $subject->getURL(),
 	'text' => $subject->name,
 	'encode_text' => true,
-	'class' => 'elgg-actor-name',
+	'class' => 'elgg-river-subject',
 ));
 
-$link = elgg_view('output/url', array(
-	'href' => $object->getURL(),
-	'text' => $object->title,
-	'encode_text' => true,
-));
+$text = elgg_echo('bookmarks:river:created');
 
 $group_string = '';
 $target = $object->getContainerEntity();
@@ -32,7 +28,6 @@ if ($target instanceof ElggGroup) {
 }
 
 echo elgg_view('river/elements/body', array(
-	'summary' => $subject_link,
-	'content' => elgg_view('output/longtext', array('value' => $object->description)),
+	'summary' => "$subject_link $text",
 	'attachments' => elgg_view('object/bookmarks/river', array('entity' => $object)),
 ));

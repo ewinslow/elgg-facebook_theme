@@ -13,4 +13,6 @@ add_translation('en', array(
 	'likes:remove' => 'Unlike',
 
 	'river:comments:all' => 'View all %d comments',
+
+	'bookmarks:river:created' => 'shared a link',
 ));

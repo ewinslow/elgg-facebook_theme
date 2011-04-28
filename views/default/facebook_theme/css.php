@@ -118,3 +118,41 @@ li.elgg-river-participation {
 .ui-tabs-hide {
 	display:none;
 }
+
+.elgg-nav-wall > h4 {
+	height: 22px;
+	display:inline-block;
+	vertical-align: baseline;
+	color: gray;
+}
+.elgg-nav-wall > h4:after {
+	content: ":";
+}
+
+.elgg-nav-wall > form {
+	margin-top: 7px;
+	border: 1px solid #B4BBCD;
+	padding: 10px;
+}
+
+.elgg-menu-wall {
+	display:inline-block;
+	height: 22px;
+}
+
+.elgg-menu-wall > li {
+	font-weight:bold;
+	padding-left: 10px;
+}
+
+.elgg-menu-wall > li > a:hover {
+	text-decoration: underline;
+}
+
+.messageboard-input {
+	margin-bottom: 5px;
+}
+
+.elgg-attachment-description {
+	margin-top: 5px;
+}
