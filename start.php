@@ -4,8 +4,10 @@ function facebook_theme_init() {
 	elgg_register_page_handler('groups', 'facebook_theme_groups_page_handler');
 	elgg_register_page_handler('profile', 'facebook_theme_profile_page_handler');
 	
+	//setup menus
 	elgg_register_plugin_hook_handler('register', 'menu:river', 'facebook_theme_river_menu_handler');
 	elgg_register_plugin_hook_handler('register', 'menu:owner_block', 'facebook_theme_owner_block_menu_handler');
+	elgg_register_plugin_hook_handler('register', 'menu:wall', 'facebook_theme_wall_menu_handler');
 	
 	elgg_unregister_plugin_hook_handler('register', 'menu:river', 'likes_river_menu_setup');
 	
@@ -27,6 +29,48 @@ function facebook_theme_init() {
 		'text' => "<h1 id=\"facebook-topbar-logo\">$site->name</h1>",
 		'priority' => 1,
 	));
+}
+
+function facebook_theme_wall_menu_handler($hook, $type, $items, $params) {
+	$entity = $params['entity'];
+	
+	if (false && $entity->canWriteToContainer(0, 'object', 'thewire')) {
+		$items[] = ElggMenuItem::factory(array(
+			'name' => 'thewire',
+			'href' => "/thewire/add/$entity->guid",
+			'text' => "Status",
+			'priority' => 1,
+		));
+	}
+	
+	if ($entity->canAnnotate(0, 'messageboard')) {
+		$items[] = ElggMenuItem::factory(array(
+			'name' => 'messageboard',
+			'href' => "#messageboard-form-add-wall",
+			'text' => "Post",
+			'priority' => 2,
+		));
+	}
+	
+	if ($entity->canWriteToContainer(0, 'object', 'bookmarks')) {
+		$items[] = ElggMenuItem::factory(array(
+			'name' => 'bookmarks',
+			'href' => "#bookmarks-form-save-wall",
+			'text' => "Link",
+			'priority' => 200,
+		));
+	}
+	
+	if ($entity->canWriteToContainer(0, 'object', 'blog')) {
+		$items[] = ElggMenuItem::factory(array(
+			'name' => 'blog',
+			'href' => "#blog-form-save-wall",
+			'text' => "Blog",
+			'priority' => 200,
+		));
+	}
+	
+	return $items;
 }
 
 function developers_view_handler($hook, $type, $result, $params) {
@@ -93,37 +137,35 @@ function facebook_theme_river_menu_handler($hook, $type, $items, $params) {
 
 	$items[] = ElggMenuItem::factory($menu_item);
 
-	if (elgg_is_logged_in()) {
-		$object = $item->getObjectEntity();
-		if (!elgg_in_context('widgets') && $object instanceof ElggEntity) {
-			if ($object->canAnnotate(0, 'likes')) {
-				if (!elgg_annotation_exists($object->getGUID(), 'likes')) {
-					// user has not liked this yet
-					$options = array(
-						'name' => 'like',
-						'href' => "action/likes/add?guid={$object->getGUID()}",
-						'text' => elgg_echo('likes:likethis'),
-						'is_action' => true,
-						'priority' => 100,
-					);
-				} else {
-					// user has liked this
-					$likes = elgg_get_annotations(array(
-						'guid' => $object->getGUID(),
-						'annotation_name' => 'likes',
-						'annotation_owner_guid' => elgg_get_logged_in_user_guid()
-					));
-					$options = array(
-						'name' => 'like',
-						'href' => "action/likes/delete?annotation_id={$likes[0]->id}",
-						'text' => elgg_echo('likes:remove'),
-						'is_action' => true,
-						'priority' => 100,
-					);
-				}
-				
-				$items[] = ElggMenuItem::factory($options);
+	$object = $item->getObjectEntity();
+	if (!elgg_in_context('widgets') && !$item->annotation_id && $object instanceof ElggEntity) {
+		if ($object->canAnnotate(0, 'likes')) {
+			if (!elgg_annotation_exists($object->getGUID(), 'likes')) {
+				// user has not liked this yet
+				$options = array(
+					'name' => 'like',
+					'href' => "action/likes/add?guid={$object->getGUID()}",
+					'text' => elgg_echo('likes:likethis'),
+					'is_action' => true,
+					'priority' => 100,
+				);
+			} else {
+				// user has liked this
+				$likes = elgg_get_annotations(array(
+					'guid' => $object->getGUID(),
+					'annotation_name' => 'likes',
+					'annotation_owner_guid' => elgg_get_logged_in_user_guid()
+				));
+				$options = array(
+					'name' => 'like',
+					'href' => "action/likes/delete?annotation_id={$likes[0]->id}",
+					'text' => elgg_echo('likes:remove'),
+					'is_action' => true,
+					'priority' => 100,
+				);
 			}
+			
+			$items[] = ElggMenuItem::factory($options);
 		}
 	}
 

@@ -14,17 +14,31 @@ elgg_push_breadcrumb($title);
 
 $db_prefix = elgg_get_config('dbprefix');
 
-$content = elgg_list_river(array(
+$menu = "<div class=\"elgg-nav-wall\">";
+$menu .= "Share:";
+$menu .= elgg_view_menu('wall', array(
+	'entity' => elgg_get_page_owner_entity(),
+	'class' => 'elgg-menu-hz',
+	'sort_by' => 'priority',
+));
+$menu .= elgg_view_form('messageboard/add', array('id' => 'messageboard-form-add-wall'));
+$menu .= elgg_view_form('blog/save', array('id' => 'blog-form-save-wall'));
+$menu .= elgg_view_form('bookmarks/save', array('id' => 'bookmarks-form-save-wall'));
+$menu .= "</div>";
+$menu .=<<<JQUERY
+	<script>$('.elgg-nav-wall').tabs();</script>
+JQUERY;
+$activity = elgg_list_river(array(
 	'joins' => array("JOIN {$db_prefix}entities e ON e.guid = rv.object_guid"),
 	'wheres' => array("e.container_guid = $user->guid")
 ));
 
-if (!$content) {
-	$content = elgg_view('output/longtext', array('value' => elgg_echo('profile:activity:none')));
+if (!$activity) {
+	$activity = elgg_view('output/longtext', array('value' => elgg_echo('profile:activity:none')));
 }
 
 $params = array(
-	'content' => $content,
+	'content' => $menu . $activity,
 	'title' => $title,
 	'buttons' => '',
 	'filter' => '',

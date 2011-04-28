@@ -114,3 +114,7 @@ li.elgg-river-participation {
 .elgg-river-subject {
 	font-weight: bold;
 }
+
+.ui-tabs-hide {
+	display:none;
+}
