@@ -15,7 +15,7 @@ elgg_push_breadcrumb($title);
 $db_prefix = elgg_get_config('dbprefix');
 
 $menu = "<div class=\"elgg-nav-wall\">";
-$menu .= "<h4>Share</h4>";
+$menu .= "<h4>Share:</h4>";
 $menu .= elgg_view_menu('wall', array(
 	'entity' => elgg_get_page_owner_entity(),
 	'class' => 'elgg-menu-hz',
