@@ -121,16 +121,13 @@ li.elgg-river-participation {
 
 .elgg-nav-wall > h4 {
 	height: 22px;
-	display:inline-block;
+	display: inline-block;
 	vertical-align: baseline;
 	color: gray;
 }
-.elgg-nav-wall > h4:after {
-	content: ":";
-}
 
-.elgg-nav-wall > form {
-	margin-top: 7px;
+.elgg-nav-wall > .ui-tabs-panel {
+	margin-top: 5px;
 	border: 1px solid #B4BBCD;
 	padding: 10px;
 }
@@ -145,9 +142,44 @@ li.elgg-river-participation {
 	padding-left: 10px;
 }
 
+.elgg-menu-wall > li > a {
+	padding-left: 22px;
+	background: transparent url(/elgg-plugins/_graphics/elgg_sprites.png) no-repeat 2px 18px;
+	line-height: 16px;
+}
+
 .elgg-menu-wall > li > a:hover {
 	text-decoration: underline;
 }
+
+.elgg-menu-wall > li.ui-state-active > a {
+	cursor: default;
+	color: black;
+	text-decoration: none;
+}
+
+.elgg-menu-wall > .ui-state-active > a:before,
+.elgg-menu-wall > .ui-state-active > a:after {
+	position: absolute;
+	display: block;
+	border-width: 8px;
+	border-style: solid;
+	content: " ";
+	height: 0;
+	width: 0;
+	left: 0;
+}
+
+.elgg-menu-wall > .ui-state-active > a:before {
+	top: 11px;
+	border-color: transparent transparent #B4BBCD transparent;
+}
+
+.elgg-menu-wall > .ui-state-active > a:after {
+	top: 12px;
+	border-color: transparent transparent white transparent;
+}
+
 
 .messageboard-input {
 	margin-bottom: 5px;

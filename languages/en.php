@@ -15,4 +15,5 @@ add_translation('en', array(
 	'river:comments:all' => 'View all %d comments',
 
 	'bookmarks:river:created' => 'shared a link',
+	'pages:river:create' => 'created a page',
 ));

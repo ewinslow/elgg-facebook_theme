@@ -4,32 +4,27 @@
  */
 
 $object = $vars['item']->getObjectEntity();
-$excerpt = strip_tags($object->description);
-$excerpt = elgg_get_excerpt($excerpt);
-
-$params = array(
-	'href' => $object->getURL(),
-	'text' => $object->title,
-);
-$link = elgg_view('output/url', $params);
+$subject = $vars['item']->getSubjectEntity();
 
 $group_string = '';
 $container = $object->getContainerEntity();
 if ($container instanceof ElggGroup) {
-	$params = array(
+	$group_link = elgg_view('output/url', array(
 		'href' => $container->getURL(),
 		'text' => $container->name,
-	);
-	$group_link = elgg_view('output/url', $params);
+	));
 	$group_string = elgg_echo('river:ingroup', array($group_link));
 }
 
-echo elgg_echo('pages:river:create');
+$subject_link = elgg_view('output/url', array(
+	'href' => $subject->getURL(),
+	'text' => $subject->name,
+	'class' => 'elgg-river-subject',
+));
 
-echo " $link $group_string";
+$text = elgg_echo('pages:river:create');
 
-if ($excerpt) {
-	echo '<div class="elgg-river-content">';
-	echo $excerpt;
-	echo '</div>';
-}
+echo elgg_view('river/elements/body', array(
+	'summary' => "$subject_link $text $group_string",
+	'attachments' => elgg_view('object/page/river', array('entity' => $object)),
+));
