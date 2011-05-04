@@ -10,6 +10,6 @@ It is meant to be a demonstration of what is possible with the very strong themi
 *	This theme is not in any way affiliated with Facebook or anyone working at Facebook.
 
 *	This theme has been written without any research into the legality of its use on a production site, 
-	therefore I urge you not to use it on a production site until you have done proper research.  
-	If you are unwilling to do the research, please use this theme only as an example or starting point, 
-	and not as your final theme.
+	therefore I urge you not to use it on a production site until you have done proper research. If you
+	are unwilling to do the research, please use this theme only as an example or starting point, and 
+	not as your final theme.
