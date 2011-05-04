@@ -3,13 +3,13 @@
 	<name>Facebook Theme</name>
 	<author>Evan Winslow</author>
 	<version>1.8</version>
-	<category>content</category>
+	<category>theme</category>
 	<blurb>Make your site look like facebook!</blurb>
 	<description>
 		Modifies the layout of Elgg to look very much like facebook.
 		Can be extended to add your own color scheme.
 	</description>
-	<website>http://evanwinslow.com/</website>
+	<website>https://github.com/ewinslow/elgg-facebook_theme</website>
 	<copyright>(C) 2011 Evan Winslow</copyright>
 	<license>GNU Public License version 2</license>
 	<requires>
