@@ -21,6 +21,7 @@ $menu .= elgg_view_menu('wall', array(
 	'class' => 'elgg-menu-hz',
 	'sort_by' => 'priority',
 ));
+$menu .= elgg_view_form('thewire/add', array('id' => 'thewire-form-add-wall'));
 $menu .= elgg_view_form('messageboard/add', array('id' => 'messageboard-form-add-wall'));
 $menu .= elgg_view_form('blog/save', array('id' => 'blog-form-save-wall'));
 $menu .= elgg_view_form('bookmarks/save', array('id' => 'bookmarks-form-save-wall'));

@@ -34,10 +34,10 @@ function facebook_theme_init() {
 function facebook_theme_wall_menu_handler($hook, $type, $items, $params) {
 	$entity = $params['entity'];
 	
-	if (false && $entity->canWriteToContainer(0, 'object', 'thewire')) {
+	if ($entity->canWriteToContainer(0, 'object', 'thewire')) {
 		$items[] = ElggMenuItem::factory(array(
 			'name' => 'thewire',
-			'href' => "/thewire/add/$entity->guid",
+			'href' => "#thewire-form-add-wall",
 			'text' => "Status",
 			'priority' => 1,
 		));

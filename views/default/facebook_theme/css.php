@@ -188,3 +188,11 @@ li.elgg-river-participation {
 .elgg-attachment-description {
 	margin-top: 5px;
 }
+
+#thewire-form-add-wall #thewire-textarea {
+	margin-top:0;
+}
+
+.messageboard-input {
+	height: 60px;
+}
