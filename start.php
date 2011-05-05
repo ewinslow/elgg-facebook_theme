@@ -10,7 +10,7 @@ function facebook_theme_init() {
 	elgg_register_plugin_hook_handler('register', 'menu:owner_block', 'facebook_theme_owner_block_menu_handler');
 	
 	//New menu: "Composer" -- choose from a few options to create content right on the same page
-	elgg_register_plugin_hook_handler('register', 'menu:wall', 'facebook_theme_wall_menu_handler');
+	elgg_register_plugin_hook_handler('register', 'menu:composer', 'facebook_theme_composer_menu_handler');
 	
 	//Override the likes menu -- use text prompt "Like/Unlike", not thumbs-up icon
 	elgg_unregister_plugin_hook_handler('register', 'menu:river', 'likes_river_menu_setup');
@@ -34,6 +34,8 @@ function facebook_theme_init() {
 	//Want our logo present, not Elgg's
 	elgg_unregister_menu_item('topbar', 'elgg_logo');
 
+	elgg_register_plugin_hook_handler('permissions_check:annotate', 'user', 'facebook_theme_annotation_permissions_handler');
+	
 	$site = elgg_get_site_entity();
 	elgg_register_menu_item('topbar', array(
 		'name' => 'logo',
@@ -43,48 +45,76 @@ function facebook_theme_init() {
 	));
 }
 
-function facebook_theme_wall_menu_handler($hook, $type, $items, $params) {
+function facebook_theme_annotation_permissions_handler($hook, $type, $result, $params) {
+	$entity = $params['entity'];
+	$user = $params['user'];
+	$annotation_name = $params['annotation_name'];
+	
+	//Users should not be able to post on their own message board
+	if ($annotation_name == 'messageboard' && $user->guid == $entity->guid) {
+		return false;
+	}
+}
+
+/**
+ * Adds menu items to the "composer" at the top of the "wall".  Need to also add
+ * the forms that these items point to.
+ */
+function facebook_theme_composer_menu_handler($hook, $type, $items, $params) {
 	$entity = $params['entity'];
 	
 	if ($entity->canWriteToContainer(0, 'object', 'thewire')) {
 		$items[] = ElggMenuItem::factory(array(
 			'name' => 'thewire',
-			'href' => "#thewire-form-add-wall",
+			'href' => "#thewire-form-composer",
 			'text' => "Status",
 			'priority' => 1,
 		));
+		
+		elgg_extend_view('composer/forms', 'composer/thewire');
 	}
 	
 	if ($entity->canAnnotate(0, 'messageboard')) {
 		$items[] = ElggMenuItem::factory(array(
 			'name' => 'messageboard',
-			'href' => "#messageboard-form-add-wall",
+			'href' => "#messageboard-form-composer",
 			'text' => "Post",
 			'priority' => 2,
 		));
+		
+		elgg_extend_view('composer/forms', 'composer/messageboard');
 	}
 	
 	if ($entity->canWriteToContainer(0, 'object', 'bookmarks')) {
 		$items[] = ElggMenuItem::factory(array(
 			'name' => 'bookmarks',
-			'href' => "#bookmarks-form-save-wall",
+			'href' => "#bookmarks-form-composer",
 			'text' => "Link",
 			'priority' => 200,
 		));
+		
+		elgg_extend_view('composer/forms', 'composer/bookmarks');
 	}
 	
 	if ($entity->canWriteToContainer(0, 'object', 'blog')) {
 		$items[] = ElggMenuItem::factory(array(
 			'name' => 'blog',
-			'href' => "#blog-form-save-wall",
+			'href' => "#blog-form-composer",
 			'text' => "Blog",
 			'priority' => 200,
 		));
+		
+		elgg_extend_view('composer/forms', 'composer/blog');
 	}
 	
 	return $items;
 }
 
+/**
+ * Adds comments around views so we can see how the page is getting created
+ * 
+ * @todo Belongs in developers plugin
+ */
 function developers_view_handler($hook, $type, $result, $params) {
 	$viewtype = $params['viewtype'];
 	

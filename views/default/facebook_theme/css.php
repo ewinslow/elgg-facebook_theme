@@ -119,47 +119,47 @@ li.elgg-river-participation {
 	display:none;
 }
 
-.elgg-nav-wall > h4 {
+.elgg-composer > h4 {
 	height: 22px;
 	display: inline-block;
 	vertical-align: baseline;
 	color: gray;
 }
 
-.elgg-nav-wall > .ui-tabs-panel {
+.elgg-composer > .ui-tabs-panel {
 	margin-top: 5px;
 	border: 1px solid #B4BBCD;
 	padding: 10px;
 }
 
-.elgg-menu-wall {
+.elgg-menu-composer {
 	display:inline-block;
 	height: 22px;
 }
 
-.elgg-menu-wall > li {
+.elgg-menu-composer > li {
 	font-weight:bold;
 	padding-left: 10px;
 }
 
-.elgg-menu-wall > li > a {
+.elgg-menu-composer > li > a {
 	padding-left: 22px;
 	background: transparent url(/elgg-plugins/_graphics/elgg_sprites.png) no-repeat 2px 18px;
 	line-height: 16px;
 }
 
-.elgg-menu-wall > li > a:hover {
+.elgg-menu-composer > li > a:hover {
 	text-decoration: underline;
 }
 
-.elgg-menu-wall > li.ui-state-active > a {
+.elgg-menu-composer > li.ui-state-active > a {
 	cursor: default;
 	color: black;
 	text-decoration: none;
 }
 
-.elgg-menu-wall > .ui-state-active > a:before,
-.elgg-menu-wall > .ui-state-active > a:after {
+.elgg-menu-composer > .ui-state-active > a:before,
+.elgg-menu-composer > .ui-state-active > a:after {
 	position: absolute;
 	display: block;
 	border-width: 8px;
@@ -170,12 +170,12 @@ li.elgg-river-participation {
 	left: 0;
 }
 
-.elgg-menu-wall > .ui-state-active > a:before {
+.elgg-menu-composer > .ui-state-active > a:before {
 	top: 11px;
 	border-color: transparent transparent #B4BBCD transparent;
 }
 
-.elgg-menu-wall > .ui-state-active > a:after {
+.elgg-menu-composer > .ui-state-active > a:after {
 	top: 12px;
 	border-color: transparent transparent white transparent;
 }
