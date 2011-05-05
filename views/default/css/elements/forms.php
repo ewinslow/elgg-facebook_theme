@@ -24,7 +24,7 @@ label {
 input, textarea {
 	font-family: "Lucida Grande", Tahoma, Verdana, Arial, sans-serif;
 	border: 1px solid #BDC7D8;
-	padding: 3px;
+	padding: .5em;
 	width: 100%;
 
 	-webkit-box-sizing: border-box;

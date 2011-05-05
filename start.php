@@ -43,6 +43,14 @@ function facebook_theme_init() {
 		'text' => "<h1 id=\"facebook-topbar-logo\">$site->name</h1>",
 		'priority' => 1,
 	));
+	
+	elgg_extend_view('css/elgg', 'css/elements/tinymce');
+	
+	elgg_register_entity_url_handler('user', 'all', 'facebook_theme_user_url_handler');
+}
+
+function facebook_theme_user_url_handler($user) {
+	return "/profile/$user->username/activity";
 }
 
 function facebook_theme_annotation_permissions_handler($hook, $type, $result, $params) {
@@ -71,7 +79,7 @@ function facebook_theme_composer_menu_handler($hook, $type, $items, $params) {
 			'priority' => 1,
 		));
 		
-		elgg_extend_view('composer/forms', 'composer/thewire');
+		elgg_extend_view('composer/forms', 'thewire/composer');
 	}
 	
 	if ($entity->canAnnotate(0, 'messageboard')) {
@@ -82,7 +90,7 @@ function facebook_theme_composer_menu_handler($hook, $type, $items, $params) {
 			'priority' => 2,
 		));
 		
-		elgg_extend_view('composer/forms', 'composer/messageboard');
+		elgg_extend_view('composer/forms', 'messageboard/composer');
 	}
 	
 	if ($entity->canWriteToContainer(0, 'object', 'bookmarks')) {
@@ -93,7 +101,7 @@ function facebook_theme_composer_menu_handler($hook, $type, $items, $params) {
 			'priority' => 200,
 		));
 		
-		elgg_extend_view('composer/forms', 'composer/bookmarks');
+		elgg_extend_view('composer/forms', 'bookmarks/composer');
 	}
 	
 	if ($entity->canWriteToContainer(0, 'object', 'blog')) {
@@ -104,7 +112,7 @@ function facebook_theme_composer_menu_handler($hook, $type, $items, $params) {
 			'priority' => 200,
 		));
 		
-		elgg_extend_view('composer/forms', 'composer/blog');
+		elgg_extend_view('composer/forms', 'blog/composer');
 	}
 	
 	return $items;
@@ -145,7 +153,7 @@ function facebook_theme_owner_block_menu_handler($hook, $type, $items, $params) 
 		$items[] = ElggMenuItem::factory(array(
 			'name' => 'info', 
 			'text' => elgg_echo('Info'), 
-			'href' => $owner->getURL(),
+			'href' => "/profile/$owner->username",
 			'priority' => 2,
 		));
 	}

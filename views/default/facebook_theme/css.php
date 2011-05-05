@@ -189,7 +189,7 @@ li.elgg-river-participation {
 	margin-top: 5px;
 }
 
-#thewire-form-add-wall #thewire-textarea {
+#thewire-form-composer #thewire-textarea {
 	margin-top:0;
 }
 
