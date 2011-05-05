@@ -1,25 +1,37 @@
 <?php
 
 function facebook_theme_init() {
+	//Need heavy customization of profile pages
 	elgg_register_page_handler('groups', 'facebook_theme_groups_page_handler');
 	elgg_register_page_handler('profile', 'facebook_theme_profile_page_handler');
 	
 	//setup menus
 	elgg_register_plugin_hook_handler('register', 'menu:river', 'facebook_theme_river_menu_handler');
 	elgg_register_plugin_hook_handler('register', 'menu:owner_block', 'facebook_theme_owner_block_menu_handler');
+	
+	//New menu: "Composer" -- choose from a few options to create content right on the same page
 	elgg_register_plugin_hook_handler('register', 'menu:wall', 'facebook_theme_wall_menu_handler');
 	
+	//Override the likes menu -- use text prompt "Like/Unlike", not thumbs-up icon
 	elgg_unregister_plugin_hook_handler('register', 'menu:river', 'likes_river_menu_setup');
 	
+	//Small "correction" to groups profile -- brief description makes more sense to come first!
 	elgg_register_plugin_hook_handler('profile:fields', 'group', 'facebook_theme_group_profile_fields', 1);
+	
+	//@todo belongs in the developers plugin
 	elgg_register_plugin_hook_handler('view', 'all', 'developers_view_handler');
 	
+	//@todo report some of the extra patterns to be included in Elgg core
 	elgg_extend_view('css/elgg', 'facebook_theme/css');
 	
+	//Likes summary bar -- "You, John, and 3 others like this"
 	elgg_extend_view('river/elements/footer', 'likes/river_footer', 1);
 	
+	//Elgg only includes the search bar in the header by default,
+	//but we usually don't show the header when the user is logged in
 	elgg_extend_view('page/elements/topbar', 'search/search_box');
 	
+	//Want our logo present, not Elgg's
 	elgg_unregister_menu_item('topbar', 'elgg_logo');
 
 	$site = elgg_get_site_entity();
