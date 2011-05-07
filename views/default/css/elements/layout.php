@@ -130,7 +130,7 @@
 	padding: 15px 20px;
 }
 
-.elgg-main > .elgg-head {
+.elgg-layout > .elgg-body > .elgg-head {
 	padding-bottom: 3px;
 	margin-bottom: 10px;
 }
