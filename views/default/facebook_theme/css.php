@@ -119,6 +119,12 @@ li.elgg-river-participation {
 	display:none;
 }
 
+.elgg-composer {
+	border-top: 1px solid #CCC;
+	padding-top: 3px;
+	margin-top: 7px;
+}
+
 .elgg-composer > h4 {
 	height: 22px;
 	display: inline-block;
