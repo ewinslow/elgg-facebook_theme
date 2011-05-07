@@ -14,6 +14,7 @@ function facebook_theme_init() {
 	
 	//Override the likes menu -- use text prompt "Like/Unlike", not thumbs-up icon
 	elgg_unregister_plugin_hook_handler('register', 'menu:river', 'likes_river_menu_setup');
+	elgg_unregister_plugin_hook_handler('register', 'menu:river', 'elgg_river_menu_setup');
 	
 	//Small "correction" to groups profile -- brief description makes more sense to come first!
 	elgg_register_plugin_hook_handler('profile:fields', 'group', 'facebook_theme_group_profile_fields', 1);
@@ -216,6 +217,17 @@ function facebook_theme_river_menu_handler($hook, $type, $items, $params) {
 			}
 			
 			$items[] = ElggMenuItem::factory($options);
+		}
+		
+		if ($object->canComment()) {
+			$items[] = ElggMenuItem::factory(array(
+				'name' => 'comment',
+				'href' => "#comments-add-$object->guid",
+				'text' => elgg_echo('comment'),
+				'title' => elgg_echo('comment:this'),
+				'link_class' => "elgg-toggler",
+				'priority' => 50,
+			));
 		}
 	}
 
