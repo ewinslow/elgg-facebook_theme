@@ -23,13 +23,13 @@
 	</suggests>
 	<requires>
 		<type>priority</type>
-		<comparison>after</comparison>
-		<name>profile</name>
+		<priority>after</priority>
+		<plugin>profile</plugin>
 	</requires>
 	<requires>
 		<type>priority</type>
-		<comparison>after</comparison>
-		<name>search</name>
+		<priority>after</priority>
+		<plugin>search</plugin>
 	</requires>
 	<admin_interface>simple</admin_interface>
 </plugin_manifest>
