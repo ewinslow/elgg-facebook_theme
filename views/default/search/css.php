@@ -8,18 +8,6 @@
 /**********************************
 Search plugin
 ***********************************/
-.elgg-page-header .elgg-search {
-	bottom: 5px;
-	height: 23px;
-	position: absolute;
-	right: 0;
-}
-
-.elgg-page-topbar .elgg-search {
-	margin: 4px 0 4px 205px;
-	position: relative;
-}
-
 .elgg-search {
 	width: 330px;
 	background: white url(<?php echo elgg_get_site_url(); ?>_graphics/elgg_sprites.png) no-repeat 335px -700px;
@@ -27,6 +15,7 @@ Search plugin
 	height: 20px;
 	padding: 0 23px 0 0;
 }
+
 .elgg-search .search-input {
 	padding: 1px 0 1px 3px;
 	margin: 2px 0 2px 2px;
@@ -42,6 +31,18 @@ Search plugin
 
 .elgg-search .search-input:focus {
 	background-position: 2px -700px;
+}
+
+.elgg-page-header .elgg-search {
+	bottom: 5px;
+	position: absolute;
+	right: 0;
+	border-color: black;
+}
+
+.elgg-page-topbar .elgg-search {
+	margin: 4px 0 4px 205px;
+	position: relative;
 }
 
 .search-list li {
