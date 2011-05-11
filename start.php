@@ -131,9 +131,15 @@ function developers_view_handler($hook, $type, $result, $params) {
 		$view = $params['view'];
 		
 		if (strpos($view, 'js/') !== 0 && strpos($view, 'css') !== 0) {
-			$location = elgg_get_view_location($view, $viewtype);
-			$result = "<!-- START $view ($location) -->$result<!-- END $view -->";
+			$start_comment = "<!--";
+			$end_comment = "-->";	
+		} else {
+			$start_comment = "/*";
+			$end_comment = "*/";
 		}
+		
+		$location = elgg_get_view_location($view, $viewtype);
+		$result = "$start_comment START $view ($location) $end_comment $result $start_comment END $view $end_comment";
 	}
 	
 	return $result;
