@@ -399,3 +399,7 @@
 .elgg-menu-extras > li > a {
 	padding: 3px 0 3px 9px;
 }
+
+.elgg-menu-extras > li > a:hover {
+	text-decoration:underline;
+}

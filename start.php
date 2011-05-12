@@ -60,14 +60,16 @@ function facebook_theme_init() {
 }
 
 function facebook_theme_pagesetup_handler() {
-	if (elgg_in_context('dashboard')) {
+	$owner = elgg_get_page_owner_entity();
+
+	if (elgg_is_logged_in()) {
 		$user = elgg_get_logged_in_user_entity();
-		
 		elgg_register_menu_item('page', array(
 			'name' => 'news',
 			'text' => elgg_echo('newsfeed'),
 			'href' => '/dashboard',
 			'priority' => 100,
+			'contexts' => array('dashboard'),
 		));
 		
 		elgg_register_menu_item('page', array(
@@ -75,7 +77,41 @@ function facebook_theme_pagesetup_handler() {
 			'text' => elgg_echo('friends'),
 			'href' => "/friends/$user->username",
 			'priority' => 500,
+			'contexts' => array('dashboard'),
 		));
+	
+		if ($owner instanceof ElggUser && $owner->guid != $user->guid) {
+			
+			if (check_entity_relationship($user->guid, 'friend', $owner->guid)) {
+				elgg_register_menu_item('extras', array(
+					'name' => 'removefriend',
+					'text' => elgg_echo('friend:remove'),
+					'href' => "/action/friends/remove?friend=$owner->guid",
+					'is_action' => TRUE,
+					'contexts' => array('profile'),
+				));
+			} else {
+				elgg_register_menu_item('title', array(
+					'name' => 'addfriend',
+					'text' => elgg_view_icon('users') . elgg_echo('friend:add'),
+					'href' => "/action/friends/add?friend=$owner->guid",
+					'is_action' => TRUE,
+					'link_class' => 'elgg-button elgg-button-special',
+					'contexts' => array('profile'),
+					'priority' => 1,
+				));
+			}
+			
+			if (elgg_is_active_plugin('messages')) {
+				elgg_register_menu_item('title', array(
+					'name' => 'message',
+					'text' => elgg_view_icon('speech-bubble-alt') . elgg_echo('messages:message'),
+					'href' => "/messages/compose?send_to=$owner->guid",
+					'link_class' => 'elgg-button elgg-button-action',
+					'contexts' => array('profile'),
+				));
+			}
+		}
 		
 		if (elgg_is_active_plugin('groups')) {
 			$groups = $user->getGroups('', 4);
@@ -86,6 +122,7 @@ function facebook_theme_pagesetup_handler() {
 					'name' => "group-$group->guid",
 					'text' => $group->name,
 					'href' => $group->getURL(),
+					'contexts' => array('dashboard'),
 				));
 			}
 			
@@ -94,6 +131,7 @@ function facebook_theme_pagesetup_handler() {
 				'name' => 'groups',
 				'text' => elgg_echo('groups'),
 				'href' => "/groups/member/$user->username",
+				'contexts' => array('dashboard'),
 			));
 		}
 		
@@ -103,6 +141,7 @@ function facebook_theme_pagesetup_handler() {
 				'name' => 'bookmarks-friends',
 				'text' => elgg_echo('bookmarks'),	
 				'href' => "/bookmarks/friends/$user->username",
+				'contexts' => array('dashboard'),
 			));
 		}
 	}
