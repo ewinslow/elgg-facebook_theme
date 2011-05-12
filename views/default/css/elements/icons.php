@@ -258,6 +258,7 @@
 *************************************** */
 .elgg-avatar {
 	position: relative;
+	display:inline-block;
 }
 
 .elgg-avatar-tiny > a > img {
