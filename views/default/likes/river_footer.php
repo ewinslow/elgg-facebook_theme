@@ -11,7 +11,7 @@ if (!$vars['item'] instanceof ElggRiverItem || $vars['item']->annotation_id) {
 
 $object = $vars['item']->getObjectEntity();
 
-$num_of_likes = likes_count($object);
+$num_of_likes = $object->countAnnotations('likes');
 
 if ($num_of_likes == 0) {
 	return true;

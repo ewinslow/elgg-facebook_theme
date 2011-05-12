@@ -26,7 +26,9 @@ function facebook_theme_init() {
 	elgg_extend_view('css/elgg', 'facebook_theme/css');
 	
 	//Likes summary bar -- "You, John, and 3 others like this"
-	elgg_extend_view('river/elements/footer', 'likes/river_footer', 1);
+	if (elgg_is_active_plugin('likes')) {
+		elgg_extend_view('river/elements/footer', 'likes/river_footer', 1);
+	}
 	
 	//Elgg only includes the search bar in the header by default,
 	//but we usually don't show the header when the user is logged in
@@ -68,49 +70,49 @@ function facebook_theme_annotation_permissions_handler($hook, $type, $result, $p
 /**
  * Adds menu items to the "composer" at the top of the "wall".  Need to also add
  * the forms that these items point to.
+ * 
+ * @todo Get the composer concept integrated into core
  */
 function facebook_theme_composer_menu_handler($hook, $type, $items, $params) {
 	$entity = $params['entity'];
 	
-	if ($entity->canWriteToContainer(0, 'object', 'thewire')) {
+	if (elgg_is_active_plugin('thewire') && $entity->canWriteToContainer(0, 'object', 'thewire')) {
 		$items[] = ElggMenuItem::factory(array(
 			'name' => 'thewire',
 			'href' => "#thewire-form-composer",
 			'text' => elgg_view_icon('share') . elgg_echo("composer:object:thewire"),
-			'priority' => 1,
+			'priority' => 10,
 		));
 		
 		elgg_extend_view('composer/forms', 'thewire/composer');
 	}
 	
-	if ($entity->canAnnotate(0, 'messageboard')) {
+	if (elgg_is_active_plugin('messageboard') && $entity->canAnnotate(0, 'messageboard')) {
 		$items[] = ElggMenuItem::factory(array(
 			'name' => 'messageboard',
 			'href' => "#messageboard-form-composer",
 			'text' => elgg_view_icon('speech-bubble-alt') . elgg_echo("composer:annotation:messageboard"),
-			'priority' => 2,
+			'priority' => 20,
 		));
 		
 		elgg_extend_view('composer/forms', 'messageboard/composer');
 	}
 	
-	if ($entity->canWriteToContainer(0, 'object', 'bookmarks')) {
+	if (elgg_is_active_plugin('bookmarks') && $entity->canWriteToContainer(0, 'object', 'bookmarks')) {
 		$items[] = ElggMenuItem::factory(array(
 			'name' => 'bookmarks',
 			'href' => "#bookmarks-form-composer",
 			'text' => elgg_view_icon('link') . elgg_echo("composer:object:bookmarks"),
-			'priority' => 200,
 		));
 		
 		elgg_extend_view('composer/forms', 'bookmarks/composer');
 	}
 	
-	if ($entity->canWriteToContainer(0, 'object', 'blog')) {
+	if (elgg_is_active_plugin('blog') && $entity->canWriteToContainer(0, 'object', 'blog')) {
 		$items[] = ElggMenuItem::factory(array(
 			'name' => 'blog',
 			'href' => "#blog-form-composer",
 			'text' => elgg_view_icon('speech-bubble') . elgg_echo("composer:object:blog"),
-			'priority' => 200,
 		));
 		
 		elgg_extend_view('composer/forms', 'blog/composer');
@@ -196,7 +198,8 @@ function facebook_theme_river_menu_handler($hook, $type, $items, $params) {
 
 	$object = $item->getObjectEntity();
 	if (!elgg_in_context('widgets') && !$item->annotation_id && $object instanceof ElggEntity) {
-		if ($object->canAnnotate(0, 'likes')) {
+		
+		if (elgg_is_active_plugin('likes') && $object->canAnnotate(0, 'likes')) {
 			if (!elgg_annotation_exists($object->getGUID(), 'likes')) {
 				// user has not liked this yet
 				$options = array(
@@ -225,7 +228,7 @@ function facebook_theme_river_menu_handler($hook, $type, $items, $params) {
 			$items[] = ElggMenuItem::factory($options);
 		}
 		
-		if ($object->canComment()) {
+		if ($object->canAnnotate(0, 'generic_comment')) {
 			$items[] = ElggMenuItem::factory(array(
 				'name' => 'comment',
 				'href' => "#comments-add-$object->guid",

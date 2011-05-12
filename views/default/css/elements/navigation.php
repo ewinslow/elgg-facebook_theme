@@ -381,10 +381,14 @@
 *************************************** */
 .elgg-menu-river > li:after {
 	content: " \00B7 ";
-	margin: 0 4px;
+	margin: 0 2px;
 }
 
-.elgg-menu-river > li:first-child,
+.elgg-menu-river > li > a {
+	color: #6D84B4
+}
+
+.elgg-menu-river,
 .elgg-menu-river > li:first-child > a {
 	color: #888;
 }

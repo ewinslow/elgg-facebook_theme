@@ -40,7 +40,7 @@ if ($comments) {
 
 }
 
-if ($object->canComment()) {
+if ($object->canAnnotate(0, 'generic_comment')) {
 	// inline comment form
 	echo elgg_view_form('comments/add', array(
 		'id' => "comments-add-{$object->getGUID()}",
