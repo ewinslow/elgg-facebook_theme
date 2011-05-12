@@ -1,7 +1,7 @@
 <?php
 add_translation('en', array(
 	'file:group' => "Files",
-	'bookmarks:group' => 'Links',
+	'bookmarks:group' => 'Bookmarks',
 	'blog:group' => "Blog",
 	'pages:group' => 'Pages',
 	'questions:group' => "Questions",
@@ -15,11 +15,12 @@ add_translation('en', array(
 
 	'river:comments:all' => 'View all %d comments',
 
-	'bookmarks:river:created' => 'shared a link',
 	'pages:river:create' => 'created a page',
 
 	'composer:object:thewire' => "Status",
-	'composer:object:bookmarks' => "Link",
+	'composer:object:bookmarks' => "Bookmark",
 	'composer:object:blog' => "Blog",
 	'composer:annotation:messageboard' => "Post",
+
+	'newsfeed' => 'News Feed',
 ));

@@ -54,6 +54,57 @@ function facebook_theme_init() {
 	elgg_register_plugin_hook_handler('index', 'system', 'facebook_theme_index_handler');
 	
 	elgg_register_page_handler('dashboard', 'facebook_theme_dashboard_handler');
+	
+	elgg_register_event_handler('pagesetup', 'system', 'facebook_theme_pagesetup_handler');
+}
+
+function facebook_theme_pagesetup_handler() {
+	if (elgg_in_context('dashboard')) {
+		$user = elgg_get_logged_in_user_entity();
+		
+		elgg_register_menu_item('page', array(
+			'name' => 'news',
+			'text' => elgg_echo('newsfeed'),
+			'href' => '/dashboard',
+			'priority' => 100,
+		));
+		
+		elgg_register_menu_item('page', array(
+			'name' => 'friends',
+			'text' => elgg_echo('friends'),
+			'href' => "/friends/$user->username",
+			'priority' => 500,
+		));
+		
+		if (elgg_is_active_plugin('groups')) {
+			$groups = $user->getGroups('', 4);
+			
+			foreach ($groups as $group) {
+				elgg_register_menu_item('page', array(
+					'section' => 'groups',
+					'name' => "group-$group->guid",
+					'text' => $group->name,
+					'href' => $group->getURL(),
+				));
+			}
+			
+			elgg_register_menu_item('page', array(
+				'section' => 'groups',
+				'name' => 'groups',
+				'text' => elgg_echo('groups'),
+				'href' => "/groups/member/$user->username",
+			));
+		}
+		
+		if (elgg_is_active_plugin('bookmarks')) {
+			elgg_register_menu_item('page', array(
+				'section' => 'more',
+				'name' => 'bookmarks-friends',
+				'text' => elgg_echo('bookmarks'),	
+				'href' => "/bookmarks/friends/$user->username",
+			));
+		}
+	}
 }
 
 function facebook_theme_dashboard_handler() {
@@ -117,7 +168,7 @@ function facebook_theme_composer_menu_handler($hook, $type, $items, $params) {
 		$items[] = ElggMenuItem::factory(array(
 			'name' => 'bookmarks',
 			'href' => "#bookmarks-form-composer",
-			'text' => elgg_view_icon('link') . elgg_echo("composer:object:bookmarks"),
+			'text' => elgg_view_icon('push-pin') . elgg_echo("composer:object:bookmarks"),
 		));
 		
 		elgg_extend_view('composer/forms', 'bookmarks/composer');
