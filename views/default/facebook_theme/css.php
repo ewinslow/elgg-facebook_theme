@@ -115,13 +115,16 @@ li.elgg-river-participation {
 	font-weight: bold;
 }
 
+
+/* NEW PAGE COMPONENT: COMPOSER */
+
 .ui-tabs-hide {
 	display:none;
 }
 
 .elgg-composer {
 	border-top: 1px solid #CCC;
-	padding-top: 3px;
+	padding-top: 6px;
 	margin-top: 7px;
 }
 
@@ -149,8 +152,6 @@ li.elgg-river-participation {
 }
 
 .elgg-menu-composer > li > a {
-	padding-left: 22px;
-	background: transparent url(/elgg-plugins/_graphics/elgg_sprites.png) no-repeat 2px 18px;
 	line-height: 16px;
 }
 

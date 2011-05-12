@@ -16,4 +16,9 @@ add_translation('en', array(
 
 	'bookmarks:river:created' => 'shared a link',
 	'pages:river:create' => 'created a page',
+
+	'composer:object:thewire' => "Status",
+	'composer:object:bookmarks' => "Link",
+	'composer:object:blog' => "Blog",
+	'composer:annotation:messageboard' => "Post",
 ));

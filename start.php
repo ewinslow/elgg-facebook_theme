@@ -76,7 +76,7 @@ function facebook_theme_composer_menu_handler($hook, $type, $items, $params) {
 		$items[] = ElggMenuItem::factory(array(
 			'name' => 'thewire',
 			'href' => "#thewire-form-composer",
-			'text' => "Status",
+			'text' => elgg_view_icon('share') . elgg_echo("composer:object:thewire"),
 			'priority' => 1,
 		));
 		
@@ -87,7 +87,7 @@ function facebook_theme_composer_menu_handler($hook, $type, $items, $params) {
 		$items[] = ElggMenuItem::factory(array(
 			'name' => 'messageboard',
 			'href' => "#messageboard-form-composer",
-			'text' => "Post",
+			'text' => elgg_view_icon('speech-bubble-alt') . elgg_echo("composer:annotation:messageboard"),
 			'priority' => 2,
 		));
 		
@@ -98,7 +98,7 @@ function facebook_theme_composer_menu_handler($hook, $type, $items, $params) {
 		$items[] = ElggMenuItem::factory(array(
 			'name' => 'bookmarks',
 			'href' => "#bookmarks-form-composer",
-			'text' => "Link",
+			'text' => elgg_view_icon('link') . elgg_echo("composer:object:bookmarks"),
 			'priority' => 200,
 		));
 		
@@ -109,7 +109,7 @@ function facebook_theme_composer_menu_handler($hook, $type, $items, $params) {
 		$items[] = ElggMenuItem::factory(array(
 			'name' => 'blog',
 			'href' => "#blog-form-composer",
-			'text' => "Blog",
+			'text' => elgg_view_icon('speech-bubble') . elgg_echo("composer:object:blog"),
 			'priority' => 200,
 		));
 		
