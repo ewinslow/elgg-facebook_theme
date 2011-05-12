@@ -53,7 +53,7 @@ function facebook_theme_init() {
 }
 
 function facebook_theme_user_url_handler($user) {
-	return "/profile/$user->username/activity";
+	return "/profile/$user->username/wall";
 }
 
 function facebook_theme_annotation_permissions_handler($hook, $type, $result, $params) {
