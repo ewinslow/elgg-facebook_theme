@@ -52,6 +52,13 @@ function facebook_theme_init() {
 	elgg_register_entity_url_handler('user', 'all', 'facebook_theme_user_url_handler');
 	
 	elgg_register_plugin_hook_handler('index', 'system', 'facebook_theme_index_handler');
+	
+	elgg_register_page_handler('dashboard', 'facebook_theme_dashboard_handler');
+}
+
+function facebook_theme_dashboard_handler() {
+	require_once dirname(__FILE__) . '/pages/dashboard.php';
+	return true;
 }
 
 function facebook_theme_index_handler() {
