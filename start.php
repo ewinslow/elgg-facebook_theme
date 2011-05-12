@@ -57,6 +57,33 @@ function facebook_theme_init() {
 	elgg_register_page_handler('dashboard', 'facebook_theme_dashboard_handler');
 	
 	elgg_register_event_handler('pagesetup', 'system', 'facebook_theme_pagesetup_handler');
+	
+	if (elgg_is_logged_in()) {
+		$user_guid = elgg_get_logged_in_user_guid();
+		$address = urlencode(current_page_url());
+
+		elgg_register_menu_item('extras', array(
+			'name' => 'bookmark',
+			'text' => elgg_view_icon('push-pin-alt') . elgg_echo('bookmarks:this'),
+			'href' => "bookmarks/add/$user_guid?address=$address",
+			'title' => elgg_echo('bookmarks:this'),
+			'rel' => 'nofollow',
+		));
+
+		elgg_unregister_menu_item('footer', 'report_this');
+
+		$href = "javascript:elgg.forward('reportedcontent/add'";
+		$href .= "+'?address='+encodeURIComponent(location.href)";
+		$href .= "+'&title='+encodeURIComponent(document.title));";
+		
+		elgg_register_menu_item('extras', array(
+			'name' => 'report_this',
+			'href' => $href,
+			'text' => elgg_view_icon('report-this') . elgg_echo('reportedcontent:this'),
+			'title' => elgg_echo('reportedcontent:this:tooltip'),
+			'priority' => 500,
+		));
+	}
 }
 
 function facebook_theme_pagesetup_handler() {
@@ -111,6 +138,16 @@ function facebook_theme_pagesetup_handler() {
 					'contexts' => array('profile'),
 				));
 			}
+		}
+		
+		if ($owner->guid == $user->guid) {
+			elgg_register_menu_item('title', array(
+				'name' => 'editprofile',
+				'href' => '/profile/evan/edit',
+				'text' => elgg_echo('profile:edit'),
+				'link_class' => 'elgg-button elgg-button-action',
+				'contexts' => array('profile'),
+			));
 		}
 		
 		if (elgg_is_active_plugin('groups')) {
