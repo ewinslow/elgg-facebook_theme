@@ -50,6 +50,14 @@ function facebook_theme_init() {
 	elgg_extend_view('css/elgg', 'css/elements/tinymce');
 	
 	elgg_register_entity_url_handler('user', 'all', 'facebook_theme_user_url_handler');
+	
+	elgg_register_plugin_hook_handler('index', 'system', 'facebook_theme_index_handler');
+}
+
+function facebook_theme_index_handler() {
+	if (elgg_is_logged_in()) {
+		forward('/dashboard');
+	}
 }
 
 function facebook_theme_user_url_handler($user) {
