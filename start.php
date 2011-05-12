@@ -33,6 +33,7 @@ function facebook_theme_init() {
 	//Elgg only includes the search bar in the header by default,
 	//but we usually don't show the header when the user is logged in
 	elgg_extend_view('page/elements/topbar', 'search/search_box');
+	elgg_unextend_view('page/elements/header', 'search/search_box');
 	
 	//Want our logo present, not Elgg's
 	elgg_unregister_menu_item('topbar', 'elgg_logo');
