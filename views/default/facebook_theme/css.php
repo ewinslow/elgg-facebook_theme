@@ -48,6 +48,12 @@ img {max-width:100%}
 	text-align:center;
 }
 
+#facebook-header-logo a {
+	color: white;
+	text-decoration:none;
+	font-size: 2.5em;
+}
+
 /* Image-less triangle.  Woot. */
 .elgg-nub {position:relative}
 
