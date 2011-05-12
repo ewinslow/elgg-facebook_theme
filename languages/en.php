@@ -7,7 +7,8 @@ add_translation('en', array(
 	'questions:group' => "Questions",
 	'discussion:group' => 'Discussion',
 	'groups:activity' => "Activity",
-	'profile:activity' => "Activity",
+	'profile:wall' => "Wall",
+	'profile:info' => "Info",
 
 	'likes:likethis' => 'Like',
 	'likes:remove' => 'Unlike',

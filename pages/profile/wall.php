@@ -7,7 +7,7 @@ if (!$user || !elgg_instanceof($user, 'user')) {
 	forward();
 }
 
-$title = elgg_echo('profile:activity');
+$title = $user->name;
 
 elgg_push_breadcrumb($user->name, $user->getURL());
 elgg_push_breadcrumb($title);

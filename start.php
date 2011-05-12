@@ -159,7 +159,7 @@ function facebook_theme_owner_block_menu_handler($hook, $type, $items, $params) 
 	if ($owner instanceof ElggEntity) {
 		$items[] = ElggMenuItem::factory(array(
 			'name' => 'info', 
-			'text' => elgg_echo('Info'), 
+			'text' => elgg_echo('profile:info'), 
 			'href' => "/profile/$owner->username",
 			'priority' => 2,
 		));
@@ -167,9 +167,9 @@ function facebook_theme_owner_block_menu_handler($hook, $type, $items, $params) 
 	
 	if ($owner instanceof ElggUser) {
 		$items[] = ElggMenuItem::factory(array(
-			'name' => 'activity',
-			'text' => elgg_echo('profile:activity'),
-			'href' => "/profile/$owner->username/activity",
+			'name' => 'wall',
+			'text' => elgg_echo('profile:wall'),
+			'href' => "/profile/$owner->username/wall",
 			'priority' => 1,
 		));
 	}
@@ -273,8 +273,8 @@ function facebook_theme_profile_page_handler($page) {
 			return;
 			break;
 			
-		case 'activity':
-			require dirname(__FILE__) . '/pages/profile/activity.php';
+		case 'wall':
+			require dirname(__FILE__) . '/pages/profile/wall.php';
 			return;
 
 		default:
