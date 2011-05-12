@@ -9,9 +9,6 @@ if (!$user || !elgg_instanceof($user, 'user')) {
 
 $title = $user->name;
 
-elgg_push_breadcrumb($user->name, $user->getURL());
-elgg_push_breadcrumb($title);
-
 $composer = '';
 if (elgg_is_logged_in()) {
 	$composer = elgg_view('page/elements/composer', array('entity' => $user));
@@ -30,9 +27,7 @@ if (!$activity) {
 $params = array(
 	'content' => $composer . $activity,
 	'title' => $title,
-	'buttons' => '',
-	'filter' => '',
 );
-$body = elgg_view_layout('content', $params);
+$body = elgg_view_layout('two_sidebar', $params);
 
 echo elgg_view_page($title, $body);
