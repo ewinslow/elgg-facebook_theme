@@ -50,8 +50,6 @@ function facebook_theme_init() {
 	
 	elgg_extend_view('css/elgg', 'css/elements/tinymce');
 	
-	elgg_register_entity_url_handler('user', 'all', 'facebook_theme_user_url_handler');
-	
 	elgg_register_plugin_hook_handler('index', 'system', 'facebook_theme_index_handler');
 	
 	elgg_register_page_handler('dashboard', 'facebook_theme_dashboard_handler');
@@ -201,10 +199,6 @@ function facebook_theme_index_handler() {
 	}
 }
 
-function facebook_theme_user_url_handler($user) {
-	return "/profile/$user->username/wall";
-}
-
 function facebook_theme_annotation_permissions_handler($hook, $type, $result, $params) {
 	$entity = $params['entity'];
 	$user = $params['user'];
@@ -315,7 +309,7 @@ function facebook_theme_owner_block_menu_handler($hook, $type, $items, $params) 
 		$items[] = ElggMenuItem::factory(array(
 			'name' => 'info', 
 			'text' => elgg_echo('profile:info'), 
-			'href' => "/profile/$owner->username",
+			'href' => "/profile/$owner->username/info",
 			'priority' => 2,
 		));
 	}
@@ -438,19 +432,25 @@ function facebook_theme_profile_page_handler($page) {
 			return;
 			break;
 			
+		
+		case 'info':
+			require dirname(__FILE__) . '/pages/profile/info.php';
+			return;
+			
 		case 'wall':
 			require dirname(__FILE__) . '/pages/profile/wall.php';
 			return;
-
+			
 		default:
-			$body = elgg_view_layout('two_sidebar', array(
-				'title' => $user->name,
-				'content' => elgg_view('profile/details'),
-			));
-			break;
+			if (elgg_is_logged_in()) {
+				require dirname(__FILE__) . '/pages/profile/wall.php';
+			} else {
+				require dirname(__FILE__) . '/pages/profile/info.php';
+			}
+			
+			return;
+				
 	}
-
-	echo elgg_view_page($title, $body);
 }
 
 elgg_register_event_handler('init', 'system', 'facebook_theme_init');
