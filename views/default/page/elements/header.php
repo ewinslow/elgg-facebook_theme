@@ -8,3 +8,5 @@ echo elgg_view('output/url', array(
 	'text' => $site->name,
 ));
 echo "</h1>";
+
+echo elgg_view_form('login', array('id' => 'facebook-header-login'));
