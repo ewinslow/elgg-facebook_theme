@@ -399,6 +399,10 @@
 	color: #6D84B4
 }
 
+.elgg-menu-river > li > a:hover {
+	text-decoration: underline;
+}
+
 .elgg-menu-river > li:first-child > a {
 	color: #888;
 }
