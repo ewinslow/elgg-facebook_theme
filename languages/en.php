@@ -23,4 +23,8 @@ add_translation('en', array(
 	'composer:annotation:messageboard' => "Post",
 
 	'newsfeed' => 'News Feed',
+
+	'friend:user:add' => "Add %s as Friend",
+
+	'river:to' => '%s &#x25B6 %s',
 ));

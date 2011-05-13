@@ -117,7 +117,8 @@ li.elgg-river-participation {
 	margin-right: 5px;
 }
 
-.elgg-river-subject {
+.elgg-river-subject,
+.elgg-river-target {
 	font-weight: bold;
 }
 
