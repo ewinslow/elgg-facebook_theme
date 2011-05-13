@@ -379,16 +379,26 @@
 /* ***************************************
 	RIVER
 *************************************** */
+.elgg-menu-river {
+	margin-top: 3px;
+	color: #888;
+}
+
+.elgg-menu-river > li {
+	display:inline;
+}
+
 .elgg-menu-river > li:after {
 	content: " \00B7 ";
+	display:inline;
 	margin: 0 2px;
 }
 
 .elgg-menu-river > li > a {
+	display:inline;
 	color: #6D84B4
 }
 
-.elgg-menu-river,
 .elgg-menu-river > li:first-child > a {
 	color: #888;
 }
