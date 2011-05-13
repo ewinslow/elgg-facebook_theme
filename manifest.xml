@@ -12,15 +12,11 @@
 	<website>https://github.com/ewinslow/elgg-facebook_theme</website>
 	<copyright>(C) 2011 Evan Winslow</copyright>
 	<license>GNU Public License version 2</license>
+	
 	<requires>
 		<type>elgg_version</type>
 		<version>2011030100</version>
 	</requires>
-	<suggests>
-		<type>plugin</type>
-		<name>profile</name>
-		<version>1.8</version>
-	</suggests>
 	<requires>
 		<type>priority</type>
 		<priority>after</priority>
@@ -29,7 +25,24 @@
 	<requires>
 		<type>priority</type>
 		<priority>after</priority>
+		<plugin>groups</plugin>
+	</requires>
+	<requires>
+		<type>priority</type>
+		<priority>after</priority>
+		<plugin>messages</plugin>
+	</requires>
+	<requires>
+		<type>priority</type>
+		<priority>after</priority>
 		<plugin>search</plugin>
 	</requires>
+	
+	<suggests>
+		<type>plugin</type>
+		<name>profile</name>
+		<version>1.8</version>
+	</suggests>
+	
 	<admin_interface>simple</admin_interface>
 </plugin_manifest>

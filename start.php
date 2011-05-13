@@ -82,6 +82,31 @@ function facebook_theme_init() {
 			'priority' => 500,
 		));
 	}
+	
+	
+	//What a hack!  Overriding groups page handler without blowing away other plugins doing the same
+	global $CONFIG, $facebook_theme_original_groups_page_handler;
+	$facebook_theme_original_groups_page_handler = $CONFIG->pagehandler['groups'];
+	elgg_register_page_handler('groups', 'facebook_theme_groups_page_handler');
+}
+
+function facebook_theme_groups_page_handler($segments, $handle) {
+	$pages_dir = dirname(__FILE__) . '/pages';
+
+	switch ($segments[0]) {
+		case 'profile':
+		case 'wall':
+			elgg_set_page_owner_guid($segments[1]);
+			require_once "$pages_dir/groups/wall.php";
+			return;
+		case 'info':
+			elgg_set_page_owner_guid($segments[1]);
+			require_once "$pages_dir/groups/info.php";
+			return;
+		default:
+			global $facebook_theme_groups_page_handler;
+			return call_user_func($facebook_theme_groups_page_handler, $segments, $handle);
+	}
 }
 
 function facebook_theme_pagesetup_handler() {
@@ -173,9 +198,48 @@ function facebook_theme_pagesetup_handler() {
 		if (elgg_is_active_plugin('bookmarks')) {
 			elgg_register_menu_item('page', array(
 				'section' => 'more',
-				'name' => 'bookmarks-friends',
+				'name' => 'bookmarks',
 				'text' => elgg_echo('bookmarks'),	
 				'href' => "/bookmarks/friends/$user->username",
+				'contexts' => array('dashboard'),
+			));
+		}
+		
+		if (elgg_is_active_plugin('blog')) {
+			elgg_register_menu_item('page', array(
+				'section' => 'more',	
+				'name' => 'blog',
+				'text' => elgg_echo('blog'),
+				'href' => "/blog/friends/$user->username",
+				'contexts' => array('dashboard'),
+			));
+		}
+		
+		if (elgg_is_active_plugin('pages')) {
+			elgg_register_menu_item('page', array(
+				'section' => 'more',	
+				'name' => 'pages',
+				'text' => elgg_echo('pages'),
+				'href' => "/pages/friends/$user->username",
+				'contexts' => array('dashboard'),
+			));
+		}
+		
+		if (elgg_is_active_plugin('files')) {
+			elgg_register_menu_item('page', array(
+				'section' => 'more',	
+				'name' => 'files',
+				'text' => elgg_echo('files'),
+				'href' => "/files/friends/$user->username",
+				'contexts' => array('dashboard'),
+			));
+		}
+		
+		if (elgg_is_active_plugin('messages')) {
+			elgg_register_menu_item('page', array(
+				'name' => 'messages',
+				'text' => elgg_echo('messages'),
+				'href' => "/messages/inbox/$user->username",
 				'contexts' => array('dashboard'),
 			));
 		}
@@ -305,21 +369,41 @@ function facebook_theme_group_profile_fields($hook, $type, $fields, $params) {
 function facebook_theme_owner_block_menu_handler($hook, $type, $items, $params) {
 	$owner = elgg_get_page_owner_entity();
 	
-	if ($owner instanceof ElggEntity) {
+	if ($owner instanceof ElggGroup) {
+		$items[] = ElggMenuItem::factory(array(
+			'name' => 'info', 
+			'text' => elgg_echo('profile:info'), 
+			'href' => "/groups/info/$owner->guid/" . elgg_get_friendly_title($owner->name),
+			'priority' => 2,
+		));
+		
+		$items[] = ElggMenuItem::factory(array(
+			'name' => 'wall',
+			'text' => elgg_echo('profile:wall'),
+			'href' => "/groups/wall/$owner->guid/" . elgg_get_friendly_title($owner->name),
+			'priority' => 1,
+		));
+	}
+	
+	if ($owner instanceof ElggUser) {
 		$items[] = ElggMenuItem::factory(array(
 			'name' => 'info', 
 			'text' => elgg_echo('profile:info'), 
 			'href' => "/profile/$owner->username/info",
 			'priority' => 2,
 		));
-	}
-	
-	if ($owner instanceof ElggUser) {
+		
 		$items[] = ElggMenuItem::factory(array(
 			'name' => 'wall',
 			'text' => elgg_echo('profile:wall'),
 			'href' => "/profile/$owner->username/wall",
 			'priority' => 1,
+		));
+		
+		$items[] = ElggMenuItem::factory(array(
+			'name' => 'friends',	
+			'text' => elgg_echo('friends'),
+			'href' => "/friends/$owner->username"
 		));
 	}
 		
