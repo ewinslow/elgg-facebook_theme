@@ -182,6 +182,12 @@ function facebook_theme_pagesetup_handler() {
 			));
 		}
 	}
+	
+	elgg_register_menu_item('extras', array(
+		'name' => 'rss',
+		'text' => elgg_view_icon('rss') . elgg_echo("Subscribe via RSS"),
+		'href' => '?view=rss',
+	));
 }
 
 function facebook_theme_dashboard_handler() {
@@ -206,6 +212,10 @@ function facebook_theme_annotation_permissions_handler($hook, $type, $result, $p
 	
 	//Users should not be able to post on their own message board
 	if ($annotation_name == 'messageboard' && $user->guid == $entity->guid) {
+		return false;
+	}
+	
+	if ($annotation_name == 'generic_comment' && $entity instanceof ElggUser) {
 		return false;
 	}
 }
@@ -379,6 +389,15 @@ function facebook_theme_river_menu_handler($hook, $type, $items, $params) {
 				'title' => elgg_echo('comment:this'),
 				'link_class' => "elgg-toggler",
 				'priority' => 50,
+			));
+		}
+		
+		if ($object instanceof ElggUser && !$object->isFriend()) {
+			$items[] = ElggMenuItem::factory(array(
+				'name' => 'addfriend',
+				'href' => "/action/friends/add?friend=$object->guid",
+				'text' => elgg_echo('friend:user:add', array($object->name)),
+				'is_action' => TRUE,
 			));
 		}
 	}
