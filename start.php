@@ -378,9 +378,9 @@ function facebook_theme_owner_block_menu_handler($hook, $type, $items, $params) 
 		));
 		
 		$items[] = ElggMenuItem::factory(array(
-			'name' => 'wall',
+			'name' => 'profile',
 			'text' => elgg_echo('profile:wall'),
-			'href' => "/groups/wall/$owner->guid/" . elgg_get_friendly_title($owner->name),
+			'href' => "/groups/profile/$owner->guid/" . elgg_get_friendly_title($owner->name),
 			'priority' => 1,
 		));
 	}
@@ -394,9 +394,9 @@ function facebook_theme_owner_block_menu_handler($hook, $type, $items, $params) 
 		));
 		
 		$items[] = ElggMenuItem::factory(array(
-			'name' => 'wall',
+			'name' => 'profile',
 			'text' => elgg_echo('profile:wall'),
-			'href' => "/profile/$owner->username/wall",
+			'href' => "/profile/$owner->username",
 			'priority' => 1,
 		));
 		
