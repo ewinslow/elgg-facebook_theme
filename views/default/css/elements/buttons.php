@@ -18,7 +18,7 @@
 .elgg-button:hover {
 	text-decoration:none
 }
-.elgg-button, .mceButton {
+.elgg-button {
 	font-weight: bold;
 	text-decoration: none;
 	width: auto;
@@ -55,8 +55,7 @@
 
 /* Action: This button should convey a normal, inconsequential action, such as clicking a link */
 .elgg-button-action,
-.elgg-button-cancel,
-.mceButton {
+.elgg-button-cancel {
 	background: #EEE;
 	border: 1px solid #999;
 	border-bottom-color: #888;
@@ -64,21 +63,18 @@
 }
 
 .elgg-button-action:hover,
-.elgg-button-cancel:hover,
-.mceButton:hover {
+.elgg-button-cancel:hover {
 	color:#333
 }
 
 .elgg-button-action:active,
-.elgg-button-cancel:active,
-.mceButton:active {
+.elgg-button-cancel:active {
 	background: #ddd;
 	border-bottom-color:#999;
 }
 
 .elgg-button-action.elgg-state-disabled,
-.elgg-button-cancel.elgg-state-disabled,
-.mceButtonDisabled {
+.elgg-button-cancel.elgg-state-disabled {
 	color: #B8B8B8;
 	background: #F2F2F2;
 	border-color: #C8C8C8;
