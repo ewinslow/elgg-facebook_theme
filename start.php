@@ -1,20 +1,82 @@
 <?php
 
 function facebook_theme_init() {
-	//Need heavy customization of profile pages
+	/**
+	 * Customize pages
+	 */
+	elgg_register_plugin_hook_handler('index', 'system', 'facebook_theme_index_handler');
 	elgg_register_page_handler('profile', 'facebook_theme_profile_page_handler');
+	elgg_register_page_handler('dashboard', 'facebook_theme_dashboard_handler');
 	
-	//setup menus
-	elgg_register_plugin_hook_handler('register', 'menu:river', 'facebook_theme_river_menu_handler');
-	elgg_register_plugin_hook_handler('register', 'menu:owner_block', 'facebook_theme_owner_block_menu_handler');
+	//What a hack!  Overriding groups page handler without blowing away other plugins doing the same
+	global $CONFIG, $facebook_theme_original_groups_page_handler;
+	$facebook_theme_original_groups_page_handler = $CONFIG->pagehandler['groups'];
+	elgg_register_page_handler('groups', 'facebook_theme_groups_page_handler');
 	
-	//New menu: "Composer" -- choose from a few options to create content right on the same page
-	elgg_register_plugin_hook_handler('register', 'menu:composer', 'facebook_theme_composer_menu_handler');
-	
-	//Override the likes menu -- use text prompt "Like/Unlike", not thumbs-up icon
+	/**
+	 * Customize menus
+	 */
 	elgg_unregister_plugin_hook_handler('register', 'menu:river', 'likes_river_menu_setup');
 	elgg_unregister_plugin_hook_handler('register', 'menu:river', 'elgg_river_menu_setup');
 	
+	elgg_register_plugin_hook_handler('register', 'menu:river', 'facebook_theme_river_menu_handler');
+	elgg_register_plugin_hook_handler('register', 'menu:owner_block', 'facebook_theme_owner_block_menu_handler');
+	elgg_register_plugin_hook_handler('register', 'menu:composer', 'facebook_theme_composer_menu_handler');
+	
+	elgg_register_event_handler('pagesetup', 'system', 'facebook_theme_pagesetup_handler');
+	
+	if (elgg_is_logged_in()) {
+		$user_guid = elgg_get_logged_in_user_guid();
+		$address = urlencode(current_page_url());
+
+		if (elgg_is_active_plugin('bookmarks')) {
+			elgg_register_menu_item('extras', array(
+				'name' => 'bookmark',
+				'text' => elgg_view_icon('push-pin-alt') . elgg_echo('bookmarks:this'),
+				'href' => "bookmarks/add/$user_guid?address=$address",
+				'title' => elgg_echo('bookmarks:this'),
+				'rel' => 'nofollow',
+			));
+		}
+
+		if (elgg_is_active_plugin('reportedcontent')) {
+			elgg_unregister_menu_item('footer', 'report_this');
+	
+			$href = "javascript:elgg.forward('reportedcontent/add'";
+			$href .= "+'?address='+encodeURIComponent(location.href)";
+			$href .= "+'&title='+encodeURIComponent(document.title));";
+			
+			elgg_register_menu_item('extras', array(
+				'name' => 'report_this',
+				'href' => $href,
+				'text' => elgg_view_icon('report-this') . elgg_echo('reportedcontent:this'),
+				'title' => elgg_echo('reportedcontent:this:tooltip'),
+				'priority' => 500,
+			));
+		}
+	}
+	
+	//Want our logo present, not Elgg's
+	elgg_unregister_menu_item('topbar', 'elgg_logo');
+	
+	$site = elgg_get_site_entity();
+	elgg_register_menu_item('topbar', array(
+		'name' => 'logo',
+		'href' => '/',
+		'text' => "<h1 id=\"facebook-topbar-logo\">$site->name</h1>",
+		'priority' => 1,
+	));
+	
+	/**
+	 * Customize permissions
+	 */
+	elgg_register_plugin_hook_handler('permissions_check:annotate', 'all', 'facebook_theme_annotation_permissions_handler');
+	elgg_register_plugin_hook_handler('container_permissions_check', 'all', 'facebook_theme_container_permissions_handler');
+	
+	
+	/**
+	 * Miscellaneous customizations
+	 */
 	//Small "correction" to groups profile -- brief description makes more sense to come first!
 	elgg_register_plugin_hook_handler('profile:fields', 'group', 'facebook_theme_group_profile_fields', 1);
 	
@@ -31,62 +93,10 @@ function facebook_theme_init() {
 	
 	//Elgg only includes the search bar in the header by default,
 	//but we usually don't show the header when the user is logged in
-	elgg_extend_view('page/elements/topbar', 'search/search_box');
-	elgg_unextend_view('page/elements/header', 'search/search_box');
-	
-	//Want our logo present, not Elgg's
-	elgg_unregister_menu_item('topbar', 'elgg_logo');
-
-	elgg_register_plugin_hook_handler('permissions_check:annotate', 'user', 'facebook_theme_annotation_permissions_handler');
-	
-	$site = elgg_get_site_entity();
-	elgg_register_menu_item('topbar', array(
-		'name' => 'logo',
-		'href' => '/',
-		'text' => "<h1 id=\"facebook-topbar-logo\">$site->name</h1>",
-		'priority' => 1,
-	));
-	
-	elgg_extend_view('css/elgg', 'css/elements/tinymce');
-	
-	elgg_register_plugin_hook_handler('index', 'system', 'facebook_theme_index_handler');
-	
-	elgg_register_page_handler('dashboard', 'facebook_theme_dashboard_handler');
-	
-	elgg_register_event_handler('pagesetup', 'system', 'facebook_theme_pagesetup_handler');
-	
-	if (elgg_is_logged_in()) {
-		$user_guid = elgg_get_logged_in_user_guid();
-		$address = urlencode(current_page_url());
-
-		elgg_register_menu_item('extras', array(
-			'name' => 'bookmark',
-			'text' => elgg_view_icon('push-pin-alt') . elgg_echo('bookmarks:this'),
-			'href' => "bookmarks/add/$user_guid?address=$address",
-			'title' => elgg_echo('bookmarks:this'),
-			'rel' => 'nofollow',
-		));
-
-		elgg_unregister_menu_item('footer', 'report_this');
-
-		$href = "javascript:elgg.forward('reportedcontent/add'";
-		$href .= "+'?address='+encodeURIComponent(location.href)";
-		$href .= "+'&title='+encodeURIComponent(document.title));";
-		
-		elgg_register_menu_item('extras', array(
-			'name' => 'report_this',
-			'href' => $href,
-			'text' => elgg_view_icon('report-this') . elgg_echo('reportedcontent:this'),
-			'title' => elgg_echo('reportedcontent:this:tooltip'),
-			'priority' => 500,
-		));
+	if (elgg_is_active_plugin('search')) {
+		elgg_extend_view('page/elements/topbar', 'search/search_box');
+		elgg_unextend_view('page/elements/header', 'search/search_box');
 	}
-	
-	
-	//What a hack!  Overriding groups page handler without blowing away other plugins doing the same
-	global $CONFIG, $facebook_theme_original_groups_page_handler;
-	$facebook_theme_original_groups_page_handler = $CONFIG->pagehandler['groups'];
-	elgg_register_page_handler('groups', 'facebook_theme_groups_page_handler');
 }
 
 function facebook_theme_groups_page_handler($segments, $handle) {
@@ -261,6 +271,17 @@ function facebook_theme_index_handler() {
 	}
 }
 
+function facebook_theme_container_permissions_handler($hook, $type, $result, $params) {
+	$container = $params['container'];
+	$subtype = $params['subtype'];
+	
+	if ($container instanceof ElggGroup) {
+		if ($subtype == 'thewire') {
+			return false;
+		}
+	}
+}
+
 function facebook_theme_annotation_permissions_handler($hook, $type, $result, $params) {
 	$entity = $params['entity'];
 	$user = $params['user'];
@@ -271,8 +292,19 @@ function facebook_theme_annotation_permissions_handler($hook, $type, $result, $p
 		return false;
 	}
 	
+	//No "commenting" on users, must use messageboard
 	if ($annotation_name == 'generic_comment' && $entity instanceof ElggUser) {
 		return false;
+	}
+	
+	//No "commenting" on forum topics, must use special "reply" annotation
+	if ($annotation_name == 'generic_comment' && elgg_instanceof($entity, 'object', 'groupforumtopic')) {
+		return false;
+	}
+	
+	//Definitely should be able to "like" a forum topic!
+	if ($annotation_name == 'likes' && elgg_instanceof($entity, 'object', 'groupforumtopic')) {
+		return true;
 	}
 }
 
@@ -476,11 +508,19 @@ function facebook_theme_river_menu_handler($hook, $type, $items, $params) {
 				'is_action' => TRUE,
 			));
 		}
+		
+		if (elgg_instanceof($object, 'object', 'groupforumtopic')) {
+			$items[] = ElggMenuItem::factory(array(
+				'name' => 'reply',
+				'href' => "#groups-reply-$object->guid",
+				'title' => elgg_echo('reply:this'),
+				'text' => elgg_echo('reply'),
+			));
+		}
 	}
 
 	return $items;
 }
-
 
 /**
  * Profile page handler
@@ -513,7 +553,6 @@ function facebook_theme_profile_page_handler($page) {
 			require $CONFIG->path . 'pages/profile/edit.php';
 			return;
 			break;
-			
 		
 		case 'info':
 			require dirname(__FILE__) . '/pages/profile/info.php';
@@ -531,7 +570,6 @@ function facebook_theme_profile_page_handler($page) {
 			}
 			
 			return;
-				
 	}
 }
 
