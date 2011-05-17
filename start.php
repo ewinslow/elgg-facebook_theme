@@ -2,7 +2,6 @@
 
 function facebook_theme_init() {
 	//Need heavy customization of profile pages
-	elgg_register_page_handler('groups', 'facebook_theme_groups_page_handler');
 	elgg_register_page_handler('profile', 'facebook_theme_profile_page_handler');
 	
 	//setup menus
@@ -95,17 +94,16 @@ function facebook_theme_groups_page_handler($segments, $handle) {
 
 	switch ($segments[0]) {
 		case 'profile':
-		case 'wall':
 			elgg_set_page_owner_guid($segments[1]);
 			require_once "$pages_dir/groups/wall.php";
-			return;
+			return true;
 		case 'info':
 			elgg_set_page_owner_guid($segments[1]);
 			require_once "$pages_dir/groups/info.php";
-			return;
+			return true;
 		default:
-			global $facebook_theme_groups_page_handler;
-			return call_user_func($facebook_theme_groups_page_handler, $segments, $handle);
+			global $facebook_theme_original_groups_page_handler;
+			return call_user_func($facebook_theme_original_groups_page_handler, $segments, $handle);
 	}
 }
 
