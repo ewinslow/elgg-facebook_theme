@@ -73,16 +73,12 @@ function facebook_theme_init() {
 	elgg_register_plugin_hook_handler('permissions_check:annotate', 'all', 'facebook_theme_annotation_permissions_handler');
 	elgg_register_plugin_hook_handler('container_permissions_check', 'all', 'facebook_theme_container_permissions_handler');
 	
-	
 	/**
 	 * Miscellaneous customizations
 	 */
 	//Small "correction" to groups profile -- brief description makes more sense to come first!
 	elgg_register_plugin_hook_handler('profile:fields', 'group', 'facebook_theme_group_profile_fields', 1);
-	
-	//@todo belongs in the developers plugin
-	elgg_register_plugin_hook_handler('view', 'all', 'developers_view_handler');
-	
+		
 	//@todo report some of the extra patterns to be included in Elgg core
 	elgg_extend_view('css/elgg', 'facebook_theme/css');
 	
@@ -360,32 +356,6 @@ function facebook_theme_composer_menu_handler($hook, $type, $items, $params) {
 	}
 	
 	return $items;
-}
-
-/**
- * Adds comments around views so we can see how the page is getting created
- * 
- * @todo Belongs in developers plugin
- */
-function developers_view_handler($hook, $type, $result, $params) {
-	$viewtype = $params['viewtype'];
-	
-	if ($viewtype == 'default') {
-		$view = $params['view'];
-		
-		if (strpos($view, 'js/') !== 0 && strpos($view, 'css') !== 0) {
-			$start_comment = "<!--";
-			$end_comment = "-->";	
-		} else {
-			$start_comment = "/*";
-			$end_comment = "*/";
-		}
-		
-		$location = elgg_get_view_location($view, $viewtype);
-		$result = "$start_comment START $view ($location) $end_comment $result $start_comment END $view $end_comment";
-	}
-	
-	return $result;
 }
 
 function facebook_theme_group_profile_fields($hook, $type, $fields, $params) {
