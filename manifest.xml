@@ -4,10 +4,8 @@
 	<author>Evan Winslow</author>
 	<version>1.8</version>
 	<category>theme</category>
-	<blurb>Make your site look like facebook!</blurb>
 	<description>
-		Modifies the layout of Elgg to look very much like facebook.
-		Can be extended to add your own color scheme.
+		Modifies your Elgg site to look and behave very much like Facebook.
 	</description>
 	<website>https://github.com/ewinslow/elgg-facebook_theme</website>
 	<copyright>(C) 2011 Evan Winslow</copyright>
