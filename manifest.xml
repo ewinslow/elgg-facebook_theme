@@ -47,5 +47,22 @@
 		<version>1.8</version>
 	</suggests>
 	
+	<screenshot>
+		<description>Index</description>
+		<path>screenshots/index.png</path>
+	</screenshot>
+	<screenshot>
+		<description>Dashboard</description>
+		<path>screenshots/dashboard.png</path>
+	</screenshot>
+	<screenshot>
+		<description>User's Wall</description>
+		<path>screenshots/user-wall.png</path>
+	</screenshot>
+	<screenshot>
+		<description>Group's Wall</description>
+		<path>screenshots/group-wall.png</path>
+	</screenshot>
+	
 	<admin_interface>simple</admin_interface>
 </plugin_manifest>
