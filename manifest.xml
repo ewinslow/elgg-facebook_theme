@@ -35,6 +35,11 @@
 		<priority>after</priority>
 		<plugin>search</plugin>
 	</requires>
+	<requires>
+		<type>priority</type>
+		<priority>after</priority>
+		<plugin>thewire</plugin>
+	</requires>
 	
 	<suggests>
 		<type>plugin</type>
