@@ -170,7 +170,7 @@ function facebook_theme_pagesetup_handler() {
 		if ($owner->guid == $user->guid) {
 			elgg_register_menu_item('title', array(
 				'name' => 'editprofile',
-				'href' => '/profile/evan/edit',
+				'href' => "/profile/$user->username/edit",
 				'text' => elgg_echo('profile:edit'),
 				'link_class' => 'elgg-button elgg-button-action',
 				'contexts' => array('profile'),
