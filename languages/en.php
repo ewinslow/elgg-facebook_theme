@@ -27,4 +27,6 @@ add_translation('en', array(
 	'friend:user:add' => "Add %s as Friend",
 
 	'river:to' => '%s &#x25B6 %s',
+
+	'files' => 'Files',
 ));

@@ -230,7 +230,7 @@ function facebook_theme_pagesetup_handler() {
 			));
 		}
 		
-		if (elgg_is_active_plugin('files')) {
+		if (elgg_is_active_plugin('file')) {
 			elgg_register_menu_item('page', array(
 				'section' => 'more',	
 				'name' => 'files',
