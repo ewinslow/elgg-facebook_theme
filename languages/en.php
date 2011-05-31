@@ -31,4 +31,6 @@ add_translation('en', array(
 	'files' => 'Files',
 
 	'river:commented:object:thewire' => '',
+
+	'groups:add' => 'Create Group...',
 ));

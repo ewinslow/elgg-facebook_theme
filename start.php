@@ -191,6 +191,15 @@ function facebook_theme_pagesetup_handler() {
 			}
 			
 			elgg_register_menu_item('page', array(
+				'name' => 'groups-add',
+				'section' => 'groups',
+				'text' => elgg_echo('groups:add'),
+				'href' => "/groups/add",
+				'contexts' => array('dashboard'),
+				'priority' => 499,
+			));
+			
+			elgg_register_menu_item('page', array(
 				'section' => 'groups',
 				'name' => 'groups',
 				'text' => elgg_echo('See All'),
