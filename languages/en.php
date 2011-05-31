@@ -29,4 +29,6 @@ add_translation('en', array(
 	'river:to' => '%s &#x25B6 %s',
 
 	'files' => 'Files',
+
+	'river:commented:object:thewire' => '',
 ));
