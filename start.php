@@ -326,43 +326,46 @@ function facebook_theme_composer_menu_handler($hook, $type, $items, $params) {
 	if (elgg_is_active_plugin('thewire') && $entity->canWriteToContainer(0, 'object', 'thewire')) {
 		$items[] = ElggMenuItem::factory(array(
 			'name' => 'thewire',
-			'href' => "#thewire-form-composer",
+			'href' => "/ajax/view/thewire/composer",
 			'text' => elgg_view_icon('share') . elgg_echo("composer:object:thewire"),
-			'priority' => 10,
+			'priority' => 100,
 		));
-		
-		elgg_extend_view('composer/forms', 'thewire/composer');
 	}
 	
 	if (elgg_is_active_plugin('messageboard') && $entity->canAnnotate(0, 'messageboard')) {
 		$items[] = ElggMenuItem::factory(array(
 			'name' => 'messageboard',
-			'href' => "#messageboard-form-composer",
+			'href' => "/ajax/view/messageboard/composer",
 			'text' => elgg_view_icon('speech-bubble-alt') . elgg_echo("composer:annotation:messageboard"),
-			'priority' => 20,
+			'priority' => 200,
 		));
-		
-		elgg_extend_view('composer/forms', 'messageboard/composer');
 	}
 	
 	if (elgg_is_active_plugin('bookmarks') && $entity->canWriteToContainer(0, 'object', 'bookmarks')) {
 		$items[] = ElggMenuItem::factory(array(
 			'name' => 'bookmarks',
-			'href' => "#bookmarks-form-composer",
+			'href' => "/ajax/view/bookmarks/composer",
 			'text' => elgg_view_icon('push-pin') . elgg_echo("composer:object:bookmarks"),
+			'priority' => 300,
 		));
-		
-		elgg_extend_view('composer/forms', 'bookmarks/composer');
 	}
 	
 	if (elgg_is_active_plugin('blog') && $entity->canWriteToContainer(0, 'object', 'blog')) {
 		$items[] = ElggMenuItem::factory(array(
 			'name' => 'blog',
-			'href' => "#blog-form-composer",
+			'href' => "/ajax/view/blog/composer",
 			'text' => elgg_view_icon('speech-bubble') . elgg_echo("composer:object:blog"),
+			'priority' => 600,
 		));
-		
-		elgg_extend_view('composer/forms', 'blog/composer');
+	}
+	
+	if (elgg_is_active_plugin('file') && $entity->canWriteToContainer(0, 'object', 'file')) {
+		$items[] = ElggMenuItem::factory(array(
+			'name' => 'file',
+			'href' => "/ajax/view/file/composer",
+			'text' => elgg_view_icon('clip') . elgg_echo("composer:object:file"),
+			'priority' => 700,
+		));
 	}
 	
 	return $items;

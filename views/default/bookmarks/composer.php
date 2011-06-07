@@ -1,2 +1,3 @@
 <?php
-echo elgg_view_form('bookmarks/save', array('id' => 'bookmarks-form-composer'));
+elgg_load_library('elgg:bookmarks');
+echo elgg_view_form('bookmarks/save', array(), $body_vars);

@@ -6,9 +6,11 @@
 			'class' => 'elgg-menu-hz',
 			'sort_by' => 'priority',
 		));
-		
-		echo elgg_view('composer/forms');
-	
 	?>
 </div>
-<script>$('.elgg-composer').tabs();</script>
+<script>
+$('.elgg-composer').tabs({
+	spinner: '',
+	panelTemplate: '<div><div class="elgg-ajax-loader"></div></div>'
+});
+</script>

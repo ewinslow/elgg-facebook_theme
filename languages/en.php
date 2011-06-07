@@ -14,6 +14,7 @@ add_translation('en', array(
 	'composer:object:bookmarks' => "Bookmark",
 	'composer:object:blog' => "Blog",
 	'composer:annotation:messageboard' => "Post",
+	'composer:object:file' => 'File',
 
 	'newsfeed' => 'News Feed',
 
