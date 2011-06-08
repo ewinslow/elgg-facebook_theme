@@ -320,6 +320,7 @@
 .elgg-menu-footer > li,
 .elgg-menu-footer > li > a {
 	color:#999;
+	display: inline-block;
 }
 
 .elgg-menu-footer > li:after {
