@@ -2,7 +2,7 @@
 
 $title = '';
 $subtitle = false;
-$icon = false;
+$image = false;
 $description = false;
 
 extract($vars, EXTR_IF_EXISTS);
@@ -18,8 +18,8 @@ if ($description) {
 }
 
 
-if ($icon) {
-	echo elgg_view_image_block($icon, $body);
+if ($image) {
+	echo elgg_view_image_block($image, $body);
 } else {
 	echo $body;
 }

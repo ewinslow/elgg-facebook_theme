@@ -25,6 +25,9 @@ function facebook_theme_init() {
 	
 	elgg_register_event_handler('pagesetup', 'system', 'facebook_theme_pagesetup_handler');
 	
+	elgg_register_js('jquery.livequery', '/mod/facebook_theme/vendors/jquery.livequery-1.1.1/jquery.livequery.min.js', 'footer');
+	elgg_load_js('jquery.livequery');
+	
 	if (elgg_is_logged_in()) {
 		$user_guid = elgg_get_logged_in_user_guid();
 		$address = urlencode(current_page_url());
@@ -330,6 +333,9 @@ function facebook_theme_composer_menu_handler($hook, $type, $items, $params) {
 			'text' => elgg_view_icon('share') . elgg_echo("composer:object:thewire"),
 			'priority' => 100,
 		));
+		
+		//trigger any javascript loads that we might need
+		elgg_view('thewire/composer');
 	}
 	
 	if (elgg_is_active_plugin('messageboard') && $entity->canAnnotate(0, 'messageboard')) {
@@ -339,6 +345,9 @@ function facebook_theme_composer_menu_handler($hook, $type, $items, $params) {
 			'text' => elgg_view_icon('speech-bubble-alt') . elgg_echo("composer:annotation:messageboard"),
 			'priority' => 200,
 		));
+		
+		//trigger any javascript loads that we might need
+		elgg_view('messageboard/composer');
 	}
 	
 	if (elgg_is_active_plugin('bookmarks') && $entity->canWriteToContainer(0, 'object', 'bookmarks')) {
@@ -348,6 +357,9 @@ function facebook_theme_composer_menu_handler($hook, $type, $items, $params) {
 			'text' => elgg_view_icon('push-pin') . elgg_echo("composer:object:bookmarks"),
 			'priority' => 300,
 		));
+		
+		//trigger any javascript loads that we might need
+		elgg_view('bookmarks/composer');
 	}
 	
 	if (elgg_is_active_plugin('blog') && $entity->canWriteToContainer(0, 'object', 'blog')) {
@@ -357,6 +369,9 @@ function facebook_theme_composer_menu_handler($hook, $type, $items, $params) {
 			'text' => elgg_view_icon('speech-bubble') . elgg_echo("composer:object:blog"),
 			'priority' => 600,
 		));
+		
+		//trigger any javascript loads that we might need
+		elgg_view('blog/composer');
 	}
 	
 	if (elgg_is_active_plugin('file') && $entity->canWriteToContainer(0, 'object', 'file')) {
@@ -366,6 +381,9 @@ function facebook_theme_composer_menu_handler($hook, $type, $items, $params) {
 			'text' => elgg_view_icon('clip') . elgg_echo("composer:object:file"),
 			'priority' => 700,
 		));
+		
+		//trigger any javascript loads that we might need
+		elgg_view('file/composer');
 	}
 	
 	return $items;

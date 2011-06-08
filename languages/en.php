@@ -9,6 +9,7 @@ add_translation('en', array(
 	'river:comments:all' => 'View all %d comments',
 
 	'pages:river:create' => 'created a page',
+	'file:river:create' => 'uploaded a file',
 
 	'composer:object:thewire' => "Status",
 	'composer:object:bookmarks' => "Bookmark",
