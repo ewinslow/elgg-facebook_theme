@@ -245,13 +245,19 @@
 	padding-bottom: 7px;
 }
 
-.elgg-menu-page a {
+.elgg-menu-page li > a {
 	display: block;
 	color: #333;
 	margin-bottom: 1px;
-	padding: 3px 8px 4px;
+	padding: 3px 8px 3px 28px;
 }
-.elgg-menu-page a:hover {
+
+.elgg-menu-page .elgg-icon {
+	margin-left: -23px;
+	margin-right: 6px;
+}
+
+.elgg-menu-page li > a:hover {
 	background-color: #EFF2F7;
 }
 .elgg-menu-page li.elgg-state-selected > a {
@@ -360,7 +366,7 @@
 
 .elgg-menu-owner-block li > a {
 	border-bottom: 1px solid #D8DFEA;
-	padding: 3px 8px;
+	padding: 3px 8px 3px 28px;
 }
 .elgg-menu-owner-block li > a:hover {
 	background-color: #3B5998;
@@ -371,7 +377,12 @@
 }
 
 .elgg-menu-owner-block .elgg-menu > li > a {
-	padding-left: 24px;
+	padding-left: 44px;
+}
+
+.elgg-menu-owner-block .elgg-icon {
+	margin-left: -23px;
+	margin-right: 6px;
 }
 
 /* ***************************************
@@ -416,7 +427,12 @@
 	SIDEBAR EXTRAS (rss, bookmark, etc)
 *************************************** */
 .elgg-menu-extras > li > a {
-	padding: 3px 0 3px 9px;
+	padding: 3px 8px 3px 28px;
+}
+
+.elgg-menu-extras .elgg-icon {
+	margin-left: -23px;
+	margin-right: 6px;
 }
 
 .elgg-menu-extras > li > a:hover {
