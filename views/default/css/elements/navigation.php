@@ -7,12 +7,23 @@
  */
 ?>
 
+
+
 /* ***************************************
 	PAGINATION
 *************************************** */
 .elgg-menu > li > a:hover,
 .elgg-menu > li > a {
 	text-decoration:none;
+}
+
+/* These menus always make room for icons: */
+.elgg-menu-owner-block li > a > .elgg-icon,
+.elgg-menu-extras li > a > .elgg-icon,
+.elgg-menu-page li > a > .elgg-icon,
+.elgg-menu-composer li > a > .elgg-icon {
+	margin-left: -20px;
+	margin-right: 4px;
 }
 
 .elgg-pagination {
@@ -249,12 +260,7 @@
 	display: block;
 	color: #333;
 	margin-bottom: 1px;
-	padding: 3px 8px 3px 28px;
-}
-
-.elgg-menu-page .elgg-icon {
-	margin-left: -23px;
-	margin-right: 6px;
+	padding: 3px 8px 3px 26px;
 }
 
 .elgg-menu-page li > a:hover {
@@ -366,7 +372,7 @@
 
 .elgg-menu-owner-block li > a {
 	border-bottom: 1px solid #D8DFEA;
-	padding: 3px 8px 3px 28px;
+	padding: 3px 8px 3px 26px;
 }
 .elgg-menu-owner-block li > a:hover {
 	background-color: #3B5998;
@@ -378,11 +384,6 @@
 
 .elgg-menu-owner-block .elgg-menu > li > a {
 	padding-left: 44px;
-}
-
-.elgg-menu-owner-block .elgg-icon {
-	margin-left: -23px;
-	margin-right: 6px;
 }
 
 /* ***************************************
@@ -427,14 +428,59 @@
 	SIDEBAR EXTRAS (rss, bookmark, etc)
 *************************************** */
 .elgg-menu-extras > li > a {
-	padding: 3px 8px 3px 28px;
-}
-
-.elgg-menu-extras .elgg-icon {
-	margin-left: -23px;
-	margin-right: 6px;
+	padding: 3px 8px 3px 26px;
 }
 
 .elgg-menu-extras > li > a:hover {
 	text-decoration:underline;
+}
+
+/* ***************************************
+    COMPOSER
+*************************************** */
+.elgg-menu-composer {
+	display:inline-block;
+	height: 22px;
+}
+
+.elgg-menu-composer > li {
+	font-weight:bold;
+	margin-left: 10px;
+}
+
+.elgg-menu-composer > li > a {
+	line-height: 16px;
+	padding-left: 20px;
+}
+
+.elgg-menu-composer > li > a:hover {
+	text-decoration: underline;
+}
+
+.elgg-menu-composer > li.ui-state-active > a {
+	cursor: default;
+	color: black;
+	text-decoration: none;
+}
+
+.elgg-menu-composer > .ui-state-active > a:before,
+.elgg-menu-composer > .ui-state-active > a:after {
+	position: absolute;
+	display: block;
+	border-width: 8px;
+	border-style: solid;
+	content: " ";
+	height: 0;
+	width: 0;
+	left: 0;
+}
+
+.elgg-menu-composer > .ui-state-active > a:before {
+	top: 11px;
+	border-color: transparent transparent #B4BBCD transparent;
+}
+
+.elgg-menu-composer > .ui-state-active > a:after {
+	top: 12px;
+	border-color: transparent transparent white transparent;
 }
