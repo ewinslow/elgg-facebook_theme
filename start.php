@@ -329,7 +329,7 @@ function facebook_theme_composer_menu_handler($hook, $type, $items, $params) {
 	if (elgg_is_active_plugin('thewire') && $entity->canWriteToContainer(0, 'object', 'thewire')) {
 		$items[] = ElggMenuItem::factory(array(
 			'name' => 'thewire',
-			'href' => "/ajax/view/thewire/composer",
+			'href' => "/ajax/view/thewire/composer?container_guid=$entity->guid",
 			'text' => elgg_view_icon('share') . elgg_echo("composer:object:thewire"),
 			'priority' => 100,
 		));
@@ -341,7 +341,7 @@ function facebook_theme_composer_menu_handler($hook, $type, $items, $params) {
 	if (elgg_is_active_plugin('messageboard') && $entity->canAnnotate(0, 'messageboard')) {
 		$items[] = ElggMenuItem::factory(array(
 			'name' => 'messageboard',
-			'href' => "/ajax/view/messageboard/composer",
+			'href' => "/ajax/view/messageboard/composer?entity_guid=$entity->guid",
 			'text' => elgg_view_icon('speech-bubble-alt') . elgg_echo("composer:annotation:messageboard"),
 			'priority' => 200,
 		));
@@ -353,7 +353,7 @@ function facebook_theme_composer_menu_handler($hook, $type, $items, $params) {
 	if (elgg_is_active_plugin('bookmarks') && $entity->canWriteToContainer(0, 'object', 'bookmarks')) {
 		$items[] = ElggMenuItem::factory(array(
 			'name' => 'bookmarks',
-			'href' => "/ajax/view/bookmarks/composer",
+			'href' => "/ajax/view/bookmarks/composer?container_guid=$entity->guid",
 			'text' => elgg_view_icon('push-pin') . elgg_echo("composer:object:bookmarks"),
 			'priority' => 300,
 		));
@@ -365,7 +365,7 @@ function facebook_theme_composer_menu_handler($hook, $type, $items, $params) {
 	if (elgg_is_active_plugin('blog') && $entity->canWriteToContainer(0, 'object', 'blog')) {
 		$items[] = ElggMenuItem::factory(array(
 			'name' => 'blog',
-			'href' => "/ajax/view/blog/composer",
+			'href' => "/ajax/view/blog/composer?container_guid=$entity->guid",
 			'text' => elgg_view_icon('speech-bubble') . elgg_echo("composer:object:blog"),
 			'priority' => 600,
 		));
@@ -377,7 +377,7 @@ function facebook_theme_composer_menu_handler($hook, $type, $items, $params) {
 	if (elgg_is_active_plugin('file') && $entity->canWriteToContainer(0, 'object', 'file')) {
 		$items[] = ElggMenuItem::factory(array(
 			'name' => 'file',
-			'href' => "/ajax/view/file/composer",
+			'href' => "/ajax/view/file/composer?container_guid=$entity->guid",
 			'text' => elgg_view_icon('clip') . elgg_echo("composer:object:file"),
 			'priority' => 700,
 		));
@@ -451,10 +451,6 @@ function facebook_theme_owner_block_menu_handler($hook, $type, $items, $params) 
 			'href' => $page->getURL(),
 			'text' => elgg_view_icon('page') . elgg_view('output/text', array('value' => $page->title)),
 		));
-	}
-	
-	foreach ($items as $item) {
-		
 	}
 	
 	return $items;
