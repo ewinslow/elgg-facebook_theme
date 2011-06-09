@@ -358,16 +358,20 @@
 *************************************** */
 
 
-.elgg-menu-owner-block > li > a {
+.elgg-menu-owner-block li > a {
 	border-bottom: 1px solid #D8DFEA;
 	padding: 3px 8px;
 }
-.elgg-menu-owner-block > li > a:hover {
+.elgg-menu-owner-block li > a:hover {
 	background-color: #3B5998;
 	color: white;
 }
-.elgg-menu-owner-block > .elgg-state-selected > a {
+.elgg-menu-owner-block .elgg-state-selected > a {
 	background-color: #D8DFEA;
+}
+
+.elgg-menu-owner-block .elgg-menu > li > a {
+	padding-left: 24px;
 }
 
 /* ***************************************
