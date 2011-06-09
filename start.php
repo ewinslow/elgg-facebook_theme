@@ -20,7 +20,7 @@ function facebook_theme_init() {
 	elgg_unregister_plugin_hook_handler('register', 'menu:river', 'elgg_river_menu_setup');
 	
 	elgg_register_plugin_hook_handler('register', 'menu:river', 'facebook_theme_river_menu_handler');
-	elgg_register_plugin_hook_handler('register', 'menu:owner_block', 'facebook_theme_owner_block_menu_handler');
+	elgg_register_plugin_hook_handler('register', 'menu:owner_block', 'facebook_theme_owner_block_menu_handler', 600);
 	elgg_register_plugin_hook_handler('register', 'menu:composer', 'facebook_theme_composer_menu_handler');
 	
 	elgg_register_event_handler('pagesetup', 'system', 'facebook_theme_pagesetup_handler');
@@ -401,43 +401,62 @@ function facebook_theme_owner_block_menu_handler($hook, $type, $items, $params) 
 	$owner = elgg_get_page_owner_entity();
 	
 	if ($owner instanceof ElggGroup) {
-		$items[] = ElggMenuItem::factory(array(
+		$items['info'] = ElggMenuItem::factory(array(
 			'name' => 'info', 
 			'text' => elgg_echo('profile:info'), 
 			'href' => "/groups/info/$owner->guid/" . elgg_get_friendly_title($owner->name),
 			'priority' => 2,
 		));
 		
-		$items[] = ElggMenuItem::factory(array(
+		$items['profile'] = ElggMenuItem::factory(array(
 			'name' => 'profile',
-			'text' => elgg_echo('profile:wall'),
+			'text' => elgg_view_icon('speech-bubble') . elgg_echo('profile:wall'),
 			'href' => "/groups/profile/$owner->guid/" . elgg_get_friendly_title($owner->name),
 			'priority' => 1,
 		));
 	}
 	
 	if ($owner instanceof ElggUser) {
-		$items[] = ElggMenuItem::factory(array(
+		$items['info'] = ElggMenuItem::factory(array(
 			'name' => 'info', 
 			'text' => elgg_echo('profile:info'), 
 			'href' => "/profile/$owner->username/info",
 			'priority' => 2,
 		));
 		
-		$items[] = ElggMenuItem::factory(array(
+		$items['profile'] = ElggMenuItem::factory(array(
 			'name' => 'profile',
 			'text' => elgg_echo('profile:wall'),
 			'href' => "/profile/$owner->username",
 			'priority' => 1,
 		));
 		
-		$items[] = ElggMenuItem::factory(array(
+		$items['friends'] = ElggMenuItem::factory(array(
 			'name' => 'friends',	
 			'text' => elgg_echo('friends'),
 			'href' => "/friends/$owner->username"
 		));
 	}
+	
+	$top_level_pages = elgg_get_entities(array(
+		'type' => 'object',
+		'subtype' => 'page_top',
+		'container_guid' => $owner->guid,
+		'limit' => 0,
+	));
+	
+	foreach ($top_level_pages as $page) {
+		$items["pages-$page->guid"] = ElggMenuItem::factory(array(
+			'name' => "pages-$page->guid",
+			'href' => $page->getURL(),
+			'text' => elgg_view_icon('page') . elgg_view('output/text', array('value' => $page->title)),
+		));
+	}
+	
+	foreach ($items as $item) {
 		
+	}
+	
 	return $items;
 	
 }

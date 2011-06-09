@@ -237,6 +237,19 @@
 	background-position: 0 -1278px;
 }
 
+.elgg-icon-page {
+	<?php 
+		$page = new ElggObject();
+		$page->subtype = 'page';
+	?>
+	background: url(<?php echo $page->getIconURL('topbar'); ?>);
+}
+
+.elgg-icon-group {
+	<?php $group = new ElggGroup(); ?>
+	background: url(<?php echo $group->getIconURL('topbar'); ?>);
+}
+
 
 .elgg-avatar > .elgg-icon-hover-menu {
 	display: none;
