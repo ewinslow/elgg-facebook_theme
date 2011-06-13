@@ -407,8 +407,8 @@
 
 .elgg-menu-river > li:after {
 	content: " \00B7 ";
-	display:inline;
-	margin: 0 2px;
+	display: inline-block;
+	margin: 0 3px;
 }
 
 .elgg-menu-river > li > a {
