@@ -25,9 +25,6 @@ function facebook_theme_init() {
 	
 	elgg_register_event_handler('pagesetup', 'system', 'facebook_theme_pagesetup_handler');
 	
-	elgg_register_js('jquery.livequery', '/mod/facebook_theme/vendors/jquery.livequery-1.1.1/jquery.livequery.min.js', 'footer');
-	elgg_load_js('jquery.livequery');
-	
 	if (elgg_is_logged_in()) {
 		$user_guid = elgg_get_logged_in_user_guid();
 		$address = urlencode(current_page_url());
