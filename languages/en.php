@@ -28,4 +28,6 @@ add_translation('en', array(
 	'river:commented:object:thewire' => '',
 
 	'groups:add' => 'Create Group...',
+
+	'annotation:group_topic_post:value:placeholder' => 'Leave a reply...',
 ));

@@ -87,6 +87,8 @@ function facebook_theme_init() {
 		elgg_extend_view('river/elements/footer', 'likes/river_footer', 1);
 	}
 	
+	elgg_extend_view('river/elements/footer', 'discussion/river_footer');
+	
 	//Elgg only includes the search bar in the header by default,
 	//but we usually don't show the header when the user is logged in
 	if (elgg_is_active_plugin('search')) {
@@ -311,6 +313,10 @@ function facebook_theme_annotation_permissions_handler($hook, $type, $result, $p
 	//Definitely should be able to "like" a forum topic!
 	if ($annotation_name == 'likes' && elgg_instanceof($entity, 'object', 'groupforumtopic')) {
 		return true;
+	}
+	
+	if ($annotation_name == 'group_topic_post' && !elgg_instanceof($entity, 'object', 'groupforumtopic')) {
+		return false;
 	}
 }
 
