@@ -5,29 +5,10 @@
  * @package Bookmarks
  */
 
-$subject = $vars['item']->getSubjectEntity();
 $object = $vars['item']->getObjectEntity();
 
-$subject_link = elgg_view('output/url', array(
-	'href' => $subject->getURL(),
-	'text' => $subject->name,
-	'encode_text' => true,
-	'class' => 'elgg-river-subject',
-));
 
-$text = elgg_echo('bookmarks:river:created');
-
-$group_string = '';
-$target = $object->getContainerEntity();
-if ($target instanceof ElggGroup) {
-	$group_link = elgg_view('output/url', array(
-		'href' => $target->getURL(),
-		'text' => $target->name,
-	));
-	$group_string = elgg_echo('river:ingroup', array($group_link));
-}
-
-echo elgg_view('river/elements/body', array(
-	'summary' => "$subject_link $text",
+echo elgg_view('river/item', array(
+	'item' => $vars['item'],
 	'attachments' => elgg_view('object/bookmarks/river', array('entity' => $object)),
 ));
