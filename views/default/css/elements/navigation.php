@@ -405,7 +405,7 @@
 	display:inline;
 }
 
-.elgg-menu-river > li:after {
+.elgg-menu-river > li:before {
 	content: " \00B7 ";
 	display: inline-block;
 	margin: 0 3px;
@@ -418,10 +418,6 @@
 
 .elgg-menu-river > li > a:hover {
 	text-decoration: underline;
-}
-
-.elgg-menu-river > li:first-child > a {
-	color: #888;
 }
 
 /* ***************************************

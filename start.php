@@ -463,19 +463,6 @@ function facebook_theme_owner_block_menu_handler($hook, $type, $items, $params) 
 function facebook_theme_river_menu_handler($hook, $type, $items, $params) {
 	$item = $params['item'];
 
-	$menu_item = array(
-		'name' => 'source',
-		'text' => elgg_view_friendly_time($item->getPostedTime()),
-		'priority' => 1,
-		'href' => false,
-	);
-
-	if ($item->action_type == 'create' && $item->object_guid) {
-		$menu_item['href'] = get_entity_url($item->object_guid);
-	}
-
-	$items[] = ElggMenuItem::factory($menu_item);
-
 	$object = $item->getObjectEntity();
 	if (!elgg_in_context('widgets') && !$item->annotation_id && $object instanceof ElggEntity) {
 		

@@ -152,10 +152,7 @@
 }
 
 .elgg-river-timestamp {
-	color: #666;
-	font-size: 85%;
-	font-style: italic;
-	line-height: 1.2em;
+	color: #888
 }
 .elgg-river-content {
 	color: #333;
