@@ -147,17 +147,64 @@
 	border-bottom: 1px solid #E9E9E9;
 	padding: 10px 35px 10px 0;
 }
+
 .elgg-river-item {
 	padding: 7px 0;
 }
 
 .elgg-river-timestamp {
-	color: #888
+	color: #888;
+	margin-top: 3px;
+	display: inline-block;
 }
-.elgg-river-content {
+
+.elgg-river-message {
 	color: #333;
 	margin-top: 3px;
 }
+
+.elgg-river-summary {
+	font-weight: normal;
+	font-size: 11px;
+	color: gray;
+}
+
+.elgg-river-subject,
+.elgg-river-target {
+	font-weight: bold;
+}
+
+.elgg-river-attachments {
+	border-left: 2px solid #CCC;
+	margin: 8px 0 5px 0;
+	padding-left: 5px;
+	color: #777;
+}
+
+/* The following styles produce the speech-bubble "nub" (triangle) */
+.elgg-river-responses {
+	position: relative;
+	padding-top: 5px;
+}
+
+.elgg-river-responses:before {
+	width: 0px;
+	height: 0px;
+	font-size: 0px;
+	line-height: 0px;
+	display: block;
+	clear: both;
+	content: " ";
+	
+	border-left: 5px solid transparent;
+	border-right: 5px solid transparent;
+	border-bottom: 5px solid #EDEFF4;
+	
+	position: absolute;
+	top: 0px;
+	left: 15px;
+}
+/* End speech bubble nub */
 
 <?php //@todo location-dependent styles ?>
 .elgg-river-layout .elgg-input-dropdown {

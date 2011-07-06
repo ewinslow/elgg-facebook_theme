@@ -397,12 +397,13 @@
 	RIVER
 *************************************** */
 .elgg-menu-river {
-	margin-top: 3px;
 	color: #888;
+	display: inline-block;
+	margin: 3px 0 0 -3px;
 }
 
 .elgg-menu-river > li {
-	display:inline;
+	display: inline;
 }
 
 .elgg-menu-river > li:before {
@@ -412,8 +413,7 @@
 }
 
 .elgg-menu-river > li > a {
-	display:inline;
-	color: #6D84B4
+	color: #6D84B4;
 }
 
 .elgg-menu-river > li > a:hover {
