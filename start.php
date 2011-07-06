@@ -84,10 +84,10 @@ function facebook_theme_init() {
 	
 	//Likes summary bar -- "You, John, and 3 others like this"
 	if (elgg_is_active_plugin('likes')) {
-		elgg_extend_view('river/elements/footer', 'likes/river_footer', 1);
+		elgg_extend_view('river/elements/responses', 'likes/river_footer', 1);
 	}
 	
-	elgg_extend_view('river/elements/footer', 'discussion/river_footer');
+	elgg_extend_view('river/elements/responses', 'discussion/river_footer');
 	
 	//Elgg only includes the search bar in the header by default,
 	//but we usually don't show the header when the user is logged in
