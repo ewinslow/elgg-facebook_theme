@@ -501,7 +501,7 @@ function facebook_theme_river_menu_handler($hook, $type, $items, $params) {
 				'href' => "#comments-add-$object->guid",
 				'text' => elgg_echo('comment'),
 				'title' => elgg_echo('comment:this'),
-				'link_class' => "elgg-toggler",
+				'rel' => "toggle",
 				'priority' => 50,
 			));
 		}
