@@ -13,7 +13,7 @@
 	
 	<requires>
 		<type>elgg_version</type>
-		<version>2011030100</version>
+		<version>2011061200</version>
 	</requires>
 	<requires>
 		<type>priority</type>
