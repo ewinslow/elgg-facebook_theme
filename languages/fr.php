@@ -30,7 +30,7 @@ add_translation('fr', array(
 
 	'files' => 'Fichiers',
 
-	'river:commented:object:thewire' => '',
+	'river:comment:object:thewire' => '',
 
 	'groups:add' => 'Créer un groupe...',
 ));
