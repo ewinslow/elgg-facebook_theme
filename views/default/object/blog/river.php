@@ -13,4 +13,5 @@ $description = elgg_get_excerpt($blog->description, 350);
 echo elgg_view('river/elements/attachment', array(
 	'title' => $title,
 	'description' => $description,
+	'image' => elgg_view_entity_icon($blog->getOwnerEntity(), 'tiny'),
 ));
