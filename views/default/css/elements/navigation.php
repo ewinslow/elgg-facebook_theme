@@ -414,6 +414,7 @@
 
 .elgg-menu-river > li > a {
 	color: #6D84B4;
+	display: inline;
 }
 
 .elgg-menu-river > li > a:hover {
