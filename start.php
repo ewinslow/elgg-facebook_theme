@@ -246,7 +246,7 @@ function facebook_theme_pagesetup_handler() {
 				'section' => 'more',	
 				'name' => 'files',
 				'text' => elgg_echo('files'),
-				'href' => "/files/friends/$user->username",
+				'href' => "/file/friends/$user->username",
 				'contexts' => array('dashboard'),
 			));
 		}
