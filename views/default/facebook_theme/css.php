@@ -54,14 +54,6 @@ img {max-width:100%}
 	font-size: 2.5em;
 }
 
-.elgg-river-responses > :not(ul, ol),
-.elgg-river-responses > ul > li {
-	background-color: #EDEFF4;
-	border-bottom: 1px solid #E5EAF1;
-	margin-bottom: 2px;
-	padding: 4px;
-}
-
 .elgg-form-small input,
 .elgg-form-small textarea {
 	font-size: 11px;

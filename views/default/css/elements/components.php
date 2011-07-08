@@ -206,6 +206,16 @@
 }
 /* End speech bubble nub */
 
+/* .elgg-river-responses > :not(ul, ol), */ /* <-- too advanced? */
+.elgg-river-responses > div,
+.elgg-river-responses > form,
+.elgg-river-responses > ul > li {
+	background-color: #EDEFF4;
+	border-bottom: 1px solid #E5EAF1;
+	margin-bottom: 2px;
+	padding: 4px;
+}
+
 <?php //@todo location-dependent styles ?>
 .elgg-river-layout .elgg-input-dropdown {
 	float: right;
