@@ -34,4 +34,5 @@ add_translation('en', array(
 	'home' => 'Home',
 	'notifications:personal' => "Notifications",
 	'settings:user' => 'Account Settings',
+	'river:replies:all' => 'View all %d replies',
 ));
