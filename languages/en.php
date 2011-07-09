@@ -30,4 +30,8 @@ add_translation('en', array(
 	'groups:add' => 'Create Group...',
 
 	'annotation:group_topic_post:value:placeholder' => 'Leave a reply...',
+	
+	'home' => 'Home',
+	'notifications:personal' => "Notifications",
+	'settings:user' => 'Account Settings',
 ));

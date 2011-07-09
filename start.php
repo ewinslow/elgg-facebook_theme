@@ -23,49 +23,7 @@ function facebook_theme_init() {
 	elgg_register_plugin_hook_handler('register', 'menu:owner_block', 'facebook_theme_owner_block_menu_handler', 600);
 	elgg_register_plugin_hook_handler('register', 'menu:composer', 'facebook_theme_composer_menu_handler');
 	
-	elgg_register_event_handler('pagesetup', 'system', 'facebook_theme_pagesetup_handler');
-	
-	if (elgg_is_logged_in()) {
-		$user_guid = elgg_get_logged_in_user_guid();
-		$address = urlencode(current_page_url());
-
-		if (elgg_is_active_plugin('bookmarks')) {
-			elgg_register_menu_item('extras', array(
-				'name' => 'bookmark',
-				'text' => elgg_view_icon('push-pin-alt') . elgg_echo('bookmarks:this'),
-				'href' => "bookmarks/add/$user_guid?address=$address",
-				'title' => elgg_echo('bookmarks:this'),
-				'rel' => 'nofollow',
-			));
-		}
-
-		if (elgg_is_active_plugin('reportedcontent')) {
-			elgg_unregister_menu_item('footer', 'report_this');
-	
-			$href = "javascript:elgg.forward('reportedcontent/add'";
-			$href .= "+'?address='+encodeURIComponent(location.href)";
-			$href .= "+'&title='+encodeURIComponent(document.title));";
-			
-			elgg_register_menu_item('extras', array(
-				'name' => 'report_this',
-				'href' => $href,
-				'text' => elgg_view_icon('report-this') . elgg_echo('reportedcontent:this'),
-				'title' => elgg_echo('reportedcontent:this:tooltip'),
-				'priority' => 500,
-			));
-		}
-	}
-	
-	//Want our logo present, not Elgg's
-	elgg_unregister_menu_item('topbar', 'elgg_logo');
-	
-	$site = elgg_get_site_entity();
-	elgg_register_menu_item('topbar', array(
-		'name' => 'logo',
-		'href' => '/',
-		'text' => "<h1 id=\"facebook-topbar-logo\">$site->name</h1>",
-		'priority' => 1,
-	));
+	elgg_register_event_handler('pagesetup', 'system', 'facebook_theme_pagesetup_handler', 1000);
 	
 	/**
 	 * Customize permissions
@@ -81,6 +39,7 @@ function facebook_theme_init() {
 		
 	//@todo report some of the extra patterns to be included in Elgg core
 	elgg_extend_view('css/elgg', 'facebook_theme/css');
+	elgg_extend_view('js/elgg', 'js/topbar');
 	
 	//Likes summary bar -- "You, John, and 3 others like this"
 	if (elgg_is_active_plugin('likes')) {
@@ -259,6 +218,104 @@ function facebook_theme_pagesetup_handler() {
 				'contexts' => array('dashboard'),
 			));
 		}
+		
+		$address = urlencode(current_page_url());
+		
+		if (elgg_is_active_plugin('bookmarks')) {
+			elgg_register_menu_item('extras', array(
+				'name' => 'bookmark',
+				'text' => elgg_view_icon('push-pin-alt') . elgg_echo('bookmarks:this'),
+				'href' => "bookmarks/add/$user->guid?address=$address",
+				'title' => elgg_echo('bookmarks:this'),
+				'rel' => 'nofollow',
+			));
+		}
+		
+		if (elgg_is_active_plugin('reportedcontent')) {
+			elgg_unregister_menu_item('footer', 'report_this');
+		
+			$href = "javascript:elgg.forward('reportedcontent/add'";
+			$href .= "+'?address='+encodeURIComponent(location.href)";
+			$href .= "+'&title='+encodeURIComponent(document.title));";
+				
+			elgg_register_menu_item('extras', array(
+				'name' => 'report_this',
+				'href' => $href,
+				'text' => elgg_view_icon('report-this') . elgg_echo('reportedcontent:this'),
+				'title' => elgg_echo('reportedcontent:this:tooltip'),
+				'priority' => 500,
+			));
+		}
+		
+		/**
+		 * TOPBAR customizations
+		 */
+		//Want our logo present, not Elgg's
+		$site = elgg_get_site_entity();
+		elgg_unregister_menu_item('topbar', 'elgg_logo');
+		elgg_register_menu_item('topbar', array(
+			'name' => 'logo',
+			'href' => '/',
+			'text' => "<h1 id=\"facebook-topbar-logo\">$site->name</h1>",
+			'priority' => 1,
+		));
+	
+		elgg_register_menu_item('topbar', array(
+			'name' => 'account',
+			'section' => 'alt',
+			'text' => elgg_echo('account'),
+			'href' => "#",
+			'priority' => 1000,
+		));
+
+		elgg_register_menu_item('topbar', array(
+			'name' => 'home',
+			'href' => '/dashboard',
+			'text' => elgg_echo('home'),
+			'section' => 'alt',
+			'priority' => 1,
+		));
+		
+		if (elgg_is_active_plugin('profile')) {
+			elgg_unregister_menu_item('topbar', 'profile');
+			elgg_register_menu_item('topbar', array(
+				'name' => 'profile',
+				'section' => 'alt',
+				'text' => elgg_echo('profile'),
+				'href' => "/profile/$user->username",
+				'priority' => 2,
+			));
+		}
+		
+		elgg_unregister_menu_item('topbar', 'usersettings');
+		elgg_register_menu_item('topbar', array(
+			'name' => 'usersettings',
+			'parent_name' => 'account',
+			'href' => "/settings/user/$user->username",
+			'text' => elgg_echo('settings:user'),
+			'section' => 'alt',
+		));
+		
+		if (elgg_is_active_plugin('notifications')) {
+			elgg_register_menu_item('topbar', array(
+				'name' => 'notifications',
+				'parent_name' => 'account',
+				'href' => "/notifications/personal",
+				'text' => elgg_echo('notifications:personal'),
+				'section' => 'alt',
+			));
+		}
+		
+		elgg_unregister_menu_item('topbar', 'logout');
+		elgg_register_menu_item('topbar', array(
+			'name' => 'logout',
+			'parent_name' => 'account',
+			'href' => '/action/logout',
+			'is_action' => TRUE,
+			'text' => elgg_echo('logout'),
+			'section' => 'alt',
+			'priority' => 1000, //want this to be at the bottom of the list no matter what
+		));
 	}
 	
 	elgg_register_menu_item('extras', array(

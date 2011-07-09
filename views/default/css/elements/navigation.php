@@ -141,6 +141,7 @@
 
 .elgg-menu-topbar > li {
 	float:left;
+	position: relative;
 }
 
 .elgg-menu-topbar > li > a {
@@ -168,6 +169,59 @@
 }
 .elgg-menu-topbar-alt > li > a:hover {
 	background: #6D86B7;
+}
+
+.elgg-menu-topbar .elgg-menu-parent:after {
+	content: " \25BC ";
+	font-size: smaller;
+}
+
+.elgg-menu-topbar .elgg-child-menu {
+	background: white;
+	border: 1px solid #333;
+	border-bottom: 2px solid #2D4486;
+	margin-right: -1px;
+	margin-top: -1px;
+	min-width: 200px;
+	padding: 10px 0 5px;
+	position: absolute;
+	right: 0;
+	top: 100%;
+	display:none;
+	z-index:1;
+}
+
+.elgg-menu-topbar .elgg-child-menu.elgg-state-active {
+	display: block;
+}
+
+.elgg-menu-topbar .elgg-child-menu > li > a {
+	color: #3A579A;
+	display: block;
+	font-weight: normal;
+	height: auto;
+	padding: 4px 10px 5px;
+	white-space: nowrap;
+}
+
+.elgg-menu-topbar .elgg-child-menu > li > a:hover {
+	background: #6D84B4;
+	border-bottom: 1px solid #3B5998;
+	border-top: 1px solid #3B5998;
+	color: white;
+	padding: 3px 10px 4px;
+	text-decoration: none;
+}
+
+.elgg-menu-topbar > li > .elgg-menu-opened,
+.elgg-menu-topbar > li > .elgg-menu-opened:hover {
+	background: white;
+	border: 1px solid #333;
+	border-bottom: 0;
+	margin: -1px -1px 0;
+	color: #333;
+	position:relative;
+	z-index: 2;
 }
 
 /* ***************************************
@@ -274,7 +328,8 @@
 	display: none;
 	margin-left: 15px;
 }
-.elgg-menu-page .elgg-menu-closed:before, .elgg-menu-opened:before {
+.elgg-menu-page .elgg-menu-closed:before, 
+.elgg-menu-page .elgg-menu-opened:before {
 	display: inline-block;
 	padding-right: 4px;
 }
