@@ -5,7 +5,7 @@ $user = elgg_get_logged_in_user_entity();
 
 elgg_set_page_owner_guid($user->guid);
 
-$title = 'News Feed';
+$title = elgg_echo('newsfeed');
 
 $composer = elgg_view('page/elements/composer', array('entity' => $user));
 
