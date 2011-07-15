@@ -3,7 +3,7 @@
 $user = elgg_get_page_owner_entity();
 
 if (!$user || !elgg_instanceof($user, 'user')) {
-	register_error("Could not find the specified user");
+	register_error(elgg_echo('profile:notfound'));
 	forward();
 }
 
