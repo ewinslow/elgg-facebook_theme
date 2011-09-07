@@ -1,38 +1,36 @@
 <?php
 add_translation('en', array(
-	'profile:wall' => "Wall",
-	'profile:info' => "Info",
-
-	'likes:likethis' => 'Like',
-	'likes:remove' => 'Unlike',
-
-	'river:comments:all' => 'View all %d comments',
-
-	'pages:river:create' => 'created a page',
-	'file:river:create' => 'uploaded a file',
-
+	'annotation:group_topic_post:value:placeholder' => 'Leave a reply...',
+	
 	'composer:object:thewire' => "Status",
 	'composer:object:bookmarks' => "Bookmark",
 	'composer:object:blog' => "Blog",
 	'composer:annotation:messageboard' => "Post",
 	'composer:object:file' => 'File',
-
-	'newsfeed' => 'News Feed',
-
-	'friend:user:add' => "Add %s as Friend",
-
-	'river:to' => '%s &#x25B6 %s',
-
+	
+	'file:river:create' => 'uploaded a file',
 	'files' => 'Files',
+	'friend:user:add' => "Add %s as Friend",
+	
+	'groups:add' => 'Create Group...',
+	'home' => 'Home',
+	
+	'newsfeed' => 'News Feed',
+	
+	'profile:wall' => "Wall",
+	'profile:info' => "Info",
+
+	'likes:likethis' => 'Like',
+	'likes:remove' => 'Unlike',
+	
+	'notifications:personal' => "Notifications",
+	
+	'pages:river:create' => 'created a page',
 
 	'river:comment:object:thewire' => '',
-
-	'groups:add' => 'Create Group...',
-
-	'annotation:group_topic_post:value:placeholder' => 'Leave a reply...',
-	
-	'home' => 'Home',
-	'notifications:personal' => "Notifications",
-	'settings:user' => 'Account Settings',
+	'river:comments:all' => 'View all %d comments',
 	'river:replies:all' => 'View all %d replies',
+	'river:to' => '%s &#x25B6 %s',
+	
+	'settings:user' => 'Account Settings',
 ));
