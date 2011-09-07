@@ -34,5 +34,7 @@ add_translation('en', array(
 	
 	'rss:subscribe' => 'Subscribe via RSS',
 
+	'see:all' => 'See all',
+	
 	'settings:user' => 'Account Settings',
 ));

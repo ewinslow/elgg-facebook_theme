@@ -163,7 +163,7 @@ function facebook_theme_pagesetup_handler() {
 			elgg_register_menu_item('page', array(
 				'section' => 'groups',
 				'name' => 'groups',
-				'text' => elgg_echo('See All'),
+				'text' => elgg_echo('see:all'),
 				'href' => "/groups/member/$user->username",
 				'contexts' => array('dashboard'),
 				'priority' => 500,
