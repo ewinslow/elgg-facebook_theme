@@ -32,5 +32,7 @@ add_translation('en', array(
 	'river:replies:all' => 'View all %d replies',
 	'river:to' => '%s &#x25B6 %s',
 	
+	'rss:subscribe' => 'Subscribe via RSS',
+
 	'settings:user' => 'Account Settings',
 ));

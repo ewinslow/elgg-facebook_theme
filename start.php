@@ -320,7 +320,7 @@ function facebook_theme_pagesetup_handler() {
 	
 	elgg_register_menu_item('extras', array(
 		'name' => 'rss',
-		'text' => elgg_view_icon('rss') . elgg_echo("Subscribe via RSS"),
+		'text' => elgg_view_icon('rss') . elgg_echo("rss:subscribe"),
 		'href' => '?view=rss',
 	));
 }
