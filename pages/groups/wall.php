@@ -3,7 +3,7 @@
 $group = elgg_get_page_owner_entity();
 
 if (!$group || !elgg_instanceof($group, 'group')) {
-	register_error("Could not find the specified group");
+	register_error(elgg_echo('groups:notfound'));
 	forward();
 }
 
