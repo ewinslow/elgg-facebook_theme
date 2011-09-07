@@ -37,4 +37,6 @@ add_translation('en', array(
 	'see:all' => 'See all',
 	
 	'settings:user' => 'Account Settings',
+	
+	'composer:prompt' => 'Share',
 ));
