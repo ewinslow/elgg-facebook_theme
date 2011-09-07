@@ -20,7 +20,8 @@ add_translation('en', array(
 	
 	'profile:wall' => "Wall",
 	'profile:info' => "Info",
-
+	'profile:activity:none' => "No activity to display",
+	
 	'likes:likethis' => 'Like',
 	'likes:remove' => 'Unlike',
 	
