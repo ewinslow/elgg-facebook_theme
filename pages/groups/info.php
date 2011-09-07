@@ -1,4 +1,6 @@
 <?php
+
+
 // turn this into a core function
 global $autofeed;
 $autofeed = true;
@@ -8,7 +10,8 @@ if (!$group instanceof ElggGroup) {
 	forward('groups/all');
 }
 
-elgg_push_breadcrumb($group->name);
+elgg_load_library('elgg:groups');
+groups_register_profile_buttons($group);
 
 $content = elgg_view('groups/profile/layout', array('entity' => $group));
 if (group_gatekeeper(false)) {
@@ -17,12 +20,11 @@ if (group_gatekeeper(false)) {
 	$sidebar = '';
 }
 
-$body = elgg_view_layout('content', array(
+
+$body = elgg_view_layout('two_sidebar', array(
 	'content' => $content,
-	'sidebar' => $sidebar,
+	'sidebar_alt' => $sidebar,
 	'title' => $group->name,
-	'buttons' => elgg_view('groups/profile/buttons', array('entity' => $group)),
-	'filter' => '',
 ));
 
 echo elgg_view_page($group->name, $body);

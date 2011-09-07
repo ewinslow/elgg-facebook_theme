@@ -1,11 +1,15 @@
 <?php
 
+
 $group = elgg_get_page_owner_entity();
 
 if (!$group || !elgg_instanceof($group, 'group')) {
 	register_error(elgg_echo('groups:notfound'));
 	forward();
 }
+
+elgg_load_library('elgg:groups');
+groups_register_profile_buttons($group);
 
 $title = $group->name;
 
@@ -24,9 +28,10 @@ if (!$activity) {
 	$activity = elgg_view('output/longtext', array('value' => elgg_echo('group:activity:none')));
 }
 
+
 $body = elgg_view_layout('two_sidebar', array(
-	'content' => $composer . $activity,
 	'title' => $title,
+	'content' => $composer . $activity,
 ));
 
 echo elgg_view_page($title, $body);
