@@ -1,6 +1,7 @@
 <?php
 add_translation('en', array(
 	'annotation:group_topic_post:value:placeholder' => 'Leave a reply...',
+	'annotation:generic_comment:value:placeholder' => 'Leave a comment...',
 	
 	'composer:object:thewire' => "Status",
 	'composer:object:bookmarks' => "Bookmark",

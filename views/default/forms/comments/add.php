@@ -14,8 +14,14 @@ if (isset($vars['entity']) && elgg_is_logged_in()) {
 	$inline = elgg_extract('inline', $vars, false);
 	
 	if ($inline) {
-		echo elgg_view('input/text', array('name' => 'generic_comment', 'placeholder' => "Leave a comment..."));
-		echo elgg_view('input/submit', array('value' => elgg_echo('comment'), 'class' => 'hidden'));
+		echo elgg_view('input/text', array(
+			'name' => 'generic_comment', 
+			'placeholder' => elgg_echo('annotation:generic_comment:value:placeholder'),
+		));
+		echo elgg_view('input/submit', array(
+			'value' => elgg_echo('comment'), 
+			'class' => 'hidden',
+		));
 	} else {
 ?>
 		<div>
