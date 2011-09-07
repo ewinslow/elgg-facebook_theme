@@ -18,12 +18,6 @@
 // navigation defaults to breadcrumbs
 $nav = elgg_extract('nav', $vars, elgg_view('navigation/breadcrumbs'));
 
-// allow page handlers to override the default header
-if (isset($vars['header'])) {
-	$vars['header_override'] = $vars['header'];
-}
-$header = elgg_view('page/layouts/content/header', $vars);
-
 // allow page handlers to override the default filter
 if (isset($vars['filter'])) {
 	$vars['filter_override'] = $vars['filter'];
@@ -40,7 +34,7 @@ $params['content'] = $footer_content;
 $footer = elgg_view('page/layouts/content/footer', $params);
 
 $params = array(
-	'header' => $header,
+	'title' => $vars['title'],
 	'content' => $filter . $content . $footer,
 	'sidebar' => elgg_extract('sidebar_alt', $vars, ''),
 	'sidebar_alt' => elgg_extract('sidebar', $vars, ''),
