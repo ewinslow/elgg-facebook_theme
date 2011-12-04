@@ -4,6 +4,8 @@
  */
 
 ?>
+/* <style>
+/**/
 .elgg-icon {vertical-align:middle}
 dl, dt, dd {margin:0;padding:0}
 
@@ -106,53 +108,66 @@ img {max-width:100%}
 }
 
 #facebook-header-login {
-	right: 0;
+	bottom: 25px;
 	position: absolute;
-	bottom: 15px;
+	right: 0;
 }
 
 #facebook-header-login label {
 	color:white;
+	display: block;
 	font-weight: normal;
 	padding: 2px 2px 4px;
-	display: block;
 }
 
-#facebook-header-login input[type="submit"] + label {
+#facebook-header-login .elgg-foot > label {
+	bottom: -16px;
 	color: #98A9CA;
-	position:absolute;
-	left: 0;
-	bottom: -3px;
 	cursor: pointer;
+	left: 0;
+	position: absolute;
 }
 
 #facebook-header-login div {
 	display: inline-block;
-	padding-right: 10px;
 	margin-bottom: 3px;
+	padding-right: 10px;
 }
 
 #facebook-header-login .elgg-input-text,
 #facebook-header-login .elgg-input-password {
-	padding: 3px 3px 4px;
-	color: black;
-	width: 150px;
 	border-color: #1D2A5B;
+	color: black;
+	font-size: 11px;
 	margin:0;
-	font-size:11px;
+	padding: 3px 3px 4px;
+	width: 150px;
 }
 
 #facebook-header-login .elgg-menu {
-	margin-left: 166px;
+	position: absolute;
+	margin-left: -160px;
+}
+
+#facebook-header-login .elgg-menu > li {
+	display: inline-block;
+	margin-right: 10px;
 }
 
 #facebook-header-login .elgg-menu > li > a {
 	color: #98A9CA;
+	display: inline;
 }
 
 #facebook-header-login .elgg-menu > li > a:hover {
 	text-decoration: underline;
 }
+
+#facebook-header-login .elgg-button-submit {
+	position: relative; 
+	top: 10px;
+}
+
 
 input[type="checkbox"] {
 	vertical-align:bottom;
