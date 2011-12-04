@@ -12,6 +12,7 @@ Search plugin
 	width: 330px;
 	background: white url(<?php echo elgg_get_site_url(); ?>_graphics/elgg_sprites.png) no-repeat 335px -934px;
 	border: 1px solid #3B5998;
+	border-radius: 1px;
 	height: 20px;
 	padding: 0 23px 0 0;
 }
@@ -41,7 +42,7 @@ Search plugin
 }
 
 .elgg-page-topbar .elgg-search {
-	margin: 4px 0 4px 205px;
+	margin: 4px 0 4px 181px;
 	position: relative;
 }
 

@@ -6,9 +6,7 @@
  * @subpackage UI
  */
 ?>
-
-
-
+/* <style>
 /* ***************************************
 	PAGINATION
 *************************************** */
@@ -148,7 +146,7 @@
 	color: white;
 	display: block;
 	font-weight: bold;
-	height: 22px;
+	height: 24px;
 }
 
 .elgg-menu-topbar-default > li > a {
@@ -162,10 +160,10 @@
 
 .elgg-menu-topbar-alt {
 	float:right;
-	margin-right:1px;
+	margin-right: 1px;
 }
 .elgg-menu-topbar-alt > li > a {
-	padding: 8px 10px 0;
+	padding: 8px 7px 0;
 }
 .elgg-menu-topbar-alt > li > a:hover {
 	background: #6D86B7;
@@ -183,7 +181,7 @@
 	margin-right: -1px;
 	margin-top: -1px;
 	min-width: 200px;
-	padding: 10px 0 5px;
+	padding: 4px 0;
 	position: absolute;
 	right: 0;
 	top: 100%;
@@ -196,11 +194,14 @@
 }
 
 .elgg-menu-topbar .elgg-child-menu > li > a {
-	color: #3A579A;
+	border-bottom: 1px solid white;
+	border-top: 1px solid white;
+	color: #333;
 	display: block;
 	font-weight: normal;
-	height: auto;
-	padding: 4px 10px 5px;
+	height: 18px;
+	line-height: 18px;
+	padding: 0px 22px;
 	white-space: nowrap;
 }
 
@@ -209,7 +210,6 @@
 	border-bottom: 1px solid #3B5998;
 	border-top: 1px solid #3B5998;
 	color: white;
-	padding: 3px 10px 4px;
 	text-decoration: none;
 }
 

@@ -95,9 +95,18 @@ function facebook_theme_pagesetup_handler() {
 			'contexts' => array('dashboard'),
 		));
 		
+		if (elgg_is_active_plugin('messages')) {
+			elgg_register_menu_item('page', array(
+				'name' => 'messages',
+				'text' => elgg_view_icon('mail') . elgg_echo('messages'),
+				'href' => "/messages/inbox/$user->username",
+				'contexts' => array('dashboard'),
+			));
+		}
+		
 		elgg_register_menu_item('page', array(
 			'name' => 'friends',
-			'text' => elgg_echo('friends'),
+			'text' => elgg_view_icon('users') . elgg_echo('friends'),
 			'href' => "/friends/$user->username",
 			'priority' => 500,
 			'contexts' => array('dashboard'),
@@ -153,7 +162,7 @@ function facebook_theme_pagesetup_handler() {
 				elgg_register_menu_item('page', array(
 					'section' => 'groups',
 					'name' => "group-$group->guid",
-					'text' => $group->name,
+					'text' => elgg_view_icon('users') . $group->name,
 					'href' => $group->getURL(),
 					'contexts' => array('dashboard'),
 				));
@@ -238,21 +247,12 @@ function facebook_theme_pagesetup_handler() {
 			));
 		}
 		
-		if (elgg_is_active_plugin('messages')) {
-			elgg_register_menu_item('page', array(
-				'name' => 'messages',
-				'text' => elgg_echo('messages'),
-				'href' => "/messages/inbox/$user->username",
-				'contexts' => array('dashboard'),
-			));
-		}
-		
 		$address = urlencode(current_page_url());
 		
 		if (elgg_is_active_plugin('bookmarks')) {
 			elgg_register_menu_item('extras', array(
 				'name' => 'bookmark',
-				'text' => elgg_view_icon('push-pin-alt') . elgg_echo('bookmarks:this'),
+				'text' => elgg_view_icon('link') . elgg_echo('bookmarks:this'),
 				'href' => "bookmarks/add/$user->guid?address=$address",
 				'title' => elgg_echo('bookmarks:this'),
 				'rel' => 'nofollow',
@@ -282,26 +282,18 @@ function facebook_theme_pagesetup_handler() {
 		$site = elgg_get_site_entity();
 		elgg_unregister_menu_item('topbar', 'elgg_logo');
 		elgg_register_menu_item('topbar', array(
-			'name' => 'logo',
 			'href' => '/',
-			'text' => "<h1 id=\"facebook-topbar-logo\">$site->name</h1>",
+			'name' => 'logo',
 			'priority' => 1,
+			'text' => "<h1 id=\"facebook-topbar-logo\">$site->name</h1>",
 		));
 	
 		elgg_register_menu_item('topbar', array(
-			'name' => 'account',
-			'section' => 'alt',
-			'text' => elgg_echo('account'),
-			'href' => "#",
-			'priority' => 1000,
-		));
-
-		elgg_register_menu_item('topbar', array(
-			'name' => 'home',
 			'href' => '/dashboard',
-			'text' => elgg_echo('home'),
+			'name' => 'home',
+			'priority' => 2,
 			'section' => 'alt',
-			'priority' => 1,
+			'text' => elgg_echo('home'),
 		));
 		
 		if (elgg_is_active_plugin('profile')) {
@@ -309,40 +301,57 @@ function facebook_theme_pagesetup_handler() {
 			elgg_register_menu_item('topbar', array(
 				'name' => 'profile',
 				'section' => 'alt',
-				'text' => elgg_echo('profile'),
+				'text' => "<img src=\"{$user->getIcon('topbar')}\" class=\"elgg-icon elgg-inline-block\" alt=\"$user->name\"/>" . $user->name,
 				'href' => "/profile/$user->username",
-				'priority' => 2,
+				'priority' => 1,
 			));
 		}
 		
+		elgg_register_menu_item('topbar', array(
+			'href' => "#",
+			'name' => 'account',
+			'priority' => 1000,
+			'section' => 'alt',
+			'text' => '',
+		));
+
 		elgg_unregister_menu_item('topbar', 'usersettings');
 		elgg_register_menu_item('topbar', array(
+			'href' => "/settings/user/$user->username",
 			'name' => 'usersettings',
 			'parent_name' => 'account',
-			'href' => "/settings/user/$user->username",
-			'text' => elgg_echo('settings:user'),
 			'section' => 'alt',
+			'text' => elgg_echo('settings:user'),
+		));
+
+		elgg_unregister_menu_item('topbar', 'administration');
+		elgg_register_menu_item('topbar', array(
+			'href' => '/admin',
+			'name' => 'administration',
+			'parent_name' => 'account',
+			'section' => 'alt',
+			'text' => elgg_echo('admin'),
 		));
 		
 		if (elgg_is_active_plugin('notifications')) {
 			elgg_register_menu_item('topbar', array(
+				'href' => "/notifications/personal",
 				'name' => 'notifications',
 				'parent_name' => 'account',
-				'href' => "/notifications/personal",
-				'text' => elgg_echo('notifications:personal'),
 				'section' => 'alt',
+				'text' => elgg_echo('notifications:personal'),
 			));
 		}
 		
 		elgg_unregister_menu_item('topbar', 'logout');
 		elgg_register_menu_item('topbar', array(
-			'name' => 'logout',
-			'parent_name' => 'account',
 			'href' => '/action/logout',
 			'is_action' => TRUE,
-			'text' => elgg_echo('logout'),
-			'section' => 'alt',
+			'name' => 'logout',
+			'parent_name' => 'account',
 			'priority' => 1000, //want this to be at the bottom of the list no matter what
+			'section' => 'alt',
+			'text' => elgg_echo('logout'),
 		));
 	}
 	
@@ -507,7 +516,7 @@ function facebook_theme_owner_block_menu_handler($hook, $type, $items, $params) 
 	if ($owner instanceof ElggUser) {
 		$items['info'] = ElggMenuItem::factory(array(
 			'name' => 'info', 
-			'text' => elgg_echo('profile:info'), 
+			'text' => elgg_view_icon('info') . elgg_echo('profile:info'), 
 			'href' => "/profile/$owner->username/info",
 			'priority' => 2,
 		));
@@ -521,7 +530,7 @@ function facebook_theme_owner_block_menu_handler($hook, $type, $items, $params) 
 		
 		$items['friends'] = ElggMenuItem::factory(array(
 			'name' => 'friends',	
-			'text' => elgg_echo('friends'),
+			'text' => elgg_view_icon('users') . elgg_echo('friends'),
 			'href' => "/friends/$owner->username"
 		));
 	}

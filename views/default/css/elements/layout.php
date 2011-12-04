@@ -4,31 +4,31 @@
  *
  * Contains CSS for the page shell and page layout
  *
- * Default layout: 990px wide, centered. Used in default page shell
+ * Default layout: 981px wide, centered. Used in default page shell
  *
  */
 ?>
-
+/* <style>
 /* ***************************************
 	PAGE LAYOUT
 *************************************** */
 /***** DEFAULT LAYOUT ******/
 .elgg-page-default .elgg-page-header > .elgg-inner {
-	width: 990px;
+	width: 981px;
 	margin: 0 auto;
 	height: 90px;
 }
 .elgg-page-default .elgg-page-body > .elgg-inner {
-	width: 990px;
+	width: 981px;
 	margin: 0 auto;
 }
 
 .elgg-page-footer {
-	width: 990px;
+	width: 981px;
 	margin: 0 auto;
 }
 .elgg-page-default .elgg-page-footer > .elgg-inner {
-	margin-left: 200px;
+	margin-left: 181px;
 	padding: 8px;
 }
 
@@ -52,7 +52,7 @@
 
 .elgg-page-topbar > .elgg-inner {
 	padding-top: 6px;
-	width: 990px;
+	width: 981px;
 	margin: 0 auto;
 	position: relative;
 }
@@ -98,13 +98,13 @@
 	position: relative;
 	padding: 20px 0;
 	float: left;
-	width: 200px;
+	width: 181px;
 	min-height: 360px;
 }
 .elgg-sidebar-alt {
 	position: relative;
 	float: right;
-	width: 240px;
+	width: 244px;
 	margin-left: 20px;
 	min-height: 360px;
 }
