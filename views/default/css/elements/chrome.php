@@ -6,7 +6,8 @@
  * @subpackage UI
  */
 ?>
-
+/* <style>
+/**/
 .elgg-quiet {
 	color: #666;
 }

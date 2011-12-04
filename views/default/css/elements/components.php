@@ -19,7 +19,7 @@
  * @todo Move this to its own file -- it is very complicated and should not have to be overridden.
  */
 ?>
-
+/* <style>
 /* ***************************************
 	Image Block
 *************************************** */
