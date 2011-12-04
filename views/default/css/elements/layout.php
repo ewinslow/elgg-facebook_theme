@@ -43,31 +43,22 @@
 /***** TOPBAR ******/
 .elgg-page-topbar {
 	background: #3B5998;
-	min-width: 998px;
-	position: relative;
-	height: 41px;
+	position: fixed;
+	height: 38px;
+	left: 0;
+	right: 0;
+	z-index: 10000;
 }
 
 .elgg-page-topbar > .elgg-inner {
+	padding-top: 6px;
 	width: 990px;
 	margin: 0 auto;
-	padding-top: 11px;
-	position:relative;
+	position: relative;
 }
 
-.elgg-page-topbar > .elgg-inner:before {
-	position: absolute;
-	display: block;
-	background: #627AAD;
-	height: 30px;
-	bottom: 0;
-	right: 0;
-	left: 200px;
-	border: 1px solid #1D4088;
-	content: " ";
-	width: auto;
-	border-bottom: 0;
-	top: 10px;
+.elgg-page-topbar ~ .elgg-page-body {
+	padding-top: 38px;
 }
 
 /***** PAGE MESSAGES ******/
