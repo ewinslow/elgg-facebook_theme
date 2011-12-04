@@ -17,7 +17,7 @@ if (elgg_is_logged_in()) {
 $db_prefix = elgg_get_config('dbprefix');
 $activity = elgg_list_river(array(
 	'joins' => array("JOIN {$db_prefix}entities e ON e.guid = rv.object_guid"),
-	'wheres' => array("e.container_guid = $user->guid")
+	'wheres' => array("e.container_guid = $user->guid OR rv.object_guid = $user->guid")
 ));
 
 if (!$activity) {

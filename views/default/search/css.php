@@ -10,7 +10,7 @@ Search plugin
 ***********************************/
 .elgg-search {
 	width: 330px;
-	background: white url(<?php echo elgg_get_site_url(); ?>_graphics/elgg_sprites.png) no-repeat 335px -700px;
+	background: white url(<?php echo elgg_get_site_url(); ?>_graphics/elgg_sprites.png) no-repeat 335px -934px;
 	border: 1px solid #3B5998;
 	height: 20px;
 	padding: 0 23px 0 0;

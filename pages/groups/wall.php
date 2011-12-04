@@ -1,6 +1,5 @@
 <?php
 
-
 $group = elgg_get_page_owner_entity();
 
 if (!$group || !elgg_instanceof($group, 'group')) {
@@ -27,7 +26,6 @@ $activity = elgg_list_river(array(
 if (!$activity) {
 	$activity = elgg_view('output/longtext', array('value' => elgg_echo('group:activity:none')));
 }
-
 
 $body = elgg_view_layout('two_sidebar', array(
 	'title' => $title,

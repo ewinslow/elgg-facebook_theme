@@ -8,12 +8,15 @@ add_translation('en', array(
 	'composer:object:blog' => "Blog",
 	'composer:annotation:messageboard' => "Post",
 	'composer:object:file' => 'File',
-	
+	'composer:prompt' => 'Share',
+
 	'file:river:create' => 'uploaded a file',
 	'files' => 'Files',
+	
 	'friend:user:add' => "Add %s as Friend",
 	
 	'groups:add' => 'Create Group...',
+	
 	'home' => 'Home',
 	
 	'newsfeed' => 'News Feed',
@@ -31,6 +34,7 @@ add_translation('en', array(
 
 	'river:comment:object:thewire' => '',
 	'river:comments:all' => 'View all %d comments',
+	'river:messageboard:group:default' => '',
 	'river:replies:all' => 'View all %d replies',
 	'river:to' => '%s &#x25B6 %s',
 	
@@ -40,5 +44,4 @@ add_translation('en', array(
 	
 	'settings:user' => 'Account Settings',
 	
-	'composer:prompt' => 'Share',
 ));

@@ -1,6 +1,4 @@
 <?php
-
-
 // turn this into a core function
 global $autofeed;
 $autofeed = true;
@@ -19,7 +17,6 @@ if (group_gatekeeper(false)) {
 } else {
 	$sidebar = '';
 }
-
 
 $body = elgg_view_layout('two_sidebar', array(
 	'content' => $content,

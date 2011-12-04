@@ -53,6 +53,10 @@ function facebook_theme_init() {
 	if (elgg_is_active_plugin('search')) {
 		elgg_extend_view('page/elements/topbar', 'search/search_box');
 		elgg_unextend_view('page/elements/header', 'search/search_box');
+		
+		if (!elgg_is_logged_in()) {
+			elgg_unextend_view('page/elements/header', 'search/header');
+		}
 	}
 }
 
@@ -67,6 +71,10 @@ function facebook_theme_groups_page_handler($segments, $handle) {
 		case 'info':
 			elgg_set_page_owner_guid($segments[1]);
 			require_once "$pages_dir/groups/info.php";
+			return true;
+		case 'discussion':
+			elgg_set_page_owner_guid($segments[1]);
+			require_once "$pages_dir/groups/discussion.php";
 			return true;
 		default:
 			global $facebook_theme_original_groups_page_handler;
@@ -170,11 +178,21 @@ function facebook_theme_pagesetup_handler() {
 			));
 		}
 		
+		if (elgg_is_active_plugin('tidypics')) {
+			elgg_register_menu_item('page', array(
+				'section' => 'more',	
+				'name' => 'photos',
+				'text' => elgg_view_icon('photo') . elgg_echo("photos"),
+				'href' => "/photos/friends/$user->username",
+				'contexts' => array('dashboard'),
+			));
+		}
+		
 		if (elgg_is_active_plugin('bookmarks')) {
 			elgg_register_menu_item('page', array(
 				'section' => 'more',
 				'name' => 'bookmarks',
-				'text' => elgg_echo('bookmarks'),	
+				'text' => elgg_view_icon('link') . elgg_echo('bookmarks'),	
 				'href' => "/bookmarks/friends/$user->username",
 				'contexts' => array('dashboard'),
 			));
@@ -184,7 +202,7 @@ function facebook_theme_pagesetup_handler() {
 			elgg_register_menu_item('page', array(
 				'section' => 'more',	
 				'name' => 'blog',
-				'text' => elgg_echo('blog'),
+				'text' => elgg_view_icon('speech-bubble-alt') . elgg_echo('blog'),
 				'href' => "/blog/friends/$user->username",
 				'contexts' => array('dashboard'),
 			));
@@ -194,7 +212,7 @@ function facebook_theme_pagesetup_handler() {
 			elgg_register_menu_item('page', array(
 				'section' => 'more',	
 				'name' => 'pages',
-				'text' => elgg_echo('pages'),
+				'text' => elgg_view_icon('list') . elgg_echo('pages'),
 				'href' => "/pages/friends/$user->username",
 				'contexts' => array('dashboard'),
 			));
@@ -204,8 +222,18 @@ function facebook_theme_pagesetup_handler() {
 			elgg_register_menu_item('page', array(
 				'section' => 'more',	
 				'name' => 'files',
-				'text' => elgg_echo('files'),
+				'text' => elgg_view_icon('clip') . elgg_echo('files'),
 				'href' => "/file/friends/$user->username",
+				'contexts' => array('dashboard'),
+			));
+		}
+
+		if (elgg_is_active_plugin('thewire')) {
+			elgg_register_menu_item('page', array(
+				'section' => 'more',
+				'name' => 'thewire',
+				'text' => elgg_view_icon('speech-bubble') . elgg_echo('Wire'),
+				'href' => "/thewire/friends/$user->username",
 				'contexts' => array('dashboard'),
 			));
 		}
@@ -463,7 +491,7 @@ function facebook_theme_owner_block_menu_handler($hook, $type, $items, $params) 
 	if ($owner instanceof ElggGroup) {
 		$items['info'] = ElggMenuItem::factory(array(
 			'name' => 'info', 
-			'text' => elgg_echo('profile:info'), 
+			'text' => elgg_view_icon('info') . elgg_echo('profile:info'), 
 			'href' => "/groups/info/$owner->guid/" . elgg_get_friendly_title($owner->name),
 			'priority' => 2,
 		));
