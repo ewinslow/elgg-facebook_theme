@@ -18,17 +18,22 @@
 	<requires>
 		<type>priority</type>
 		<priority>after</priority>
-		<plugin>profile</plugin>
-	</requires>
-	<requires>
-		<type>priority</type>
-		<priority>after</priority>
 		<plugin>groups</plugin>
 	</requires>
 	<requires>
 		<type>priority</type>
 		<priority>after</priority>
+		<plugin>messageboard</plugin>
+	</requires>
+	<requires>
+		<type>priority</type>
+		<priority>after</priority>
 		<plugin>messages</plugin>
+	</requires>
+	<requires>
+		<type>priority</type>
+		<priority>after</priority>
+		<plugin>profile</plugin>
 	</requires>
 	<requires>
 		<type>priority</type>
