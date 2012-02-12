@@ -3,4 +3,4 @@ phps:
   - 5.2
   - 5.3
   
-script: phpunit ./tests
+script: phpunit tests/suite.php
