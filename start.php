@@ -67,19 +67,23 @@ function facebook_theme_groups_page_handler($segments, $handle) {
 		case 'profile':
 			elgg_set_page_owner_guid($segments[1]);
 			require_once "$pages_dir/groups/wall.php";
-			return true;
+			break;
+			
 		case 'info':
 			elgg_set_page_owner_guid($segments[1]);
 			require_once "$pages_dir/groups/info.php";
-			return true;
+			break;
+			
 		case 'discussion':
 			elgg_set_page_owner_guid($segments[1]);
 			require_once "$pages_dir/groups/discussion.php";
-			return true;
+			break;
+			
 		default:
 			global $facebook_theme_original_groups_page_handler;
 			return call_user_func($facebook_theme_original_groups_page_handler, $segments, $handle);
 	}
+	return true;
 }
 
 function facebook_theme_pagesetup_handler() {
@@ -628,8 +632,6 @@ function facebook_theme_river_menu_handler($hook, $type, $items, $params) {
  * @param array $page Array of page elements, forwarded by the page handling mechanism
  */
 function facebook_theme_profile_page_handler($page) {
-	global $CONFIG;
-
 	if (isset($page[0])) {
 		$username = $page[0];
 		$user = get_user_by_username($username);
@@ -650,17 +652,17 @@ function facebook_theme_profile_page_handler($page) {
 	switch ($action) {
 		case 'edit':
 			// use for the core profile edit page
+			global $CONFIG;
 			require $CONFIG->path . 'pages/profile/edit.php';
-			return;
 			break;
 		
 		case 'info':
 			require dirname(__FILE__) . '/pages/profile/info.php';
-			return;
+			break;
 			
 		case 'wall':
 			require dirname(__FILE__) . '/pages/profile/wall.php';
-			return;
+			break;
 			
 		default:
 			if (elgg_is_logged_in()) {
@@ -668,9 +670,10 @@ function facebook_theme_profile_page_handler($page) {
 			} else {
 				require dirname(__FILE__) . '/pages/profile/info.php';
 			}
-			
-			return;
+			break;
 	}
+	
+	return true;
 }
 
 elgg_register_event_handler('init', 'system', 'facebook_theme_init');
