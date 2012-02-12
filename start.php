@@ -305,7 +305,7 @@ function facebook_theme_pagesetup_handler() {
 			elgg_register_menu_item('topbar', array(
 				'name' => 'profile',
 				'section' => 'alt',
-				'text' => "<img src=\"{$user->getIcon('topbar')}\" class=\"elgg-icon elgg-inline-block\" alt=\"$user->name\"/>" . $user->name,
+				'text' => "<img src=\"{$user->getIconURL('topbar')}\" class=\"elgg-icon elgg-inline-block\" alt=\"$user->name\"/>" . $user->name,
 				'href' => "/profile/$user->username",
 				'priority' => 1,
 			));
