@@ -13,6 +13,12 @@ function facebook_theme_init() {
 	$facebook_theme_original_groups_page_handler = $CONFIG->pagehandler['groups'];
 	elgg_register_page_handler('groups', 'facebook_theme_groups_page_handler');
 	
+	elgg_register_ajax_view('thewire/composer');
+	elgg_register_ajax_view('messageboard/composer');
+	elgg_register_ajax_view('blog/composer');
+	elgg_register_ajax_view('file/composer');
+	elgg_register_ajax_view('bookmarks/composer');
+	
 	/**
 	 * Customize menus
 	 */
