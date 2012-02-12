@@ -569,21 +569,16 @@ function facebook_theme_river_menu_handler($hook, $type, $items, $params) {
 				// user has not liked this yet
 				$options = array(
 					'name' => 'like',
-					'href' => "action/likes/add?guid={$object->getGUID()}",
+					'href' => "action/likes/add?guid={$object->guid}",
 					'text' => elgg_echo('likes:likethis'),
 					'is_action' => true,
 					'priority' => 100,
 				);
 			} else {
 				// user has liked this
-				$likes = elgg_get_annotations(array(
-					'guid' => $object->getGUID(),
-					'annotation_name' => 'likes',
-					'annotation_owner_guid' => elgg_get_logged_in_user_guid()
-				));
 				$options = array(
 					'name' => 'like',
-					'href' => "action/likes/delete?annotation_id={$likes[0]->id}",
+					'href' => "action/likes/delete?guid={$object->guid}",
 					'text' => elgg_echo('likes:remove'),
 					'is_action' => true,
 					'priority' => 100,
