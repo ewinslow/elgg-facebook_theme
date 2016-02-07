@@ -15,5 +15,5 @@ $owner = $group->getOwnerEntity();
 		?>
 	</dd>
 	<dt><?php echo elgg_echo('groups:members'); ?></dt>
-	<dd><?php echo $group->getMembers(0, 0, TRUE); ?></dd>
+	<dd><?php echo $group->getMembers(array('count' => true)); ?></dd>
 </dl>
