@@ -10,8 +10,8 @@ function facebook_theme_init() {
 	
 	//What a hack!  Overriding groups page handler without blowing away other plugins doing the same
 	global $CONFIG, $facebook_theme_original_groups_page_handler;
-	$facebook_theme_original_groups_page_handler = $CONFIG->pagehandler['groups'];
-	elgg_register_page_handler('groups', 'facebook_theme_groups_page_handler');
+//	$facebook_theme_original_groups_page_handler = $CONFIG->pagehandler['groups'];
+//	elgg_register_page_handler('groups', 'facebook_theme_groups_page_handler');
 	
 	elgg_register_ajax_view('thewire/composer');
 	elgg_register_ajax_view('messageboard/composer');
@@ -166,7 +166,7 @@ function facebook_theme_pagesetup_handler() {
 		}
 		
 		if (elgg_is_active_plugin('groups')) {
-			$groups = $user->getGroups('', 4);
+			$groups = $user->getGroups(array(''), 4);
 			
 			foreach ($groups as $group) {
 				elgg_register_menu_item('page', array(
@@ -554,12 +554,14 @@ function facebook_theme_owner_block_menu_handler($hook, $type, $items, $params) 
 		'limit' => 0,
 	));
 	
-	foreach ($top_level_pages as $page) {
-		$items["pages-$page->guid"] = ElggMenuItem::factory(array(
-			'name' => "pages-$page->guid",
-			'href' => $page->getURL(),
-			'text' => elgg_view_icon('page') . elgg_view('output/text', array('value' => $page->title)),
-		));
+	if(is_array($top_level_pages)) {
+		foreach ($top_level_pages as $page) {
+			$items["pages-$page->guid"] = ElggMenuItem::factory(array(
+				'name' => "pages-$page->guid",
+				'href' => $page->getURL(),
+				'text' => elgg_view_icon('page') . elgg_view('output/text', array('value' => $page->title)),
+			));
+		}
 	}
 	
 	return $items;
